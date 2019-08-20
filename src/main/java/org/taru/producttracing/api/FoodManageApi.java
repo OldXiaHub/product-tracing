@@ -94,4 +94,25 @@ public class FoodManageApi {
         }
         return jsonResult;
     }
+
+    /*
+    根据id查食品
+     */
+    @RequestMapping("/api/adminfood/selectfoodbyid")
+    public JsonResult selectProductByid(String productId){
+        JsonResult jsonResult=null;
+        try {
+            System.out.println("???");
+            List<Product> product=foodManageService.selectProductByid(productId);
+            if(product!=null){
+                jsonResult=new JsonResult("200","查询成功",product);
+            }else {
+                jsonResult=new JsonResult("404","查询失败","");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            jsonResult=new JsonResult("500","出错了",e.getMessage());
+        }
+        return jsonResult;
+    }
 }

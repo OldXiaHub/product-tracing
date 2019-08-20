@@ -30,6 +30,11 @@
         select * from product where product_status=1
     </select>
 
+    <!--查询单个食品-->
+    <select id="selectProductByid" resultMap="ProductMap">
+        select * from product where product_status=1 and product_id=#{productId}
+    </select>
+
     <!--食品作废-->
     <update id="deleteProduct">
         update product set product_status=0 where product_id=#{productId}

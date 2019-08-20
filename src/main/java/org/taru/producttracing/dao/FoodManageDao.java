@@ -23,4 +23,8 @@ public interface FoodManageDao {
   食品作废
    */
    void deleteProduct(String productId);
+   /*
+   根据id查询食品
+    */
+   List<Product> selectProductByid(String productId);
 }
