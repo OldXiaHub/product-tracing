@@ -16,10 +16,11 @@ import java.util.List;
 public class FoodManageApi {
     @Autowired
     private FoodManageService foodManageService;
-    @RequestMapping("/Api/insertfood")
+
     /*
     食品添加
      */
+    @RequestMapping("/api/adminfood/insertfood")
     public JsonResult insertProduct(String productName,
                                     String productPhoto,
                                     String productComment,
@@ -57,7 +58,7 @@ public class FoodManageApi {
 /*
 查询所有食品
  */
-@RequestMapping("/Api/selectproduct")
+@RequestMapping("/api/adminfood/selectfood")
     public JsonResult selectProduct(){
         JsonResult jsonResult=null;
         try {
@@ -76,7 +77,7 @@ public class FoodManageApi {
     /*
     食品作废
      */
-    @RequestMapping("/Api/deleteproduct")
+    @RequestMapping("/api/adminfood/deleteproduct")
     public JsonResult deleteProduct(String productId){
         JsonResult jsonResult=null;
         try {
