@@ -6,7 +6,7 @@ public class Admin {
   private String adminName;
   private String adminPassword;
   private long adminStatus;
-  private long adminFactoryId;
+  private String adminFactoryId;
 
 
   public String getAdminId() {
@@ -45,11 +45,11 @@ public class Admin {
   }
 
 
-  public long getAdminFactoryId() {
+  public String getAdminFactoryId() {
     return adminFactoryId;
   }
 
-  public void setAdminFactoryId(long adminFactoryId) {
+  public void setAdminFactoryId(String adminFactoryId) {
     this.adminFactoryId = adminFactoryId;
   }
 
