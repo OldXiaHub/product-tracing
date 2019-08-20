@@ -8,7 +8,15 @@ public class Complain {
   private String complainContent;
   private String complainUserId;
   private long complainStatus;
+  private User user;
 
+  public User getUser() {
+    return user;
+  }
+
+  public void setUser(User user) {
+    this.user = user;
+  }
 
   public String getComplainId() {
     return complainId;
