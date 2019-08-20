@@ -1,4 +1,4 @@
-package org.taru.producttracing.service.impl;
+package org.taru.producttracing.service.Impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

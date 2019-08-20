@@ -1,4 +1,4 @@
-package org.taru.producttracing.service.impl;
+package org.taru.producttracing.service.Impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -7,6 +7,9 @@ import org.taru.producttracing.pojo.Product;
 import org.taru.producttracing.service.FoodManageService;
 
 import java.util.List;
+/*
+张露露 2019.8.20
+ */
 
 @Service
 public class FoodManageServiceImpl implements FoodManageService {

@@ -4,7 +4,6 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="org.taru.producttracing.dao.FoodManageDao">
-    <!--查询所有菜单权限-->
     <resultMap id="ProductMap" type="org.taru.producttracing.pojo.Product">
     <id property="productId" column="product_id" jdbcType="VARCHAR"></id>
     <result property="productName" column="product_name" jdbcType="VARCHAR"></result>
