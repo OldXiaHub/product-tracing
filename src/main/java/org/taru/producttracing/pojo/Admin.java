@@ -1,12 +1,13 @@
 package org.taru.producttracing.pojo;
 
+
 public class Admin {
 
   private String adminId;
   private String adminName;
   private String adminPassword;
   private long adminStatus;
-  private String adminFactoryId;
+  private long adminFactoryStatus;
 
 
   public String getAdminId() {
@@ -45,12 +46,12 @@ public class Admin {
   }
 
 
-  public String getAdminFactoryId() {
-    return adminFactoryId;
+  public long getAdminFactoryStatus() {
+    return adminFactoryStatus;
   }
 
-  public void setAdminFactoryId(String adminFactoryId) {
-    this.adminFactoryId = adminFactoryId;
+  public void setAdminFactoryStatus(long adminFactoryStatus) {
+    this.adminFactoryStatus = adminFactoryStatus;
   }
 
 }

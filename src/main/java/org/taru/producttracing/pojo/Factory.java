@@ -1,5 +1,4 @@
 package org.taru.producttracing.pojo;
-
 public class Factory {
 
   private String factoryId;

@@ -22,8 +22,8 @@ public class FoodManageApi {
     private FoodManageService foodManageService;
 
     //通过Value注解获得属性配置文件的信息 $
-    @Value("${web.upload.imagepath}")
-    private String uploadAbsolutePath;
+    /*@Value("${web.upload.imagepath}")
+    private String uploadAbsolutePath;*/
     /*
     食品添加
      */
@@ -39,23 +39,19 @@ public class FoodManageApi {
                                     String productBatchId,
                                     long productStatus){
         JsonResult jsonResult=null;
-        System.out.println(uploadAbsolutePath);
+
         if (!multipartFile.isEmpty()) {
             try {
-                String productPhoto=IdUtil.getUuid()+multipartFile.getOriginalFilename();
-                multipartFile.transferTo(new File(uploadAbsolutePath+"\\"+productPhoto));
+               /* String productPhoto=IdUtil.getUuid()+multipartFile.getOriginalFilename();
+                multipartFile.transferTo(new File(uploadAbsolutePath+"\\"+productPhoto));*/
                 String productId = IdUtil.getDateId();
                 Product product = new Product();
                 product.setProductId(productId);
                 product.setProductName(productName);
-                product.setProductPhoto(productPhoto);
+               /* product.setProductPhoto(productPhoto);*/
                 product.setProductComment(productComment);
-                product.setProductCreateTime(productCreateTime);
-                product.setProductQualityTime(productQualityTime);
-                product.setProductComplainId(productComplainId);
                 product.setProductFactoryId(productFactoryId);
-                product.setProductLogisticsId(productLogisticsId);
-                product.setProductBatchId(productBatchId);
+
                 product.setProductStatus(productStatus);
                 foodManageService.insertProduct(product);
                 jsonResult = new JsonResult("200", "添加食品成功", productId);

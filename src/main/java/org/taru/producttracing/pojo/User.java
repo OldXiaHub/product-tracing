@@ -4,12 +4,13 @@ package org.taru.producttracing.pojo;
 public class User {
 
   private String userId;
-  private String userName;
+  private String nickName;
   private String userPassword;
   private String userTelphone;
   private String userAddress;
   private String userComment;
   private long userStatus;
+  private String avatarUrl;
 
 
   public String getUserId() {
@@ -22,11 +23,11 @@ public class User {
 
 
   public String getUserName() {
-    return userName;
+    return nickName;
   }
 
-  public void setUserName(String userName) {
-    this.userName = userName;
+  public void setUserName(String nickName) {
+    this.nickName = nickName;
   }
 
 
@@ -72,6 +73,15 @@ public class User {
 
   public void setUserStatus(long userStatus) {
     this.userStatus = userStatus;
+  }
+
+
+  public String getUserUrl() {
+    return avatarUrl;
+  }
+
+  public void setUserUrl(String avatarUrl) {
+    this.avatarUrl = avatarUrl;
   }
 
 }

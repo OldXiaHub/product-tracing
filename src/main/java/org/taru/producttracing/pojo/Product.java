@@ -7,12 +7,7 @@ public class Product {
   private String productName;
   private String productPhoto;
   private String productComment;
-  private String productCreateTime;
-  private String productQualityTime;
-  private String productComplainId;
   private String productFactoryId;
-  private String productLogisticsId;
-  private String productBatchId;
   private long productStatus;
 
 
@@ -52,57 +47,12 @@ public class Product {
   }
 
 
-  public String getProductCreateTime() {
-    return productCreateTime;
-  }
-
-  public void setProductCreateTime(String productCreateTime) {
-    this.productCreateTime = productCreateTime;
-  }
-
-
-  public String getProductQualityTime() {
-    return productQualityTime;
-  }
-
-  public void setProductQualityTime(String productQualityTime) {
-    this.productQualityTime = productQualityTime;
-  }
-
-
-  public String getProductComplainId() {
-    return productComplainId;
-  }
-
-  public void setProductComplainId(String productComplainId) {
-    this.productComplainId = productComplainId;
-  }
-
-
   public String getProductFactoryId() {
     return productFactoryId;
   }
 
   public void setProductFactoryId(String productFactoryId) {
     this.productFactoryId = productFactoryId;
-  }
-
-
-  public String getProductLogisticsId() {
-    return productLogisticsId;
-  }
-
-  public void setProductLogisticsId(String productLogisticsId) {
-    this.productLogisticsId = productLogisticsId;
-  }
-
-
-  public String getProductBatchId() {
-    return productBatchId;
-  }
-
-  public void setProductBatchId(String productBatchId) {
-    this.productBatchId = productBatchId;
   }
 
 

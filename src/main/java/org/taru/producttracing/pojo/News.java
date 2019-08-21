@@ -1,5 +1,6 @@
 package org.taru.producttracing.pojo;
 
+
 public class News {
 
   private String newsId;
