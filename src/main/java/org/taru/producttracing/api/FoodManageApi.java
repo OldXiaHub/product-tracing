@@ -1,5 +1,7 @@
 package org.taru.producttracing.api;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +24,7 @@ public class FoodManageApi {
     private FoodManageService foodManageService;
 
     //通过Value注解获得属性配置文件的信息 $
-    @Value("${upload.absolutePatha}")
+    @Value("${web.upload.image-path}")
     private String uploadAbsolutePath;
     /*
     食品添加
@@ -39,7 +41,6 @@ public class FoodManageApi {
                                     String productBatchId,
                                     long productStatus){
         JsonResult jsonResult=null;
-        System.out.println(uploadAbsolutePath);
         if (!multipartFile.isEmpty()) {
             try {
                 String productPhoto=IdUtil.getUuid()+multipartFile.getOriginalFilename();
@@ -73,12 +74,14 @@ public class FoodManageApi {
 查询所有食品
  */
 @RequestMapping("/api/adminfood/selectfood")
-    public JsonResult selectProduct(){
+    public JsonResult selectProduct(Integer pageNum,Integer pageSize){
         JsonResult jsonResult=null;
         try {
+            PageHelper.startPage(pageNum,pageSize);
             List<Product> list=foodManageService.selectProduct();
+            PageInfo pageInfo=new PageInfo(list);
             if(list!=null){
-                jsonResult=new JsonResult("200","查询成功",list);
+                jsonResult=new JsonResult("200","查询成功",pageInfo);
             }else {
                 jsonResult=new JsonResult("404","查询失败","");
             }
