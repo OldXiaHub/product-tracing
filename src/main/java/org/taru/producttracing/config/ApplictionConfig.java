@@ -9,7 +9,7 @@ import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.taru.producttracing.interceptor.AtuchInterceptor;
+//import org.taru.producttracing.interceptor.AtuchInterceptor;
 
 
 /**
@@ -47,15 +47,15 @@ public class ApplictionConfig implements  WebMvcConfigurer{
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(atuchInterceptor()).addPathPatterns("/api/**").excludePathPatterns("/api/user/login","/api/logout");
+//        registry.addInterceptor(atuchInterceptor()).addPathPatterns("/api/**").excludePathPatterns("/api/user/login","/api/logout");
     }
 
 
 
-    @Bean
-    public  AtuchInterceptor  atuchInterceptor(){
-        return  new AtuchInterceptor();
-    }
+//    @Bean
+//    public  AtuchInterceptor  atuchInterceptor(){
+//        return  new AtuchInterceptor();
+//    }
 
 
 
