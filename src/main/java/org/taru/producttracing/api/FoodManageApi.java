@@ -21,41 +21,35 @@ public class FoodManageApi {
     @Autowired
     private FoodManageService foodManageService;
 
-    //通过Value注解获得属性配置文件的信息 $
+    /*//通过Value注解获得属性配置文件的信息 $
     @Value("${web.upload.imagepath}")
-    private String uploadAbsolutePath;
+    private String uploadAbsolutePath;*/
     /*
     食品添加
      */
     @RequestMapping("/api/adminfood/insertfood")
     public JsonResult insertProduct(String productName,
-                                    @RequestParam("productPhoto") MultipartFile multipartFile,
+
                                     String productComment,
-                                    String productCreateTime,
-                                    String productQualityTime,
-                                    String productComplainId,
+
                                     String productFactoryId,
-                                    String productLogisticsId,
-                                    String productBatchId,
+
                                     long productStatus){
         JsonResult jsonResult=null;
-        System.out.println(uploadAbsolutePath);
-        if (!multipartFile.isEmpty()) {
+
+        if (!productName.isEmpty()) {
             try {
-                String productPhoto=IdUtil.getUuid()+multipartFile.getOriginalFilename();
-                multipartFile.transferTo(new File(uploadAbsolutePath+"\\"+productPhoto));
+              /*  String productPhoto=IdUtil.getUuid()+multipartFile.getOriginalFilename();
+                multipartFile.transferTo(new File(uploadAbsolutePath+"\\"+productPhoto));*/
                 String productId = IdUtil.getDateId();
                 Product product = new Product();
                 product.setProductId(productId);
                 product.setProductName(productName);
-                product.setProductPhoto(productPhoto);
+                /*product.setProductPhoto(productPhoto);*/
                 product.setProductComment(productComment);
-                product.setProductCreateTime(productCreateTime);
-                product.setProductQualityTime(productQualityTime);
-                product.setProductComplainId(productComplainId);
+
                 product.setProductFactoryId(productFactoryId);
-                product.setProductLogisticsId(productLogisticsId);
-                product.setProductBatchId(productBatchId);
+
                 product.setProductStatus(productStatus);
                 foodManageService.insertProduct(product);
                 jsonResult = new JsonResult("200", "添加食品成功", productId);
