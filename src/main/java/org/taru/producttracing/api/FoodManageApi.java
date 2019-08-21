@@ -22,7 +22,7 @@ public class FoodManageApi {
     private FoodManageService foodManageService;
 
     //通过Value注解获得属性配置文件的信息 $
-    @Value("${upload.absolutePatha}")
+    @Value("${web.upload.imagepath}")
     private String uploadAbsolutePath;
     /*
     食品添加
