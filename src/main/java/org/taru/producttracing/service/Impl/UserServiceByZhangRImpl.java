@@ -1,17 +1,17 @@
-package org.taru.producttracing.service.Impl;
+package org.taru.producttracing.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.taru.producttracing.dao.UserDao;
+import org.taru.producttracing.dao.UserDaoByZhangR;
 import org.taru.producttracing.pojo.User;
-import org.taru.producttracing.service.UserService;
+import org.taru.producttracing.service.UserServiceByZhangR;
 import org.taru.producttracing.util.SecurityUtl;
 
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceByZhangRImpl implements UserServiceByZhangR {
 @Autowired
-    UserDao userDao;
+UserDaoByZhangR userDaoByZhangR;
     /**
      * autnor:zhangrui
      * time:2019/8/20-11:20
@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public User login(String username, String password) {
-        User user=userDao.login(username,password);
+        User user= userDaoByZhangR.login(username,password);
         return user;
     }
 
@@ -32,6 +32,12 @@ public class UserServiceImpl implements UserService {
     public void register(User user) {
         //用 MD5生成用户id
         user.setUserId(SecurityUtl.getMd5String("xiazhongqiang"));
-        userDao.userRegister(user);
+        userDaoByZhangR.userRegister(user);
     }
+
+    /**
+     * 用户个人信息获取
+     *author:zhangrui
+     * time：2019/08/21-14:17
+     */
 }

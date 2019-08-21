@@ -13,7 +13,7 @@ import org.taru.producttracing.interceptor.AtuchInterceptor;
 
 
 /**
- * JavaConfig 配置  @Configuration applicationContext.xml   IOC   基於XML      JavaConfig
+ * JavaConfig 配置  @Configuration applicationContext.xml   IOC   基于XML      JavaConfig
  */
 @Configuration
 public class ApplictionConfig implements  WebMvcConfigurer{
@@ -21,7 +21,7 @@ public class ApplictionConfig implements  WebMvcConfigurer{
 
     /**
      *  <bean id="redisTemplate" class="org.taru.lanqiao.config.RedisTemplate"></bean>
-     *  RedisConnectionFactory  可以默認
+     *  RedisConnectionFactory  可以默认
      * @return
      */
     @Bean

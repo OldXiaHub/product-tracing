@@ -12,4 +12,5 @@ import java.util.List;
 public interface FoodDao1 {
     //查询新闻资讯信息
     List queryNews();
+
 }

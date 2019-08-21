@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.taru.producttracing.dao.NewsDaoByZhangR">
+
+    <!--author:zhangrui
+     * time：2019/08/20-20:40
+     *发布新闻(插入一个新闻往数据库)-->
+    <insert id="insertNews" parameterType="org.taru.producttracing.pojo.News">
+        INSERT INTO news ( news_id, news_name, news_content, news_photo, news_time, news_status )
+        VALUE
+            ( #{newsId}, #{newsName}, #{newsContent}, #{newsPhoto}, #{newsTime}, #{newsStatus} )
+    </insert>
+
+    <!--author:zhangrui
+     * time：2019/08/20-22:30
+     *修改新闻(根据新闻id)-->
+    <update id="reviseNews" parameterType="String">
+
+    </update>
+
+
+</mapper>

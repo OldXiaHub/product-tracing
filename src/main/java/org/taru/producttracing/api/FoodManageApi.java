@@ -1,35 +1,28 @@
 package org.taru.producttracing.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 import org.taru.producttracing.pojo.Product;
 import org.taru.producttracing.service.FoodManageService;
 import org.taru.producttracing.util.IdUtil;
 import org.taru.producttracing.vo.JsonResult;
 
-import java.io.File;
 import java.util.List;
 /*
-张露露 2019.8.21
+张露露 2019.8.20
  */
 @RestController
 public class FoodManageApi {
     @Autowired
     private FoodManageService foodManageService;
 
-    //通过Value注解获得属性配置文件的信息 $
-    @Value("${web.upload.image-path}")
-    private String uploadAbsolutePath;
     /*
     食品添加
      */
     @RequestMapping("/api/adminfood/insertfood")
     public JsonResult insertProduct(String productName,
-                                    @RequestParam("productPhoto") MultipartFile multipartFile,
+                                    String productPhoto,
                                     String productComment,
                                     String productCreateTime,
                                     String productQualityTime,
@@ -39,13 +32,9 @@ public class FoodManageApi {
                                     String productBatchId,
                                     long productStatus){
         JsonResult jsonResult=null;
-        System.out.println(uploadAbsolutePath);
-        if (!multipartFile.isEmpty()) {
-            try {
-                String productPhoto=IdUtil.getUuid()+multipartFile.getOriginalFilename();
-                multipartFile.transferTo(new File(uploadAbsolutePath+"\\"+productPhoto));
-                String productId = IdUtil.getDateId();
-                Product product = new Product();
+        try {
+            String productId = IdUtil.getDateId();
+            Product product=new Product();
                 product.setProductId(productId);
                 product.setProductName(productName);
                 product.setProductPhoto(productPhoto);
@@ -57,14 +46,11 @@ public class FoodManageApi {
                 product.setProductLogisticsId(productLogisticsId);
                 product.setProductBatchId(productBatchId);
                 product.setProductStatus(productStatus);
-                foodManageService.insertProduct(product);
-                jsonResult = new JsonResult("200", "添加食品成功", productId);
-            } catch (Exception e) {
-                e.printStackTrace();
-                jsonResult = new JsonResult("500", "添加食品失败", null);
-            }
-        }else {
-            jsonResult=new JsonResult("404","没有数据","");
+            foodManageService.insertProduct(product);
+            jsonResult=new JsonResult("200","添加食品成功",productId);
+        }catch (Exception e){
+            e.printStackTrace();
+            jsonResult=new JsonResult("404","添加食品失败",null);
         }
         return jsonResult;
 
