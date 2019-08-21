@@ -1,20 +1,19 @@
 package org.taru.producttracing.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.taru.producttracing.pojo.News;
-import org.taru.producttracing.service.NewsService;
+import org.taru.producttracing.service.NewsServiceByZhangR;
 import org.taru.producttracing.vo.JsonResult;
 
 @CrossOrigin
 @RestController
-public class NewsApi {
+public class NewsApiByZhang {
     @Autowired
-    NewsService newsService;
+    NewsServiceByZhangR newsServiceByZhangR;
 
     /**
      * author:zhangrui
@@ -26,7 +25,7 @@ public class NewsApi {
         JsonResult result;
         int i=0;
             try{
-                i=newsService.insertNews(news);
+                i= newsServiceByZhangR.insertNews(news);
                 if(i==1){
                     result = new JsonResult("200", "插入新闻成功",i);
                 }else {
@@ -50,7 +49,7 @@ public class NewsApi {
         JsonResult result;
         int i=0;
         try{
-            i = newsService.reviseNews(newsId);
+            i = newsServiceByZhangR.reviseNews(newsId);
             if(i==1){
                 result=new JsonResult("200","修改新闻成功",i);
             }else {

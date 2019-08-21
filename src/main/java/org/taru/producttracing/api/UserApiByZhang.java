@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.taru.producttracing.pojo.User;
-import org.taru.producttracing.service.UserService;
+import org.taru.producttracing.service.UserServiceByZhangR;
 import org.taru.producttracing.util.SecurityUtl;
 import org.taru.producttracing.vo.JsonResult;
 
@@ -15,9 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 
 @CrossOrigin
 @RestController
-public class UserApi {
+public class UserApiByZhang {
     @Autowired
-    UserService userService;
+    UserServiceByZhangR userServiceByZhangR;
     @Autowired
     RedisTemplate redisTemplate;
 
@@ -33,7 +33,7 @@ public class UserApi {
             JsonResult result;
             User user = null;
             try {
-                user = userService.login(username, password);
+                user = userServiceByZhangR.login(username, password);
                 if (user != null) {
                     String  token_jSessionId = SecurityUtl.getMd5String(username);  //令牌
                     redisTemplate.opsForHash().put("loginUserKey",token_jSessionId,user.getUserId());
@@ -59,4 +59,7 @@ public class UserApi {
      * time：2019/8/20-17：40
       */
 
+    /**
+     * 用户个人信息获取
+     */
 }
