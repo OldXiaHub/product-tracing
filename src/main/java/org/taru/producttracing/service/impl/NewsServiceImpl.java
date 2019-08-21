@@ -6,7 +6,6 @@ import org.taru.producttracing.dao.NewsDao;
 import org.taru.producttracing.pojo.News;
 import org.taru.producttracing.service.NewsService;
 import java.util.List;
-
 @Service
 public class NewsServiceImpl implements NewsService {
     @Autowired

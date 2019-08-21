@@ -25,4 +25,5 @@ public interface LogisticsDao {
      * @param complainId
      */
     public void acceptCom(@Param("complainId") String complainId);
+
 }

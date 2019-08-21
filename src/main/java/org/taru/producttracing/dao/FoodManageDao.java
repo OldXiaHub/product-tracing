@@ -27,4 +27,5 @@ public interface FoodManageDao {
    根据id查询食品
     */
    List<Product> selectProductByid(String productId);
+
 }

@@ -7,7 +7,7 @@ import org.taru.producttracing.pojo.User;
 
 @Mapper
 @Component
-public interface UserDao {
+public interface UserDaoByZhangR {
     /**
      * autnor:zhangrui
      * time:2019/8/20-11:11
@@ -21,4 +21,10 @@ public interface UserDao {
      * 前台用户注册
      */
     public void userRegister(User user);
+
+    /**
+     * 用户个人信息获取
+     *author:zhangrui
+     * time：2019/08/21-14:17
+     */
 }

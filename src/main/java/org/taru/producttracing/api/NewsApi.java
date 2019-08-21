@@ -36,7 +36,6 @@ public class NewsApi {
            e.printStackTrace();
            result  =new JsonResult("500","error","");
        }
-
     return result;
     }
     /**

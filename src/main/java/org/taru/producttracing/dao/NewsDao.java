@@ -21,3 +21,4 @@ public interface NewsDao {
      */
     public int delNewsById(@Param("id") String id);
 }
+

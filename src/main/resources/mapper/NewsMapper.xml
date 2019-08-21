@@ -12,7 +12,6 @@
         <result column="news_photo" property="newsPhoto" jdbcType="VARCHAR" />
         <result column="news_time" property="newsTime" jdbcType="VARCHAR" />
         <result column="news_status" property="newsStatus" jdbcType="TINYINT" />
-
     </resultMap>
     <sql id="BaseSqlColumn">
         news_id,news_name,news_content,news_photo,news_time,news_status
