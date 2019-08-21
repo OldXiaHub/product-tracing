@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.taru.producttracing.dao.NewsDao">
+
+<!--    <cache eviction="FIFO" flushInterval="60000" size="512" readOnly="true"/>-->
+    <resultMap id="BaseResultMap" type="org.taru.producttracing.pojo.News" >
+        <id column="news_id" property="newsId" jdbcType="VARCHAR" />
+        <result column="news_name" property="newsName" jdbcType="VARCHAR" />
+        <result column="news_content" property="newsContent" jdbcType="VARCHAR" />
+        <result column="news_photo" property="newsPhoto" jdbcType="VARCHAR" />
+        <result column="news_time" property="newsTime" jdbcType="VARCHAR" />
+        <result column="news_status" property="newsStatus" jdbcType="TINYINT" />
+
+    </resultMap>
+    <sql id="BaseSqlColumn">
+        news_id,news_name,news_content,news_photo,news_time,news_status
+    </sql>
+
+    <select id="selectNews"    resultMap="BaseResultMap" >
+
+        select
+            /**news_id as newsId
+            news_name as newsName
+            news_content as newsContent
+            news_photo as newsPhoto
+            news_time as newsTime
+            news_status as newsStatus*/
+        <include refid="BaseSqlColumn"></include>
+        from  News
+    </select>
+    <update id="delNewsById">
+        update news set news_status='0' where news_id =#{id}
+    </update>
+</mapper>
