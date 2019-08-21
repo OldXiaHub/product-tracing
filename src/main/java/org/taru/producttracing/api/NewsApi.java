@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.taru.producttracing.pojo.News;
-import org.taru.producttracing.service.impl.NewsServiceImpl;
+import org.taru.producttracing.service.Impl.NewsServiceImpl;
 import org.taru.producttracing.vo.JsonResult;
 
 import java.util.List;
