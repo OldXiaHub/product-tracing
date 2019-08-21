@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.taru.producttracing.dao.LogisticsDao">
+
+    <resultMap id="queryComplain" type="org.taru.producttracing.pojo.Complain">
+        <id column="complain_id" property="complainId"/>
+        <result column="complain_name" property="complainName"/>
+        <result column="complain_content" property="complainContent" />
+        <result column="complain_status" property="complainStatus"/>
+        <association property="user" javaType="org.taru.producttracing.pojo.User">
+            <id property="userId" column="user_id"/>
+            <result column="user_name" property="userName"/>
+        </association>
+    </resultMap>
+    <!--查询所有投诉-->
+    <select id="queryAllComplain" resultMap="queryComplain">
+        select * from complain a left join user b on a.complain_user_id=b.user_id
+    </select>
+    <!--受理投诉-->
+    <update id="acceptCom" parameterType="org.taru.producttracing.pojo.Complain">
+        update complain set complain_status=0 where complain_id=#{complainId}
+    </update>
+
+</mapper>

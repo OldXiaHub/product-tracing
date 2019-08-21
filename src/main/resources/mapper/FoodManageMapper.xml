@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.taru.producttracing.dao.FoodManageDao">
+    <resultMap id="ProductMap" type="org.taru.producttracing.pojo.Product">
+    <id property="productId" column="product_id" jdbcType="VARCHAR"></id>
+    <result property="productName" column="product_name" jdbcType="VARCHAR"></result>
+    <result property="product_photo" column="productPhoto" jdbcType="VARCHAR"></result>
+    <result property="productComment" column="product_comment" jdbcType="VARCHAR"></result>
+    <result property="productCreateTime" column="product_create_time" jdbcType="VARCHAR"></result>
+    <result property="productQualityTime" column="POWER_URL" jdbcType="VARCHAR"></result>
+    <result property="productComplainId" column="product_complain_id" jdbcType="VARCHAR"></result>
+    <result property="productFactoryId" column="product_factory_id" jdbcType="VARCHAR"></result>
+    <result property="productLogisticsId" column="product_logistics_id" jdbcType="VARCHAR"></result>
+    <result property="productBatchId" column="product_batch_id" jdbcType="VARCHAR"></result>
+    <result property="productStatus" column="product_status" jdbcType="TINYINT"></result>
+</resultMap>
+
+    <!--食品添加-->
+    <insert id="insertProduct" parameterType="org.taru.producttracing.pojo.Product">
+        insert into
+        product(product_id,product_name,product_photo,product_comment,product_create_time,product_quality_time,product_complain_id,product_factory_id,product_logistics_id,product_batch_id,product_status)
+        values(#{productId},#{productName},#{productPhoto},#{productComment},#{productCreateTime},#{productQualityTime},#{productComplainId},#{productFactoryId},#{productLogisticsId},#{productBatchId},#{productStatus})
+    </insert>
+
+    <!--查询食品-->
+    <select id="selectProduct" resultMap="ProductMap">
+        select * from product where product_status=1
+    </select>
+
+    <!--查询单个食品-->
+    <select id="selectProductByid" resultMap="ProductMap">
+        select * from product where product_status=1 and product_id=#{productId}
+    </select>
+
+    <!--食品作废-->
+    <update id="deleteProduct">
+        update product set product_status=0 where product_id=#{productId}
+    </update>
+
+</mapper>
