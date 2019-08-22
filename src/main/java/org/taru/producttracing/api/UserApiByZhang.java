@@ -56,11 +56,29 @@ public class UserApiByZhang {
         }
         return result;
     }
-//    /**
-//     * 前台用户注册
-//     * author：zhangrui
-//     * time：2019/8/20-17：40
-//      */
+    /**
+     * 前台用户注册
+     * author：zhangrui
+     * time：2019/8/20-17：40
+      */
+    @RequestMapping(value = "/api/user/register" , method = RequestMethod.POST)
+    public JsonResult userRegister(User user){
+        JsonResult result=null;
+        int i=0;
+        try{
+            i = userServiceByZhangR.register(user);
+           if(i!=0 ){
+                result = new JsonResult("200", "用户注册成功", i);
+           }else{
+               result = new JsonResult("404", "用户注册失败", i);
+           }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            result = new JsonResult("500", e.getMessage(), "");
+        }
+        return result;
+    }
 
 
     /**
@@ -91,16 +109,62 @@ public class UserApiByZhang {
      * author:zhangrui
      * time:2019/8/22-9:30
      */
-    @RequestMapping(value = "/api/user/complain")
-    public JsonResult userComplain(String nickName){
+    @RequestMapping(value = "/api/user/complain" ,  method = RequestMethod.GET)
+    public JsonResult userComplain(String openId){
         JsonResult result=null;
         List<Complain> list=null;
         try{
-            list=userServiceByZhangR.userComplain(nickName);
+            list=userServiceByZhangR.userComplain(openId);
             if (list!=null){
                 result = new JsonResult("200", "查询本用户投诉记录成功", list);
             }else {
                 result = new JsonResult("404", "查询本用户投诉记录失败", "");
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            result = new JsonResult("500", e.getMessage(), "");
+        }
+        return result;
+    }
+
+    /**
+     * 获取用户个人信息（根据ID）
+     * author:zhangrui
+     * time:2019/8/21-15:37
+     */
+    @RequestMapping(value = "/api/user/getuserinfo" ,method = RequestMethod.GET)
+    public JsonResult getUserInfo(String openId){
+        JsonResult result=null;
+        User  user =null;
+        try{
+            user=userServiceByZhangR.getUserInfo(openId);
+            if (user!=null){
+                result = new JsonResult("200", "获取用户个人信息成功", user);
+            }else {
+                result = new JsonResult("404", "获取用户个人信息失败", "");
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            result = new JsonResult("500", e.getMessage(), "");
+        }
+        return result;
+    }
+
+    /**
+     * 用户主动投诉
+     * author:zhangrui
+     * time:2019/8/22-23:10
+     */
+    @RequestMapping(value = "/api/user/activecomplaint")
+    public JsonResult complain(Complain complain){
+        JsonResult result=null;
+        int i=0;
+        try{
+            i=userServiceByZhangR.complain(complain);
+            if (i!=0){
+                result = new JsonResult("200", "用户投诉成功", i);
+            }else {
+                result = new JsonResult("404", "用户投诉失败", "");
             }
         }catch(Exception e){
             e.printStackTrace();

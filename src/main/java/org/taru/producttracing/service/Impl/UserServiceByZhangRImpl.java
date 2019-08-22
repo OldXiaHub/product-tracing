@@ -7,6 +7,7 @@ import org.taru.producttracing.pojo.Complain;
 import org.taru.producttracing.pojo.User;
 import org.taru.producttracing.service.UserServiceByZhangR;
 import org.taru.producttracing.util.SecurityUtl;
+import org.taru.producttracing.util.StringUtil;
 
 import java.util.List;
 
@@ -31,12 +32,16 @@ UserDaoByZhangR userDaoByZhangR;
      * 前台用户注册
      */
 
-//    @Override
-//    public void register(User user) {
-//        //用 MD5生成用户id
-//        user.setOpenId(SecurityUtl.getMd5String("xiazhongqiang"));
-//        userDaoByZhangR.userRegister(user);
-//    }
+    @Override
+    public int register(User user) {
+        //用 MD5生成用户id
+        int i ;
+//        long k=System.currentTimeMillis();
+//        String j=StringUtil.valueof(k);
+//        user.setOpenId(SecurityUtl.getMd5String(j));
+        i = userDaoByZhangR.userRegister(user);
+        return i;
+    }
 
     /**
      * 用户个人信息获取
@@ -44,8 +49,8 @@ UserDaoByZhangR userDaoByZhangR;
      * time：2019/08/21-14:17
      */
     @Override
-    public User getUserInfo(String nickName) {
-        User user = userDaoByZhangR.getUserInfo(nickName);
+    public User getUserInfo(String openId) {
+        User user = userDaoByZhangR.getUserInfo(openId);
         return user;
     }
 
@@ -66,8 +71,20 @@ UserDaoByZhangR userDaoByZhangR;
      */
 
     @Override
-    public List<Complain> userComplain(String nickName) {
-        List <Complain> list = userDaoByZhangR.userComplain(nickName);
+    public List<Complain> userComplain(String openId) {
+        List <Complain> list = userDaoByZhangR.userComplain(openId);
         return list;
+    }
+
+    /**
+     * 用户主动投诉
+     * author:zhangrui
+     * time:2019/8/22-22:10
+     */
+    @Override
+    public int complain(Complain complain) {
+        int i=0;
+        i = userDaoByZhangR.complain(complain);
+        return i;
     }
 }
