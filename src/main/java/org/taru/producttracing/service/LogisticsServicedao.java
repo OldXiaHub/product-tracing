@@ -1,6 +1,5 @@
 package org.taru.producttracing.service;
 
-import org.springframework.stereotype.Service;
 import org.taru.producttracing.pojo.Complain;
 
 import java.util.List;

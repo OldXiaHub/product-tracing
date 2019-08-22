@@ -7,13 +7,14 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.taru.producttracing.interceptor.AtuchInterceptor;
+
 
 
 /**
- * JavaConfig 配置  @Configuration applicationContext.xml   IOC   基于XML      JavaConfig
+ * JavaConfig 配置  @Configuration applicationContext.xml   IOC   基於XML      JavaConfig
  */
 @Configuration
 public class ApplictionConfig implements  WebMvcConfigurer{
@@ -21,7 +22,7 @@ public class ApplictionConfig implements  WebMvcConfigurer{
 
     /**
      *  <bean id="redisTemplate" class="org.taru.lanqiao.config.RedisTemplate"></bean>
-     *  RedisConnectionFactory  可以默认
+     *  RedisConnectionFactory  可以默認
      * @return
      */
     @Bean
@@ -45,7 +46,7 @@ public class ApplictionConfig implements  WebMvcConfigurer{
     }
 
 
-    @Override
+    /*@Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(atuchInterceptor()).addPathPatterns("/api/**").excludePathPatterns("/api/user/login","/api/logout");
     }
@@ -57,6 +58,20 @@ public class ApplictionConfig implements  WebMvcConfigurer{
         return  new AtuchInterceptor();
     }
 
+*/
+    @Configuration
+    public class ConfigService {
 
+        @Bean
+        public WebMvcConfigurer corsConfigurer()
+        {
+            return new WebMvcConfigurer() {
+                @Override
+                public void addCorsMappings(CorsRegistry registry) {
+                    registry.addMapping("/**").allowedOrigins("*").allowedMethods("*").allowCredentials(true);
+                }
+            };
+        }
+    }
 
 }

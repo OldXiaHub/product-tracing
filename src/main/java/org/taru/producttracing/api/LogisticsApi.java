@@ -3,6 +3,7 @@ package org.taru.producttracing.api;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.taru.producttracing.pojo.Complain;
@@ -14,6 +15,7 @@ import java.util.List;
  * 徐大伟
  * 投诉模块
  */
+@CrossOrigin()
 @RestController
 public class LogisticsApi {
     @Autowired

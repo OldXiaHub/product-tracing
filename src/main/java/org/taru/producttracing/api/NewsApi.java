@@ -16,7 +16,7 @@ import java.util.List;
  * Api  Application  program     interface   （接口服务  功能  方法）  Ajax  JSON
  */
 @RestController  //可以省略掉 ResponseBody
-@CrossOrigin(allowCredentials="true")
+@CrossOrigin
 public class NewsApi {
     /**
      * 查询新闻
