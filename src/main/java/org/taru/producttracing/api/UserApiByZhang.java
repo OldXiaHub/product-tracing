@@ -36,7 +36,7 @@ public class UserApiByZhang {
                 user = userServiceByZhangR.login(username, password);
                 if (user != null) {
                     String  token_jSessionId = SecurityUtl.getMd5String(username);  //令牌
-                    redisTemplate.opsForHash().put("loginUserKey",token_jSessionId,user.getUserId());
+                    redisTemplate.opsForHash().put("loginUserKey",token_jSessionId,user.getOpenId());
                     result = new JsonResult("200", "登录成功", user);
                     Cookie cookie = new Cookie("token",token_jSessionId);
                     cookie.setPath("/");    //任何请求都要携带凭证

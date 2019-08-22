@@ -33,7 +33,7 @@ public class FoodManageApi1 {
                                     String batchFactoryId,
                                     double batchStartGeo,
                                     double batchEndGeo
-                                    ){
+    ){
         JsonResult jsonResult=null;
         try {
             String batchId = IdUtil.getDateId();
