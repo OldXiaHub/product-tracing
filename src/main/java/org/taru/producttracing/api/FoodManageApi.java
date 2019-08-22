@@ -3,21 +3,15 @@ package org.taru.producttracing.api;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 import org.taru.producttracing.pojo.Product;
 import org.taru.producttracing.service.FoodManageService;
-import org.taru.producttracing.util.IdUtil;
 import org.taru.producttracing.vo.JsonResult;
-
-import java.io.File;
 import java.util.List;
 /*
-张露露 2019.8.21 17.31
+张露露 2019.8.21 19.42
  */
 @CrossOrigin()
 @RestController
