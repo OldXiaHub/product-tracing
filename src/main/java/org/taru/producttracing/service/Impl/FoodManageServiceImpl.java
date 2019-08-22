@@ -36,9 +36,4 @@ public class FoodManageServiceImpl implements FoodManageService {
     public void deleteProduct(String productId){
         foodManageDao.deleteProduct(productId);
     }
-    /*
-    根据id查商品
-     */
-    @Override
-    public List<Product> selectProductByid(String productId){return foodManageDao.selectProductByid(productId);}
 }

@@ -20,6 +20,11 @@ public class FoodServiceImpl1 implements FoodService1 {
         return foodDao.queryNews();
     }
 
+    @Override
+    public List queryNewsById(String newsId) {
+        return null;
+    }
+
     //搜索新闻资讯信息
     public List queryNewsByname(String newsName) {
         return foodDao.queryNewsByname(newsName);

@@ -21,20 +21,35 @@ UserDaoByZhangR userDaoByZhangR;
      * 前台用户登录
      */
     @Override
-    public User login(String nickName, String password) {
-        User user= userDaoByZhangR.login(nickName,password);
+    public User login(String username, String password) {
+        User user= userDaoByZhangR.login(username,password);
         return user;
     }
 
-//    /**
-//     * autnor:zhangrui
-//     * time:2019/8/20-17:27
-//     * 前台用户注册
-//     */
+    @Override
+    public int addUserInfo(User user) {
+        return 0;
+    }
+
+    @Override
+    public User getUserInfo(String nickName) {
+        return null;
+    }
+
+    @Override
+    public List<Complain> userComplain(String nickName) {
+        return null;
+    }
+
+    /**
+     * autnor:zhangrui
+     * time:2019/8/20-17:27
+     * 前台用户注册
+     */
 //    @Override
 //    public void register(User user) {
 //        //用 MD5生成用户id
-//        user.setUserId(SecurityUtl.getMd5String("xiazhongqiang"));
+//        user.setOpenId(SecurityUtl.getMd5String("xiazhongqiang"));
 //        userDaoByZhangR.userRegister(user);
 //    }
 
@@ -43,33 +58,4 @@ UserDaoByZhangR userDaoByZhangR;
      *author:zhangrui
      * time：2019/08/21-14:17
      */
-    @Override
-    public User getUserInfo(String nickName) {
-        User user = userDaoByZhangR.getUserInfo(nickName);
-        return null;
-    }
-
-    /**
-     * 添加用户个人信息
-     * author:zhangrui
-     * time:2019/8/21-15:37
-     */
-    @Override
-    public int addUserInfo(User user) {
-        int i = userDaoByZhangR.addUserInfo(user);
-        return i;
-    }
-
-    /**
-     * 查询自己的投诉记录
-     * author:zhangrui
-     * time:2019/8/22-9:30
-     */
-    @Override
-    public List<Complain> userComplain(String nickName) {
-        List <Complain> list = userDaoByZhangR.userComplain(nickName);
-        return list;
-    }
-
-
 }

@@ -3,24 +3,36 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.taru.producttracing.dao.FoodDao1">
-    <!--刘鹏飞-->
+    <!--
+         /**
+         * 刘鹏飞 2019.8.20
+         * * @param
+         * @param
+         * @return
+         */
+     -->
 
     <!--新闻信息-->
     <resultMap id="BaseResultMap" type="org.taru.producttracing.pojo.News">
-        <id property="newsId" column="news_id" jdbcType="VARCHAR"></id>
-        <result property="newsName" column="news_name" jdbcType="VARCHAR"></result>
-        <result property="newsContent" column="news_content" jdbcType="VARCHAR"></result>
-        <result property="newsPhoto" column="news_photo" jdbcType="VARCHAR"></result>
-        <result property="newsTime" column="news_time" jdbcType="VARCHAR"></result>
-        <result property="newsStatus" column="news_status" jdbcType="VARCHAR"></result>
+    <id property="newsId" column="news_id" jdbcType="VARCHAR"></id>
+    <result property="newsName" column="news_name" jdbcType="VARCHAR"></result>
+    <result property="newsContent" column="news_content" jdbcType="VARCHAR"></result>
+    <result property="newsPhoto" column="news_photo" jdbcType="VARCHAR"></result>
+    <result property="newsTime" column="news_time" jdbcType="VARCHAR"></result>
+    <result property="newsStatus" column="news_status" jdbcType="VARCHAR"></result>
     </resultMap>
 
-    <!--查询新闻资讯信息-->
+    <!--查询所有新闻资讯信息-->
     <select id="queryNews" resultMap="BaseResultMap">
         select * from news
     </select>
 
-    <!--搜索新闻资讯信息-->
+    <!--查询新闻详情(根据id)-->
+    <select id="queryNewsById" resultMap="BaseResultMap">
+        select * from news where news_id=#{newsId}
+    </select>
+
+    <!--模糊搜索新闻资讯信息-->
     <select id="queryNewsByname" resultMap="BaseResultMap">
         <bind name="patternl" value="'%'+_parameter.newsName+'%'"/>
         select * from news where news_name like #{patternl}

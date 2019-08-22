@@ -7,7 +7,7 @@
     <resultMap id="ProductMap" type="org.taru.producttracing.pojo.Product">
     <id property="productId" column="product_id" jdbcType="VARCHAR"></id>
     <result property="productName" column="product_name" jdbcType="VARCHAR"></result>
-    <result property="product_photo" column="productPhoto" jdbcType="VARCHAR"></result>
+    <result property="productPhoto" column="product_photo" jdbcType="VARCHAR"></result>
     <result property="productComment" column="product_comment" jdbcType="VARCHAR"></result>
     <result property="productFactoryId" column="product_factory_id" jdbcType="VARCHAR"></result>
     <result property="productStatus" column="product_status" jdbcType="TINYINT"></result>

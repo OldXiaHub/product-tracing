@@ -130,12 +130,11 @@ public class UserApi {
         JsonResult result=null;
         try{
             //分页：将需要进行分页的语句 上下两句代码夹在中间
-            PageHelper.startPage(1,2);//这条分页语句，一定要和下面将要进行分页的语句紧挨着
+            PageHelper.startPage(pageNum,pageSize);//这条分页语句，一定要和下面将要进行分页的语句紧挨着
             List<Factory> factorys=userService.findAllFactory();
             PageInfo pageInfo=new PageInfo(factorys);
-
             if (factorys.size()>0){
-                result =new JsonResult("200","查询所有工厂成功",factorys);
+                result =new JsonResult("200","查询所有工厂成功",pageInfo);
             }else{
                 result =new JsonResult("404","查询工厂信息失败","");
             }

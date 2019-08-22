@@ -26,7 +26,9 @@ public class LogisticsApi {
     @RequestMapping(value = "/api/adminlog/querycomplain")
     public JsonResult queryAll(Integer pageNum,Integer pageSize){
         JsonResult result=null;
+        PageHelper.startPage(pageNum,pageSize);
         List<Complain> list= logisticsServicedao.queryComplain();
+        PageInfo pageinfo=new PageInfo(list);
         try{
             PageHelper.startPage(pageNum,pageSize);
             PageInfo pageInfo=new PageInfo(list);
@@ -49,7 +51,7 @@ public class LogisticsApi {
         JsonResult result=null;
          logisticsServicedao.acceptComplain(complainId);
         try{
-                result=new JsonResult("200","查询成功","");
+                result=new JsonResult("200","受理成功","");
         }catch (Exception ex){
             ex.printStackTrace();
             result=new JsonResult("500","error","");
