@@ -32,4 +32,9 @@
     <update id="delNewsById">
         update news set news_status='0' where news_id =#{id}
     </update>
+    <select id="selectNewsById"    resultMap="BaseResultMap" >
+        select
+        <include refid="BaseSqlColumn"></include>
+        from  News where news_id =#{id}
+    </select>
 </mapper>
