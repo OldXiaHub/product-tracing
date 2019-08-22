@@ -37,11 +37,9 @@ public class NewsServiceByZhangRImpl implements NewsServiceByZhangR {
      * 修改新闻(根据新闻id)
      */
     @Override
-    public int reviseNews(String newsId) {
+    public int reviseNews(News news) {
         int i=0;
-        i= newsDaoByZhangR.reviseNews(newsId);
+        i= newsDaoByZhangR.reviseNews(news);
         return i;
     }
-
-
 }
