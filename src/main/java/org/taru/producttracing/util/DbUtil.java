@@ -37,7 +37,7 @@ public class DbUtil {
 
     /**
      * 打开一个连接
-     *
+     *x`
      * @return
      */
     public static Connection openConnection() {

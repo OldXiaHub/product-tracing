@@ -20,5 +20,5 @@ public interface NewsDaoByZhangR {
      * time:2019/08/20-22:00
      * 修改新闻(根据新闻id)
      */
-    public int reviseNews(String newsId);
+    public int reviseNews(News news);
 }
