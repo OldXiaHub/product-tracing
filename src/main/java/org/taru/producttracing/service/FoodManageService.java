@@ -10,5 +10,4 @@ public interface FoodManageService {
     public void insertProduct(Product product);
     public List<Product> selectProduct();
     public void deleteProduct(String productId);
-    public List<Product> selectProductByid(String productId);
 }

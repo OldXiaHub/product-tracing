@@ -1,5 +1,4 @@
 package org.taru.producttracing.api;
-
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.taru.producttracing.pojo.News;
 import org.taru.producttracing.service.Impl.NewsServiceImpl;
 import org.taru.producttracing.vo.JsonResult;
-
 import java.util.List;
 
 /**
@@ -50,7 +48,7 @@ public class NewsApi {
     public JsonResult deleteNews(String id) {
         JsonResult  result=null;
         try {
-            int i = serviceImpl.deleteNews(id);
+            int i=serviceImpl.deleteNews(id);
             if (i!=0) {
                 result = new JsonResult("200", "删除成功", i);
             } else {
@@ -62,5 +60,23 @@ public class NewsApi {
         }
         return result;
     }
-
+    /**
+     * 根据id查询新闻
+     */
+    @RequestMapping(value = "/api/adminews/selectNewsById")
+    public JsonResult selectNewsById(String id) {
+        JsonResult  result=null;
+        try {
+            News news=serviceImpl.selectNewsById(id);
+            if (news!=null) {
+                result = new JsonResult("200", "查询成功", news);
+            } else {
+                result = new JsonResult("400", "查询失败", "");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            result = new JsonResult("500", "error", "");
+        }
+        return result;
+    }
 }

@@ -20,5 +20,10 @@ public interface NewsDao {
      * 删除新闻
      */
     public int delNewsById(@Param("id") String id);
+    /**
+     * 根据id查询新闻
+     *
+     */
+    public News selectNewsById(String id);
 }
 

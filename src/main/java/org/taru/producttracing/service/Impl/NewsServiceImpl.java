@@ -28,4 +28,10 @@ public class NewsServiceImpl implements NewsService {
         int news=newsDao.delNewsById(id);
         return news;
     }
+    /**
+     * 根据id查询新闻
+     */
+    public News selectNewsById(String id){
+        return newsDao.selectNewsById(id);
+    }
 }

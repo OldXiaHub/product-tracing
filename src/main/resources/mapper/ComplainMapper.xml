@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="org.taru.producttracing.dao.LogisticsDao">
+<mapper namespace="org.taru.producttracing.dao.ComplainDao">
 
     <resultMap id="queryComplain" type="org.taru.producttracing.pojo.Complain">
         <id column="complain_id" property="complainId"/>
@@ -17,7 +17,7 @@
     </resultMap>
     <!--查询所有投诉-->
     <select id="queryAllComplain" resultMap="queryComplain">
-        select * from complain a left join user b on a.complain_user_id=b.user_id
+        select * from complain a left join user b on a.complain_user_name=b.user_name
     </select>
     <!--受理投诉-->
     <update id="acceptCom" parameterType="org.taru.producttracing.pojo.Complain">

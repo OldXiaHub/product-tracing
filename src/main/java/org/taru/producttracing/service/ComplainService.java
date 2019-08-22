@@ -9,7 +9,7 @@ import java.util.List;
  * 投诉模块
  */
 
-public interface LogisticsServicedao {
+public interface ComplainService {
 
     /**
      * 查看所有投诉
