@@ -144,4 +144,29 @@ public class UserApi {
         }
         return  result;
     }
+
+    /**
+     * 查询工厂详情
+     *
+     * 湛玉欣 2019.8.22
+     *
+     * @param factoryId
+     * @return
+     */
+    @RequestMapping("/api/findfactorybyid")
+    public JsonResult findFactoryById(String factoryId){
+        JsonResult result=null;
+        try{
+            Factory factory=userService.findFactoryById(factoryId);
+            if(factory != null){
+                result =new JsonResult("200","查询工厂详情成功",factory);
+            }else {
+                result=new JsonResult("404","查询工厂详情失败","");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            result =new JsonResult("500","查询工厂详情异常",e.getMessage());
+        }
+        return  result;
+    }
 }

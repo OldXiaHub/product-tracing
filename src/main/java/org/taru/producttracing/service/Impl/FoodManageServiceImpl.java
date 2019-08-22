@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.taru.producttracing.dao.FoodManageDao;
 import org.taru.producttracing.pojo.Product;
 import org.taru.producttracing.service.FoodManageService;
+import org.taru.producttracing.util.IdUtil;
 
 import java.util.List;
 /*
@@ -20,6 +21,8 @@ public class FoodManageServiceImpl implements FoodManageService {
      */
     @Override
     public void insertProduct(Product product){
+        String productId = IdUtil.getDateId();
+        product.setProductId(productId);
         foodManageDao.insertProduct(product);
     }
     /*
@@ -35,5 +38,12 @@ public class FoodManageServiceImpl implements FoodManageService {
     @Override
     public void deleteProduct(String productId){
         foodManageDao.deleteProduct(productId);
+    }
+    /*
+   查询所有食品
+    */
+    @Override
+    public List<Product> selectProductByid(String productId){
+        return foodManageDao.selectProductByid(productId);
     }
 }
