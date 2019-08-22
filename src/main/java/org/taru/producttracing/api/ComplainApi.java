@@ -19,7 +19,7 @@ package org.taru.producttracing.api;
 public class ComplainApi {
 
     @Autowired
-    ComplainService logisticsServicedao;
+    ComplainService complainService;
     /**
      * 查看所有投诉
      */
@@ -27,7 +27,7 @@ public class ComplainApi {
     public JsonResult queryAll(Integer pageNum,Integer pageSize){
         JsonResult result=null;
         PageHelper.startPage(pageNum,pageSize);
-        List<Complain> list= logisticsServicedao.queryComplain();
+        List<Complain> list= complainService.queryComplain();
         PageInfo pageinfo=new PageInfo(list);
         try{
             PageHelper.startPage(pageNum,pageSize);
@@ -49,7 +49,7 @@ public class ComplainApi {
     @RequestMapping(value = "/api/adminlog/accept")
     public JsonResult acceptCom(String complainId){
         JsonResult result=null;
-        logisticsServicedao.acceptComplain(complainId);
+        complainService.acceptComplain(complainId);
         try{
             result=new JsonResult("200","受理成功","");
         }catch (Exception ex){
