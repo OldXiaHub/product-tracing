@@ -28,11 +28,13 @@
     </select>
 
     <!--查询新闻详情(根据id)-->
+
     <select id="queryNewsById" resultMap="BaseResultMap">
         select * from news where news_id=#{newsId}
     </select>
 
     <!--模糊搜索新闻资讯信息-->
+
     <select id="queryNewsByname" resultMap="BaseResultMap">
         <bind name="patternl" value="'%'+_parameter.newsName+'%'"/>
         select * from news where news_name like #{patternl}

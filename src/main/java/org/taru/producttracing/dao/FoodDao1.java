@@ -15,7 +15,7 @@ import java.util.List;
  * @return
  */
 public interface FoodDao1 {
-    //查询新闻资讯信息
+    //查询所有新闻资讯信息
     List queryNews();
     //查询新闻详情(根据id)
     List queryNewsById(String newsId);
