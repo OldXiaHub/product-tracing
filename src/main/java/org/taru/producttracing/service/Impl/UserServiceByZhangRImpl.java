@@ -31,7 +31,7 @@ UserDaoByZhangR userDaoByZhangR;
     @Override
     public void register(User user) {
         //用 MD5生成用户id
-        user.setUserId(SecurityUtl.getMd5String("xiazhongqiang"));
+        user.setOpenId(SecurityUtl.getMd5String("xiazhongqiang"));
         userDaoByZhangR.userRegister(user);
     }
 
