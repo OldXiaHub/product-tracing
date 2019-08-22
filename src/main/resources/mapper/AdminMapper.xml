@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.taru.producttracing.dao.UserDao">
+
+    <!--后台登录-->
+    <select id="adminLogin" parameterType="java.lang.String" resultType="org.taru.producttracing.pojo.Admin">
+            select  admin_id as adminId,admin_name as adminName,admin_password as adminPassword,admin_status as adminStatus,admin_factory_status as adminFactoryStatus
+            from admin
+            where  admin_name=#{adminName} and admin_password=#{adminPassword}
+    </select>
+
+    <!--添加工厂-->
+    <insert id="addFactory" parameterType="org.taru.producttracing.pojo.Factory">
+        insert into
+        factory(factory_id,factory_name,factory_logo,factory_telphone,factory_address,factory_geo,factory_license,
+                factory_register_time,factory_distributor_id,factory_status,factory_admin_id)
+        values  (#{factoryId},#{factoryName},#{factoryLogo},#{factoryTelphone},#{factoryAddress},#{factoryGeo},#{factoryLicense},
+                #{factoryRegisterTime},#{factoryDistributorId},#{factoryStatus},#{factoryAdminId})
+    </insert>
+
+    <!--删除工厂-->
+    <update id="updateFactory" parameterType="java.lang.String">
+        update factory set factory_status ='0' where factory_id=#{factoryId}
+    </update>
+
+    <!--修改工厂-->
+    <update id="modifyFactory" parameterType="org.taru.producttracing.pojo.Factory">
+        update factory set  factory_name=#{factoryName},factory_logo=#{factoryLogo},factory_telphone=#{factoryTelphone},
+                            factory_address=#{factoryAddress},factory_geo=#{factoryGeo},factory_license=#{factoryLicense},
+                            factory_register_time=#{factoryRegisterTime},factory_distributor_id=#{factoryDistributorId},
+                            factory_status=#{factoryStatus},factory_admin_id=#{factoryAdminId}
+                    where factory_id=#{factoryId}
+    </update>
+
+    <!--查询工厂-->
+    <select id="findAllFactory" resultType="hashMap">
+       select factory_id as factoryId,factory_name as factoryName,factory_logo as factoryLogo,factory_telphone as factoryTelphone,
+              factory_address as factoryAddress,factory_geo as factoryGeo,factory_license as factoryLicense,factory_register_time as factoryRegisterTime,
+              factory_distributor_id as factoryDistributorId,factory_status as fatoryStatus,factory_admin_id as factoryAdminId
+       from factory
+    </select>
+</mapper>
