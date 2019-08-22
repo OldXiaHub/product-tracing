@@ -1,7 +1,10 @@
 package org.taru.producttracing.api;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +19,7 @@ import java.util.List;
 /*
 张露露 2019.8.21
  */
+@CrossOrigin()
 @RestController
 public class FoodManageApi {
     @Autowired
@@ -29,14 +33,10 @@ public class FoodManageApi {
      */
     @RequestMapping("/api/adminfood/insertfood")
     public JsonResult insertProduct(String productName,
-
                                     String productComment,
-
                                     String productFactoryId,
-
                                     long productStatus){
         JsonResult jsonResult=null;
-
         if (!productName.isEmpty()) {
             try {
               /*  String productPhoto=IdUtil.getUuid()+multipartFile.getOriginalFilename();
@@ -67,12 +67,14 @@ public class FoodManageApi {
 查询所有食品
  */
 @RequestMapping("/api/adminfood/selectfood")
-    public JsonResult selectProduct(){
+    public JsonResult selectProduct(Integer pageNum,Integer pageSize){
         JsonResult jsonResult=null;
         try {
+            PageHelper.startPage(pageNum,pageSize);
             List<Product> list=foodManageService.selectProduct();
+            PageInfo pageInfo=new PageInfo(list);
             if(list!=null){
-                jsonResult=new JsonResult("200","查询成功",list);
+                jsonResult=new JsonResult("200","查询成功",pageInfo);
             }else {
                 jsonResult=new JsonResult("404","查询失败","");
             }

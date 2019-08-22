@@ -7,6 +7,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -58,5 +59,19 @@ public class ApplictionConfig implements  WebMvcConfigurer{
     }
 
 */
+    @Configuration
+    public class ConfigService {
+
+        @Bean
+        public WebMvcConfigurer corsConfigurer()
+        {
+            return new WebMvcConfigurer() {
+                @Override
+                public void addCorsMappings(CorsRegistry registry) {
+                    registry.addMapping("/**").allowedOrigins("*").allowedMethods("*").allowCredentials(true);
+                }
+            };
+        }
+    }
 
 }
