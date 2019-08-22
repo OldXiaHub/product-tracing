@@ -13,6 +13,8 @@ import java.util.List;
 public interface UserDao {
     /**
      * 后台登录
+     *
+     * 湛玉欣 2019.8.21
      * @param adminName
      * @param adminPassword
      * @return
@@ -21,6 +23,9 @@ public interface UserDao {
 
     /**
      * 添加工厂
+     *
+     * 湛玉欣 2019.8.21
+     *
      * @param factory
      * @return
      */
@@ -28,18 +33,25 @@ public interface UserDao {
 
     /**
      * 删除工厂
+     *
+     * 湛玉欣 2019.8.21
      * @param factoryId
      */
     public void updateFactory(@Param("factoryId") String factoryId);
 
     /**
      * 修改工厂信息
+     *
+     * 湛玉欣 2019.8.21
      * @param factory
      */
     public void modifyFactory(Factory factory);
 
     /**
      * 查询工厂
+     *
+     * 湛玉欣 2019.8.21
+     *
      * @return
      */
     public List<Factory> findAllFactory();
