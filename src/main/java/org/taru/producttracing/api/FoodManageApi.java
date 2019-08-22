@@ -17,7 +17,7 @@ import org.taru.producttracing.vo.JsonResult;
 import java.io.File;
 import java.util.List;
 /*
-张露露 2019.8.21
+张露露 2019.8.21 17.31
  */
 @CrossOrigin()
 @RestController
@@ -25,9 +25,6 @@ public class FoodManageApi {
     @Autowired
     private FoodManageService foodManageService;
 
-//    //通过Value注解获得属性配置文件的信息 $
-//    @Value("${web.upload.imagepath}")
-//    private String uploadAbsolutePath;
     /*
     食品添加
      */
