@@ -1,147 +1,149 @@
 package org.taru.producttracing.pojo;
 
 
+import java.sql.Blob;
+
 public class Batch {
 
-  private String batchId;
-  private String batchName;
-  private String batchTime;
-  private long batchStatus;
-  private String batchQrcode;
-  private String batchProductId;
-  private String batchProductName;
-  private String batchProductPhoto;
-  private String batchProductComment;
-  private String batchProductCreateTime;
-  private String batchProductQualityTime;
-  private String batchFactoryId;
-  private double batchStartGeo;
-  private double batchEndGeo;
+    private String batchId;
+    private String batchName;
+    private String batchTime;
+    private Integer batchStatus;
+    private Blob batchQrcode;
+    private String batchProductId;
+    private String batchProductName;
+    private String batchProductPhoto;
+    private String batchProductComment;
+    private String batchProductCreateTime;
+    private String batchProductQualityTime;
+    private String batchFactoryId;
+    private double batchStartGeo;
+    private double batchEndGeo;
 
 
-  public String getBatchId() {
-    return batchId;
-  }
+    public String getBatchId() {
+        return batchId;
+    }
 
-  public void setBatchId(String batchId) {
-    this.batchId = batchId;
-  }
-
-
-  public String getBatchName() {
-    return batchName;
-  }
-
-  public void setBatchName(String batchName) {
-    this.batchName = batchName;
-  }
+    public void setBatchId(String batchId) {
+        this.batchId = batchId;
+    }
 
 
-  public String getBatchTime() {
-    return batchTime;
-  }
+    public String getBatchName() {
+        return batchName;
+    }
 
-  public void setBatchTime(String batchTime) {
-    this.batchTime = batchTime;
-  }
-
-
-  public long getBatchStatus() {
-    return batchStatus;
-  }
-
-  public void setBatchStatus(long batchStatus) {
-    this.batchStatus = batchStatus;
-  }
+    public void setBatchName(String batchName) {
+        this.batchName = batchName;
+    }
 
 
-  public String getBatchQrcode() {
-    return batchQrcode;
-  }
+    public String getBatchTime() {
+        return batchTime;
+    }
 
-  public void setBatchQrcode(String batchQrcode) {
-    this.batchQrcode = batchQrcode;
-  }
-
-
-  public String getBatchProductId() {
-    return batchProductId;
-  }
-
-  public void setBatchProductId(String batchProductId) {
-    this.batchProductId = batchProductId;
-  }
+    public void setBatchTime(String batchTime) {
+        this.batchTime = batchTime;
+    }
 
 
-  public String getBatchProductName() {
-    return batchProductName;
-  }
+    public Integer getBatchStatus() {
+        return batchStatus;
+    }
 
-  public void setBatchProductName(String batchProductName) {
-    this.batchProductName = batchProductName;
-  }
-
-
-  public String getBatchProductPhoto() {
-    return batchProductPhoto;
-  }
-
-  public void setBatchProductPhoto(String batchProductPhoto) {
-    this.batchProductPhoto = batchProductPhoto;
-  }
+    public void setBatchStatus(Integer batchStatus) {
+        this.batchStatus = batchStatus;
+    }
 
 
-  public String getBatchProductComment() {
-    return batchProductComment;
-  }
+    public Blob getBatchQrcode() {
+        return batchQrcode;
+    }
 
-  public void setBatchProductComment(String batchProductComment) {
-    this.batchProductComment = batchProductComment;
-  }
-
-
-  public String getBatchProductCreateTime() {
-    return batchProductCreateTime;
-  }
-
-  public void setBatchProductCreateTime(String batchProductCreateTime) {
-    this.batchProductCreateTime = batchProductCreateTime;
-  }
+    public void setBatchQrcode(Blob batchQrcode) {
+        this.batchQrcode = batchQrcode;
+    }
 
 
-  public String getBatchProductQualityTime() {
-    return batchProductQualityTime;
-  }
+    public String getBatchProductId() {
+        return batchProductId;
+    }
 
-  public void setBatchProductQualityTime(String batchProductQualityTime) {
-    this.batchProductQualityTime = batchProductQualityTime;
-  }
-
-
-  public String getBatchFactoryId() {
-    return batchFactoryId;
-  }
-
-  public void setBatchFactoryId(String batchFactoryId) {
-    this.batchFactoryId = batchFactoryId;
-  }
+    public void setBatchProductId(String batchProductId) {
+        this.batchProductId = batchProductId;
+    }
 
 
-  public double getBatchStartGeo() {
-    return batchStartGeo;
-  }
+    public String getBatchProductName() {
+        return batchProductName;
+    }
 
-  public void setBatchStartGeo(double batchStartGeo) {
-    this.batchStartGeo = batchStartGeo;
-  }
+    public void setBatchProductName(String batchProductName) {
+        this.batchProductName = batchProductName;
+    }
 
 
-  public double getBatchEndGeo() {
-    return batchEndGeo;
-  }
+    public String getBatchProductPhoto() {
+        return batchProductPhoto;
+    }
 
-  public void setBatchEndGeo(double batchEndGeo) {
-    this.batchEndGeo = batchEndGeo;
-  }
+    public void setBatchProductPhoto(String batchProductPhoto) {
+        this.batchProductPhoto = batchProductPhoto;
+    }
+
+
+    public String getBatchProductComment() {
+        return batchProductComment;
+    }
+
+    public void setBatchProductComment(String batchProductComment) {
+        this.batchProductComment = batchProductComment;
+    }
+
+
+    public String getBatchProductCreateTime() {
+        return batchProductCreateTime;
+    }
+
+    public void setBatchProductCreateTime(String batchProductCreateTime) {
+        this.batchProductCreateTime = batchProductCreateTime;
+    }
+
+
+    public String getBatchProductQualityTime() {
+        return batchProductQualityTime;
+    }
+
+    public void setBatchProductQualityTime(String batchProductQualityTime) {
+        this.batchProductQualityTime = batchProductQualityTime;
+    }
+
+
+    public String getBatchFactoryId() {
+        return batchFactoryId;
+    }
+
+    public void setBatchFactoryId(String batchFactoryId) {
+        this.batchFactoryId = batchFactoryId;
+    }
+
+
+    public double getBatchStartGeo() {
+        return batchStartGeo;
+    }
+
+    public void setBatchStartGeo(double batchStartGeo) {
+        this.batchStartGeo = batchStartGeo;
+    }
+
+
+    public double getBatchEndGeo() {
+        return batchEndGeo;
+    }
+
+    public void setBatchEndGeo(double batchEndGeo) {
+        this.batchEndGeo = batchEndGeo;
+    }
 
 }

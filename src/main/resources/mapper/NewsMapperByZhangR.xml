@@ -18,12 +18,14 @@
      *修改新闻(根据新闻id)-->
     <update id="reviseNews" parameterType="org.taru.producttracing.pojo.News">
         UPDATE news
-        SET news_name = #{newsName},
-        news_content = #{newsContent},
-        news_photo = #{newsPhoto},
-        news_time = #{newsTime},
-        news_status = #{newsStatus}
-        WHERE
+        <set>
+            <if test="newsName != null">news_name = #{newsName},</if>
+            <if test="newsContent != null">news_content = #{newsContent},</if>
+            <if test="newsPhoto != null">news_photo = #{newsPhoto},</if>
+            <if test="newsTime != null">news_time = #{newsTime},</if>
+            <if test="newsStatus != null">news_status = #{newsStatus}</if>
+        </set>
+        where
             news_id = #{newsId}
     </update>
 

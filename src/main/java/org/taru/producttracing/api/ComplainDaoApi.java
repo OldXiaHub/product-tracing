@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.taru.producttracing.pojo.Complain;
-import org.taru.producttracing.service.ComplainService;
+import org.taru.producttracing.service.LogisticsServicedao;
 import org.taru.producttracing.vo.JsonResult;
 
 import java.util.List;
@@ -17,20 +17,18 @@ import java.util.List;
  */
 @CrossOrigin()
 @RestController
-public class ComplainDaoApi {
+public class LogisticsApi {
     @Autowired
-    ComplainService complainService;
+    LogisticsServicedao logisticsServicedao;
     /**
      * 查看所有投诉
      */
     @RequestMapping(value = "/api/adminlog/querycomplain")
     public JsonResult queryAll(Integer pageNum,Integer pageSize){
         JsonResult result=null;
-
+        List<Complain> list= logisticsServicedao.queryComplain();
         try{
-
             PageHelper.startPage(pageNum,pageSize);
-            List<Complain> list= complainService.queryComplain();
             PageInfo pageInfo=new PageInfo(list);
             if(list.size()>0){
                 result=new JsonResult("200","查询成功",pageInfo);
@@ -49,7 +47,7 @@ public class ComplainDaoApi {
     @RequestMapping(value = "/api/adminlog/accept")
     public JsonResult acceptCom(String complainId){
         JsonResult result=null;
-        complainService.acceptComplain(complainId);
+         logisticsServicedao.acceptComplain(complainId);
         try{
                 result=new JsonResult("200","查询成功","");
         }catch (Exception ex){
