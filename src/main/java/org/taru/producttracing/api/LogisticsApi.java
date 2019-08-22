@@ -1,5 +1,7 @@
 package org.taru.producttracing.api;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,12 +24,14 @@ public class LogisticsApi {
      * 查看所有投诉
      */
     @RequestMapping(value = "/api/adminlog/querycomplain")
-    public JsonResult queryAll(){
+    public JsonResult queryAll(Integer pageNum,Integer pageSize){
         JsonResult result=null;
         List<Complain> list= logisticsServicedao.queryComplain();
         try{
+            PageHelper.startPage(pageNum,pageSize);
+            PageInfo pageInfo=new PageInfo(list);
             if(list.size()>0){
-                result=new JsonResult("200","查询成功",list);
+                result=new JsonResult("200","查询成功",pageInfo);
             }else {
                 result=new JsonResult("400","查询失败","");
             }
