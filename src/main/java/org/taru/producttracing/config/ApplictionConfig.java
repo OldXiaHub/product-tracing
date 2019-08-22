@@ -7,6 +7,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.taru.producttracing.interceptor.AtuchInterceptor;
@@ -18,6 +19,20 @@ import org.taru.producttracing.interceptor.AtuchInterceptor;
 @Configuration
 public class ApplictionConfig implements  WebMvcConfigurer{
 
+    /**
+     *跨域
+     * @return
+     */
+    @Bean
+    public WebMvcConfigurer corsConfigurer()
+    {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**").allowedOrigins("*").allowedMethods("*").allowCredentials(true);
+            }
+        };
+    }
 
     /**
      *  <bean id="redisTemplate" class="org.taru.lanqiao.config.RedisTemplate"></bean>
