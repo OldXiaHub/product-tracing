@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 import org.taru.producttracing.pojo.Admin;
 import org.taru.producttracing.pojo.Factory;
 
+import java.util.List;
+
 @Repository
 @Mapper
 public interface UserDao {
@@ -30,5 +32,17 @@ public interface UserDao {
      */
     public void updateFactory(@Param("factoryId") String factoryId);
 
+    /**
+     * 修改工厂信息
+     * @param factory
+     */
     public void modifyFactory(Factory factory);
+
+    /**
+     * 查询工厂
+     * @return
+     */
+    public List<Factory> findAllFactory();
+
+
 }

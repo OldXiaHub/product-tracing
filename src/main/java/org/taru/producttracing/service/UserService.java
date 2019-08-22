@@ -4,6 +4,8 @@ import org.springframework.stereotype.Service;
 import org.taru.producttracing.pojo.Admin;
 import org.taru.producttracing.pojo.Factory;
 
+import java.util.List;
+
 
 public interface UserService {
      /**
@@ -32,4 +34,10 @@ public interface UserService {
      * @param factory
      */
     void modifyFactory(Factory factory);
+
+    /**
+     * 查询所有工厂
+     * @return
+     */
+    List<Factory> findAllFactory();
 }
