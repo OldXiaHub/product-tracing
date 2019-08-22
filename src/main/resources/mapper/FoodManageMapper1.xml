@@ -10,10 +10,10 @@
         insert into
         batch(batch_id,batch_name,batch_time,batch_status,batch_product_id,batch_product_name,
         batch_product_photo,batch_product_comment,batch_product_create_time,
-        batch_product_quality_time,batch_factory_id,batch_start_geo,batch_end_geo)
+        batch_product_quality_time,batch_factory_id,batch_startjidu_geo,batch_end_geo,batch_startweidu_geo)
         values(#{batchId},#{batchName},#{batchTime},#{batchStatus},#{batchProductId},
         #{batchProductName},#{batchProductPhoto},#{batchProductComment},#{batchProductCreateTime},
-        #{batchProductQualityTime},#{batchFactoryId},#{batchStartGeo},#{batchEndGeo})
+        #{batchProductQualityTime},#{batchFactoryId},#{batchStartjiduGeo},#{batchEndGeo},#{batchStartweiduGeo})
     </insert>
 
     <resultMap id="queryByid" type="org.taru.producttracing.pojo.Batch">
@@ -24,8 +24,10 @@
         <result property="batchProductPhoto" column="batch_product_photo" jdbcType="VARCHAR"></result>
         <result property="batchProductCreateTime" column="batch_product_create_time" jdbcType="VARCHAR"></result>
         <result property="batchProductQualityTime" column="batch_product_quality_time" jdbcType="VARCHAR"></result>
-        <result property="batchStartGeo" column="batch_start_geo" jdbcType="VARCHAR"></result>
+        <result property="batchStartjiduGeo" column="batch_startjidu_geo" jdbcType="VARCHAR"></result>
         <result property="batchEndGeo" column="batch_end_geo" jdbcType="VARCHAR"></result>
+        <result property="batchStartweiduGeo" column="batch_startweidu_geo" jdbcType="VARCHAR"></result>
+
     </resultMap>
 
 
@@ -38,8 +40,9 @@
                 a.batch_product_photo,
                 a.batch_product_create_time,
                 a.batch_product_quality_time,
-				a.batch_start_geo,
-				a.batch_end_geo
+				a.batch_startjidu_geo,
+				a.batch_end_geo,
+				a.batch_startweidu_geo
 			from batch a WHERE batch_id=#{batchId}
     </select>
     <!--添加批次二维码-->
