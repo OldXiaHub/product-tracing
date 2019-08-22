@@ -1,5 +1,7 @@
 package org.taru.producttracing.api;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,23 +16,24 @@ import java.util.List;
  * Api  Application  program     interface   （接口服务  功能  方法）  Ajax  JSON
  */
 @RestController  //可以省略掉 ResponseBody
-@CrossOrigin(allowCredentials="true")
+@CrossOrigin
 public class NewsApi {
     /**
      * 查询新闻
      */
     @Autowired
     NewsServiceImpl serviceImpl;
-
     @RequestMapping(value = "/api/adminews/selectApi")
-    public JsonResult queryNews(){
+    public JsonResult queryNews(Integer pageNum,Integer pageSize){
         JsonResult  result=null;
        try {
+           PageHelper.startPage(pageNum,pageSize);
            List<News> news=serviceImpl.queryNews();
+           PageInfo pageInfo=new PageInfo(news);
            if(news==null){
                result=new JsonResult("404","没有新闻","");
            }else {
-               result=new JsonResult("200","查询成功",news);
+               result=new JsonResult("200","查询成功",pageInfo);
            }
        }catch (Exception e){
            e.printStackTrace();

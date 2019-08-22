@@ -7,17 +7,17 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.taru.producttracing.interceptor.AtuchInterceptor;
+
 
 
 /**
  * JavaConfig 配置  @Configuration applicationContext.xml   IOC   基於XML      JavaConfig
  */
 @Configuration
-public class ApplictionConfig  implements  WebMvcConfigurer{
+public class ApplictionConfig implements  WebMvcConfigurer{
 
 
     /**
@@ -46,26 +46,32 @@ public class ApplictionConfig  implements  WebMvcConfigurer{
     }
 
 
-    @Override
+    /*@Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(atuchInterceptor()).addPathPatterns("/api/**").excludePathPatterns("/api/login","/api/logout");
+        registry.addInterceptor(atuchInterceptor()).addPathPatterns("/api/**").excludePathPatterns("/api/user/login","/api/logout");
     }
 
 
 
     @Bean
     public  AtuchInterceptor  atuchInterceptor(){
-        return  new  AtuchInterceptor();
+        return  new AtuchInterceptor();
     }
 
+*/
+    @Configuration
+    public class ConfigService {
 
-//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//        /*
-//         * 说明：增加虚拟路径(经过本人测试：在此处配置的虚拟路径，用springboot内置的tomcat时有效，
-//         * 用外部的tomcat也有效;所以用到外部的tomcat时不需在tomcat/config下的相应文件配置虚拟路径了,阿里云linux也没问题)
-//         */
-//        //Windows下
-//        registry.addResourceHandler("/upload/**").addResourceLocations("file：E://Spring-MVC-Photo-upload");
-//
-//    }
+        @Bean
+        public WebMvcConfigurer corsConfigurer()
+        {
+            return new WebMvcConfigurer() {
+                @Override
+                public void addCorsMappings(CorsRegistry registry) {
+                    registry.addMapping("/**").allowedOrigins("*").allowedMethods("*").allowCredentials(true);
+                }
+            };
+        }
+    }
+
 }
