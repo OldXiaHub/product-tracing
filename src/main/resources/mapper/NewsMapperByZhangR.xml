@@ -16,9 +16,17 @@
     <!--author:zhangrui
      * time：2019/08/20-22:30
      *修改新闻(根据新闻id)-->
-    <update id="reviseNews" parameterType="String">
-
+    <update id="reviseNews" parameterType="org.taru.producttracing.pojo.News">
+        UPDATE news
+        SET news_name = #{newsName},
+        news_content = #{newsContent},
+        news_photo = #{newsPhoto},
+        news_time = #{newsTime},
+        news_status = #{newsStatus}
+        WHERE
+            news_id = #{newsId}
     </update>
+
 
 
 </mapper>
