@@ -24,38 +24,38 @@ public class UserApiByZhang {
     @Autowired
     RedisTemplate redisTemplate;
 
-        /**前台用户登录
-         * time:2019/8/20-11:31
-         * author:zhangrui
-         * @param nickName
-         * @param password
-         * @return
-         */
-        @RequestMapping(value = "/api/user/login")
-        public JsonResult userLogin(String nickName, String password, HttpServletResponse response) {
-            JsonResult result;
-            User user = null;
-            try {
-                user = userServiceByZhangR.login(nickName, password);
-                if (user != null) {
-                    String  token_jSessionId = SecurityUtl.getMd5String(nickName);  //令牌
-                    redisTemplate.opsForHash().put("loginUserKey",token_jSessionId,user.getOpenId());
-                    result = new JsonResult("200", "登录成功", user);
-                    Cookie cookie = new Cookie("token",token_jSessionId);
-                    cookie.setPath("/");    //任何请求都要携带凭证
-                    cookie.setMaxAge(60*60*60);
-                    response.addCookie(cookie);
-                } else if(nickName.equals("")||password.equals("")){
-                    result = new JsonResult("405", "用户名密码不能为空", "");
-                }else{
-                    result = new JsonResult("404", "用户名密码错误", "");
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-                result = new JsonResult("500", e.getMessage(), "");
+    /**前台用户登录
+     * time:2019/8/20-11:31
+     * author:zhangrui
+     * @param nickName
+     * @param password
+     * @return
+     */
+    @RequestMapping(value = "/api/user/login")
+    public JsonResult userLogin(String nickName, String password, HttpServletResponse response) {
+        JsonResult result;
+        User user = null;
+        try {
+            user = userServiceByZhangR.login(nickName, password);
+            if (user != null) {
+                String  token_jSessionId = SecurityUtl.getMd5String(nickName);  //令牌
+                redisTemplate.opsForHash().put("loginUserKey",token_jSessionId,user.getOpenId());
+                result = new JsonResult("200", "登录成功", user);
+                Cookie cookie = new Cookie("token",token_jSessionId);
+                cookie.setPath("/");    //任何请求都要携带凭证
+                cookie.setMaxAge(60*60*60);
+                response.addCookie(cookie);
+            } else if(nickName.equals("")||password.equals("")){
+                result = new JsonResult("405", "用户名密码不能为空", "");
+            }else{
+                result = new JsonResult("404", "用户名密码错误", "");
             }
-            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+            result = new JsonResult("500", e.getMessage(), "");
         }
+        return result;
+    }
 //    /**
 //     * 前台用户注册
 //     * author：zhangrui

@@ -7,6 +7,9 @@ import org.taru.producttracing.pojo.News;
 import org.taru.producttracing.service.NewsServiceByZhangR;
 import org.taru.producttracing.util.StringUtil;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.UUID;
 
 @Service
@@ -24,6 +27,10 @@ public class NewsServiceByZhangRImpl implements NewsServiceByZhangR {
         int k=2;
         UUID newid=UUID.randomUUID();
         news.setNewsId(StringUtil.valueof(newid));
+        Date date = new Date();
+        SimpleDateFormat ss = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String time=ss.format(date);
+        news.setNewsTime(time);
         i= newsDaoByZhangR.insertNews(news);
         if(news.getNewsName()!=""&&news.getNewsPhoto()!=""&&news.getNewsContent()!=""&&news.getNewsTime()!=""){
             return i;
@@ -39,6 +46,10 @@ public class NewsServiceByZhangRImpl implements NewsServiceByZhangR {
     @Override
     public int reviseNews(News news) {
         int i=0;
+        Date date = new Date();
+        SimpleDateFormat ss = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String time=ss.format(date);
+        news.setNewsTime(time);
         i= newsDaoByZhangR.reviseNews(news);
         return i;
     }

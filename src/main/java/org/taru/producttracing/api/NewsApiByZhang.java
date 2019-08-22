@@ -45,7 +45,7 @@ public class NewsApiByZhang {
      * 修改新闻(根据新闻id)
      */
     @RequestMapping(value = "/api/adminews/reviseNews", method = RequestMethod.POST)
-    public JsonResult alter(News news){
+    public JsonResult alterNews(News news){
         JsonResult result;
         int i=0;
         try{

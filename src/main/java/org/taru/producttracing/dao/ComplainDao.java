@@ -12,14 +12,16 @@ import java.util.List;
  */
 @Mapper
 @Component
-public interface LogisticsDao {
+public interface ComplainDao {
     /**
+     * 徐大伟 2019.08.22
      * 查询所有投诉
+     *
      * @return
      */
     public List<Complain> queryAllComplain();
 
-    /**
+    /**徐大伟 2019.08.22
      * 受理投诉
      * @param complainId
      */

@@ -12,12 +12,15 @@ import java.util.List;
 @CrossOrigin
 @RestController
 /**
- * 刘鹏飞
+ * 刘鹏飞 2019.8.20
+ * * @param
+ * @param
+ * @return
  */
 public class FoodApi1 {
         @Autowired
         FoodService1 foodService;
-        //查询新闻资讯信息
+        //查询所有新闻资讯信息
         @RequestMapping("/api/food/queryNews")
     public JsonResult queryNews(){
         JsonResult result=null;
@@ -30,12 +33,12 @@ public class FoodApi1 {
         }
         return result;
     }
-        //查询新闻详情
+        //查询新闻详情(根据id)
         @RequestMapping("/api/food/queryNewsDetail")
-        public JsonResult queryNewsDetail(){
+        public JsonResult queryNewsDetail(String newsId){
             JsonResult result=null;
             try{
-                List list= foodService.queryNews();
+                List list= foodService.queryNewsById(newsId);
                 result=new JsonResult("200","查询成功",list);
             }catch (Exception e){
                 e.printStackTrace();
@@ -44,17 +47,17 @@ public class FoodApi1 {
             return result;
         }
 
-        //搜索新闻资讯信息
-    @RequestMapping("/api/food/queryNewsByName")
-    public JsonResult queryNews(@RequestParam("name") String name){
-        JsonResult result=null;
-        try{
-            List list= foodService.queryNewsByname(name);
-            result=new JsonResult("200","查询成功",list);
-        }catch (Exception e){
-            e.printStackTrace();
-            result=new JsonResult("400","查询失败","");
+        //模糊搜索新闻资讯信息
+        @RequestMapping("/api/food/queryNewsByName")
+        public JsonResult queryNews(@RequestParam("name") String name){
+            JsonResult result=null;
+            try{
+                List list= foodService.queryNewsByname(name);
+                result=new JsonResult("200","查询成功",list);
+            }catch (Exception e){
+                e.printStackTrace();
+                result=new JsonResult("400","查询失败","");
+            }
+            return result;
         }
-        return result;
-    }
 }
