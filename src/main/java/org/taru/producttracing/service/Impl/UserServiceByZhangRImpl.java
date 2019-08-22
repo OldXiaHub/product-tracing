@@ -29,7 +29,7 @@ UserDaoByZhangR userDaoByZhangR;
 //    /**
 //     * autnor:zhangrui
 //     * time:2019/8/20-17:27
-//     * 前台用户注册
+//     * 前台用户注册不要了？
 //     */
 //    @Override
 //    public void register(User user) {
