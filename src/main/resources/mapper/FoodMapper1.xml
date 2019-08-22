@@ -7,12 +7,12 @@
 
     <!--新闻信息-->
     <resultMap id="BaseResultMap" type="org.taru.producttracing.pojo.News">
-        <id property="newsId" column="news_id" jdbcType="VARCHAR"></id>
-        <result property="newsName" column="news_name" jdbcType="VARCHAR"></result>
-        <result property="newsContent" column="news_content" jdbcType="VARCHAR"></result>
-        <result property="newsPhoto" column="news_photo" jdbcType="VARCHAR"></result>
-        <result property="newsTime" column="news_time" jdbcType="VARCHAR"></result>
-        <result property="newsStatus" column="news_status" jdbcType="VARCHAR"></result>
+    <id property="newsId" column="news_id" jdbcType="VARCHAR"></id>
+    <result property="newsName" column="news_name" jdbcType="VARCHAR"></result>
+    <result property="newsContent" column="news_content" jdbcType="VARCHAR"></result>
+    <result property="newsPhoto" column="news_photo" jdbcType="VARCHAR"></result>
+    <result property="newsTime" column="news_time" jdbcType="VARCHAR"></result>
+    <result property="newsStatus" column="news_status" jdbcType="VARCHAR"></result>
     </resultMap>
 
     <!--查询新闻资讯信息-->

@@ -2,6 +2,7 @@ package org.taru.producttracing.service;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.taru.producttracing.pojo.Complain;
 
 import java.util.List;
 

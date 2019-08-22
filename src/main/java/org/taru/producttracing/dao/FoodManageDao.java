@@ -1,6 +1,7 @@
 package org.taru.producttracing.dao;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 import org.taru.producttracing.pojo.Product;
 
@@ -22,9 +23,4 @@ public interface FoodManageDao {
   食品作废
    */
    void deleteProduct(String productId);
-   /*
-   根据id查询食品
-    */
-   List<Product> selectProductByid(String productId);
-
 }

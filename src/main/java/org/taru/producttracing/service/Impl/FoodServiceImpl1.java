@@ -1,6 +1,5 @@
 package org.taru.producttracing.service.Impl;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.taru.producttracing.dao.FoodDao1;
@@ -15,15 +14,7 @@ import java.util.List;
 public class FoodServiceImpl1 implements FoodService1 {
     @Autowired
     FoodDao1 foodDao;
-    //查询新闻资讯信息
     public List queryNews() {
         return foodDao.queryNews();
     }
-
-    //搜索新闻资讯信息
-    public List queryNewsByname(String newsName) {
-        return foodDao.queryNewsByname(newsName);
-    }
-
-
 }
