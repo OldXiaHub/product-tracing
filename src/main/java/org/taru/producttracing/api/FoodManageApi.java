@@ -25,41 +25,24 @@ public class FoodManageApi {
     @Autowired
     private FoodManageService foodManageService;
 
-    /*//通过Value注解获得属性配置文件的信息 $
-    @Value("${web.upload.imagepath}")
-    private String uploadAbsolutePath;*/
+//    //通过Value注解获得属性配置文件的信息 $
+//    @Value("${web.upload.imagepath}")
+//    private String uploadAbsolutePath;
     /*
     食品添加
      */
     @RequestMapping("/api/adminfood/insertfood")
-    public JsonResult insertProduct(String productName,
-                                    String productComment,
-                                    String productFactoryId,
-                                    long productStatus){
+    public JsonResult insertProduct(Product product){
         JsonResult jsonResult=null;
-        if (!productName.isEmpty()) {
+
             try {
-              /*  String productPhoto=IdUtil.getUuid()+multipartFile.getOriginalFilename();
-                multipartFile.transferTo(new File(uploadAbsolutePath+"\\"+productPhoto));*/
-                String productId = IdUtil.getDateId();
-                Product product = new Product();
-                product.setProductId(productId);
-                product.setProductName(productName);
-                /*product.setProductPhoto(productPhoto);*/
-                product.setProductComment(productComment);
-
-                product.setProductFactoryId(productFactoryId);
-
-                product.setProductStatus(productStatus);
-                foodManageService.insertProduct(product);
-                jsonResult = new JsonResult("200", "添加食品成功", productId);
+                 foodManageService.insertProduct(product);
+                jsonResult = new JsonResult("200", "添加食品成功", null);
             } catch (Exception e) {
                 e.printStackTrace();
                 jsonResult = new JsonResult("500", "添加食品失败", null);
             }
-        }else {
-            jsonResult=new JsonResult("404","没有数据","");
-        }
+
         return jsonResult;
 
     }
