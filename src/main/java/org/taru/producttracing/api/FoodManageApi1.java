@@ -21,36 +21,9 @@ public class FoodManageApi1 {
     /*
     批次添加
      */
-    public JsonResult insertProduct(String batchName,
-                                    String batchTime,
-                                    Integer batchStatus,
-                                    String batchProductId,
-                                    String batchProductName,
-                                    String batchProductPhoto,
-                                    String batchProductComment,
-                                    String batchProductCreateTime,
-                                    String batchProductQualityTime,
-                                    String batchFactoryId,
-                                    double batchStartGeo,
-                                    double batchEndGeo
-    ){
+    public JsonResult insertProduct(Batch batch){
         JsonResult jsonResult=null;
         try {
-            String batchId = IdUtil.getDateId();
-            Batch batch=new Batch();
-            batch.setBatchId(batchId);
-            batch.setBatchName(batchName);
-            batch.setBatchTime(batchTime);
-            batch.setBatchStatus(batchStatus);
-            batch.setBatchProductId(batchProductId);
-            batch.setBatchProductName(batchProductName);
-            batch.setBatchProductPhoto(batchProductPhoto);
-            batch.setBatchProductComment(batchProductComment);
-            batch.setBatchProductCreateTime(batchProductCreateTime);
-            batch.setBatchProductQualityTime(batchProductQualityTime);
-            batch.setBatchFactoryId(batchFactoryId);
-            batch.setBatchStartGeo(batchStartGeo);
-            batch.setBatchEndGeo(batchEndGeo);
             foodManageService1.addBatch(batch);
             jsonResult=new JsonResult("200","添加批次成功",batch);
         }catch (Exception e){

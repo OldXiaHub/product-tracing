@@ -41,4 +41,13 @@
               factory_distributor_id as factoryDistributorId,factory_status as fatoryStatus,factory_admin_id as factoryAdminId
        from factory
     </select>
+
+    <!--根据id查询工厂详情-->
+    <select id="findFactoryById" resultType="org.taru.producttracing.pojo.Factory">
+       select factory_id as factoryId,factory_name as factoryName,factory_logo as factoryLogo,factory_telphone as factoryTelphone,
+              factory_address as factoryAddress,factory_geo as factoryGeo,factory_license as factoryLicense,factory_register_time as factoryRegisterTime,
+              factory_distributor_id as factoryDistributorId,factory_status as fatoryStatus,factory_admin_id as factoryAdminId
+       from factory
+       where  factory_id=#{factoryId}
+    </select>
 </mapper>
