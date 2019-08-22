@@ -44,12 +44,12 @@ public class NewsApiByZhang {
      * time:2019/08/20-22:22
      * 修改新闻(根据新闻id)
      */
-    @RequestMapping(value = "/api/adminews/modifynews/", method = RequestMethod.POST)
-    public JsonResult alter(String newsId){
+    @RequestMapping(value = "/api/adminews/reviseNews", method = RequestMethod.POST)
+    public JsonResult alter(News news){
         JsonResult result;
         int i=0;
         try{
-            i = newsServiceByZhangR.reviseNews(newsId);
+            i = newsServiceByZhangR.reviseNews(news);
             if(i==1){
                 result=new JsonResult("200","修改新闻成功",i);
             }else {

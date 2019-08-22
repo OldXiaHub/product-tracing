@@ -18,6 +18,8 @@ public interface UserService {
 
     /**
      * 添加工场
+     *
+     * 湛玉欣 2019.8.21
      * @param factory
      * @return
      */
@@ -25,18 +27,24 @@ public interface UserService {
 
     /**
      * 删除工厂
+     *
+     * 湛玉欣 2019.8.21
      * @param factoryId
      */
     void updateFactory(String factoryId);
 
     /**
      * 修改工厂信息
+     *
+     * 湛玉欣 2019.8.21
      * @param factory
      */
     void modifyFactory(Factory factory);
 
     /**
      * 查询所有工厂
+     *
+     * 湛玉欣 2019.8.21
      * @return
      */
     List<Factory> findAllFactory();
