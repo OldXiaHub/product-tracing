@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.taru.producttracing.dao.UserDaoByZhangR">
+
+    <!--前台用户登录2019/8/20-11：54-->
+    <select id="login" parameterType="HashMap" resultMap="UserMap">
+        SELECT
+            *
+        FROM
+        USER
+        WHERE
+            user_name = #{nickName}
+	    AND user_password = #{password}
+    </select>
+    <resultMap id="UserMap" type="org.taru.producttracing.pojo.User">
+        <id property="openId"           column="USER_ID" jdbcType="VARCHAR"></id>
+        <result property="nickName"     column="USER_NAME" jdbcType="VARCHAR"></result>
+        <result property="userPassword" column="USER_PASSWORD" jdbcType="VARCHAR"></result>
+        <result property="userTelphone" column="USER_TELPHONE" jdbcType="VARCHAR"></result>
+        <result property="userAddress"  column="USER_ADDRESS" jdbcType="VARCHAR"></result>
+        <result property="userComment"  column="USER_COMMENT" jdbcType="VARCHAR"></result>
+        <result property="userStatus"   column="USER_STATUS" jdbcType="VARCHAR"></result>
+    </resultMap>
+
+    <!--/**
+     * 添加用户个人信息
+     * author:zhangrui
+     * time:2019/8/21-15:37
+     */-->
+    <insert id="addUserInfo" parameterType="org.taru.producttracing.pojo.User">
+        INSERT INTO USER ( user_id, user_name, user_password, user_telphone, user_address, user_comment, user_status )
+        VALUES
+            ( #{openId}, #{nickName}, #{userPassword}, #{userTelphone}, #{userAddress}, #{userComment}, #{userStatus} );
+    </insert>
+
+    <!--/**
+     * 用户个人信息获取
+     *author:zhangrui
+     * time：2019/08/21-21:20
+     */-->
+    <select id="getUserInfo" parameterType="String" resultMap="UserMap1">
+        SELECT
+            *
+        FROM
+        USER
+        WHERE
+            user_name = #{nickName}
+    </select>
+    <resultMap id="UserMap1" type="org.taru.producttracing.pojo.User">
+
+    </resultMap>
+
+    <!--/**
+     * 查询自己的投诉记录
+     * author:zhangrui
+     * time：2019/08/22-9:20
+     */-->
+    <select id="userComplain" parameterType="String" resultMap="UserMap2">
+        SELECT
+            b.*,
+            a.user_name
+        FROM
+            complain b
+            LEFT JOIN `user` a ON complain_user_name = a.user_name
+        WHERE
+            complain_user_name = #{nickName}
+    </select>
+    <resultMap id="UserMap2" type="org.taru.producttracing.pojo.Complain">
+        <id     property="complainId"      column="complain_id"      jdbcType="VARCHAR"></id>
+        <result property="complainName"    column="complain_name"    jdbcType="VARCHAR"></result>
+        <result property="complainContent" column="complain_photo"   jdbcType="VARCHAR"></result>
+        <result property="complainUserId"  column="complain_user_name" jdbcType="VARCHAR"></result>
+        <result property="complainStatus"  column="complain_status"  jdbcType="TINYINT"></result>
+    </resultMap>
+</mapper>

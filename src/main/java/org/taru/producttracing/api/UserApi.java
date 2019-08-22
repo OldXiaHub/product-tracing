@@ -1,62 +1,148 @@
 package org.taru.producttracing.api;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.taru.producttracing.pojo.User;
+import org.taru.producttracing.pojo.Admin;
+import org.taru.producttracing.pojo.Factory;
 import org.taru.producttracing.service.UserService;
-import org.taru.producttracing.util.SecurityUtl;
 import org.taru.producttracing.vo.JsonResult;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
-@CrossOrigin
+
 @RestController
 public class UserApi {
     @Autowired
     UserService userService;
-    @Autowired
-    RedisTemplate redisTemplate;
 
-        /**前台用户登录
-         * time:2019/8/20-11:31
-         * author:zhangrui
-         * @param username
-         * @param password
-         * @return
-         */
-        @RequestMapping(value = "/api/user/login")
-        public JsonResult userLogin(String username, String password, HttpServletResponse response) {
-            JsonResult result;
-            User user = null;
-            try {
-                user = userService.login(username, password);
-                if (user != null) {
-                    String  token_jSessionId = SecurityUtl.getMd5String(username);  //令牌
-                    redisTemplate.opsForHash().put("loginUserKey",token_jSessionId,user.getUserId());
-                    result = new JsonResult("200", "登录成功", user);
-                    Cookie cookie = new Cookie("token",token_jSessionId);
-                    cookie.setPath("/");    //任何请求都要携带凭证
-                    cookie.setMaxAge(60*60*60);
-                    response.addCookie(cookie);
-                } else if(username.equals("")||password.equals("")){
-                    result = new JsonResult("405", "用户名密码不能为空", "");
-                }else{
-                    result = new JsonResult("404", "用户名密码错误", "");
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-                result = new JsonResult("500", e.getMessage(), "");
-            }
-            return result;
-        }
     /**
-     * 前台用户注册
-     * author：zhangrui
-     * time：2019/8/20-17：40
-      */
+     * 后台登录
+     *
+     * 湛玉欣 2019.8.21
+     *
+     * * @param adminName
+     * @param adminPassword
+     * @return
+     */
+    @RequestMapping("/api/adminlogin")
+    public JsonResult adminLogin(String adminName,String adminPassword){
+        JsonResult result=null;
+        try{
+            Admin admin=userService.login(adminName,adminPassword);
+            if(admin != null){
+                result =new JsonResult("200","登陆成功",admin);
+            }else{
+                result =new JsonResult("404","登录失败","");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            result =new JsonResult("500","登录异常",e.getMessage());
+        }
+        return  result;
+    }
 
+    /**
+     * 添加工厂
+     *
+     * 湛玉欣 2019.8.21
+     *
+     * @param factory
+     * @return
+     * @throws ParseException
+     */
+    @RequestMapping("/api/addfactory")
+    public JsonResult addFactory(Factory factory) throws ParseException {
+
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
+        df.format(new Date());// new Date()为获取当前系统时间
+          factory.setFactoryRegisterTime(df.format(new Date()));
+
+        JsonResult result=null;
+        try{
+            userService.addFactory(factory);
+            result =new JsonResult("200","添加工厂成功","");
+        }catch (Exception e){
+            e.printStackTrace();
+            result =new JsonResult("404","添加工厂失败",e.getMessage());
+        }
+        return  result;
+    }
+
+    /**
+     * 删除工厂
+     *
+     * 湛玉欣 2019.8.21
+     *
+     * @param factoryId
+     * @return
+     */
+    @RequestMapping("/api/updatefactory")
+    public JsonResult updateFactory(String factoryId){
+        JsonResult result=null;
+        try{
+            userService.updateFactory(factoryId);
+            result =new JsonResult("200","删除工场成功","");
+        }catch (Exception e){
+            e.printStackTrace();
+            result =new JsonResult("404","删除工厂失败",e.getMessage());
+        }
+        return  result;
+    }
+
+    /**
+     * 修改工厂信息
+     *
+     * 湛玉欣 2019.8.21
+     *
+     * @param factory
+     * @return
+     */
+    @RequestMapping("/api/modifyfactory")
+    public JsonResult modifuFactory(Factory factory){
+        System.out.println(factory);
+        JsonResult result=null;
+        try{
+            userService.modifyFactory(factory);
+            System.out.println(factory);
+            result =new JsonResult("200","修改工厂信息成功","");
+        }catch (Exception e){
+            e.printStackTrace();
+            result =new JsonResult("404","修改工厂信息失败",e.getMessage());
+        }
+        return  result;
+    }
+
+    /**
+     * 查询所有工厂
+     *
+     * 湛玉欣 2019.8.22
+     *
+     * @return
+     */
+    @RequestMapping("/api/findallfactory")
+    public JsonResult findAllFactory(Integer pageNum,Integer pageSize){
+        JsonResult result=null;
+        try{
+            //分页：将需要进行分页的语句 上下两句代码夹在中间
+            PageHelper.startPage(1,2);//这条分页语句，一定要和下面将要进行分页的语句紧挨着
+            List<Factory> factorys=userService.findAllFactory();
+            PageInfo pageInfo=new PageInfo(factorys);
+
+            if (factorys.size()>0){
+                result =new JsonResult("200","查询所有工厂成功",factorys);
+            }else{
+                result =new JsonResult("404","查询工厂信息失败","");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            result =new JsonResult("500","查询工厂信息异常",e.getMessage());
+        }
+        return  result;
+    }
 }

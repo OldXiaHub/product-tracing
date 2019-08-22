@@ -80,6 +80,12 @@
             <version>2.1.0.RELEASE</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.2.11</version>
+        </dependency>
+
 
         <!--地图所需-->
         <!--<dependency>
@@ -113,6 +119,7 @@
             <classifier>jdk15</classifier>
             <version>2.2.3</version>
         </dependency>-->
+
     </dependencies>
 
     <build>

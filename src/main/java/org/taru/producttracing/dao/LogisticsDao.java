@@ -3,7 +3,6 @@ package org.taru.producttracing.dao;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 import org.taru.producttracing.pojo.Complain;
 
 import java.util.List;
@@ -25,4 +24,5 @@ public interface LogisticsDao {
      * @param complainId
      */
     public void acceptCom(@Param("complainId") String complainId);
+
 }

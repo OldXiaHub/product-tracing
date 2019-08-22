@@ -3,32 +3,30 @@ package org.taru.producttracing.pojo;
 
 public class User {
 
-  private String userId;
-  private String userName;
+  private String openId;
+  private String nickName;
   private String userPassword;
   private String userTelphone;
   private String userAddress;
   private String userComment;
   private long userStatus;
+  private String avatarUrl;
 
-
-  public String getUserId() {
-    return userId;
+  public String getOpenId() {
+    return openId;
   }
 
-  public void setUserId(String userId) {
-    this.userId = userId;
+  public void setOpenId(String openId) {
+    this.openId = openId;
   }
 
-
-  public String getUserName() {
-    return userName;
+  public String getNickName() {
+    return nickName;
   }
 
-  public void setUserName(String userName) {
-    this.userName = userName;
+  public void setNickName(String nickName) {
+    this.nickName = nickName;
   }
-
 
   public String getUserPassword() {
     return userPassword;
@@ -38,7 +36,6 @@ public class User {
     this.userPassword = userPassword;
   }
 
-
   public String getUserTelphone() {
     return userTelphone;
   }
@@ -46,7 +43,6 @@ public class User {
   public void setUserTelphone(String userTelphone) {
     this.userTelphone = userTelphone;
   }
-
 
   public String getUserAddress() {
     return userAddress;
@@ -56,7 +52,6 @@ public class User {
     this.userAddress = userAddress;
   }
 
-
   public String getUserComment() {
     return userComment;
   }
@@ -64,7 +59,6 @@ public class User {
   public void setUserComment(String userComment) {
     this.userComment = userComment;
   }
-
 
   public long getUserStatus() {
     return userStatus;
@@ -74,4 +68,11 @@ public class User {
     this.userStatus = userStatus;
   }
 
+  public String getAvatarUrl() {
+    return avatarUrl;
+  }
+
+  public void setAvatarUrl(String avatarUrl) {
+    this.avatarUrl = avatarUrl;
+  }
 }

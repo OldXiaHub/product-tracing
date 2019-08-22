@@ -1,5 +1,4 @@
 package org.taru.producttracing.pojo;
-
 public class Factory {
 
   private String factoryId;
@@ -7,6 +6,7 @@ public class Factory {
   private String factoryLogo;
   private String factoryTelphone;
   private String factoryAddress;
+
   private double factoryGeo;
   private String factoryLicense;
   private String factoryRegisterTime;
@@ -113,4 +113,20 @@ public class Factory {
     this.factoryAdminId = factoryAdminId;
   }
 
+  @Override
+  public String toString() {
+    return "Factory{" +
+            "factoryId='" + factoryId + '\'' +
+            ", factoryName='" + factoryName + '\'' +
+            ", factoryLogo='" + factoryLogo + '\'' +
+            ", factoryTelphone='" + factoryTelphone + '\'' +
+            ", factoryAddress='" + factoryAddress + '\'' +
+            ", factoryGeo=" + factoryGeo +
+            ", factoryLicense='" + factoryLicense + '\'' +
+            ", factoryRegisterTime='" + factoryRegisterTime + '\'' +
+            ", factoryDistributorId='" + factoryDistributorId + '\'' +
+            ", factoryStatus=" + factoryStatus +
+            ", factoryAdminId='" + factoryAdminId + '\'' +
+            '}';
+  }
 }

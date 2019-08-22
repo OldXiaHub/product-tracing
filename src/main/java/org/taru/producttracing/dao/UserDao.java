@@ -2,23 +2,59 @@ package org.taru.producttracing.dao;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Component;
-import org.taru.producttracing.pojo.User;
+import org.springframework.stereotype.Repository;
+import org.taru.producttracing.pojo.Admin;
+import org.taru.producttracing.pojo.Factory;
 
+import java.util.List;
+
+@Repository
 @Mapper
-@Component
 public interface UserDao {
     /**
-     * autnor:zhangrui
-     * time:2019/8/20-11:11
-     * 前台用户登录
+     * 后台登录
+     *
+     * 湛玉欣 2019.8.21
+     * @param adminName
+     * @param adminPassword
+     * @return
      */
-    public User login(@Param("username") String username, @Param("password") String password);
+    public Admin adminLogin(@Param("adminName") String adminName,@Param("adminPassword")String adminPassword);
 
     /**
-     *autnor:zhangrui
-     * time:2019/8/20/16:52
-     * 前台用户注册
+     * 添加工厂
+     *
+     * 湛玉欣 2019.8.21
+     *
+     * @param factory
+     * @return
      */
-    public void userRegister(User user);
+    public void addFactory(Factory factory );
+
+    /**
+     * 删除工厂
+     *
+     * 湛玉欣 2019.8.21
+     * @param factoryId
+     */
+    public void updateFactory(@Param("factoryId") String factoryId);
+
+    /**
+     * 修改工厂信息
+     *
+     * 湛玉欣 2019.8.21
+     * @param factory
+     */
+    public void modifyFactory(Factory factory);
+
+    /**
+     * 查询工厂
+     *
+     * 湛玉欣 2019.8.21
+     *
+     * @return
+     */
+    public List<Factory> findAllFactory();
+
+
 }
