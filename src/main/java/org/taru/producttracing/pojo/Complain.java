@@ -1,13 +1,23 @@
 package org.taru.producttracing.pojo;
 
+
 public class Complain {
 
   private String complainId;
   private String complainName;
   private String complainContent;
   private String complainPhoto;
-  private String complainUserId;
+  private String complainUserName;
   private long complainStatus;
+  private User user;
+
+  public User getUser() {
+    return user;
+  }
+  public void setUser(User user) {
+    this.user = user;
+  }
+
 
 
   public String getComplainId() {
@@ -46,12 +56,12 @@ public class Complain {
   }
 
 
-  public String getComplainUserId() {
-    return complainUserId;
+  public String getComplainUserName() {
+    return complainUserName;
   }
 
-  public void setComplainUserId(String complainUserId) {
-    this.complainUserId = complainUserId;
+  public void setComplainUserName(String complainUserName) {
+    this.complainUserName = complainUserName;
   }
 
 
