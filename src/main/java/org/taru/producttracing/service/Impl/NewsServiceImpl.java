@@ -10,14 +10,22 @@ import java.util.List;
 public class NewsServiceImpl implements NewsService {
     @Autowired
     NewsDao newsDao;
+    /**
+     * 查询新闻
+     * @return
+     */
     @Override
     public  List<News> queryNews(){
         return newsDao.selectNews();
     }
+    /**
+     * 删除新闻
+     * @param id
+     * @return
+     */
     @Override
     public int deleteNews(String id){
         int news=newsDao.delNewsById(id);
         return news;
     }
-
 }
