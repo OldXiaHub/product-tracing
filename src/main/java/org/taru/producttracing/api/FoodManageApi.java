@@ -38,12 +38,7 @@ public class FoodManageApi {
                 product.setProductName(productName);
                 product.setProductPhoto(productPhoto);
                 product.setProductComment(productComment);
-                product.setProductCreateTime(productCreateTime);
-                product.setProductQualityTime(productQualityTime);
-                product.setProductComplainId(productComplainId);
                 product.setProductFactoryId(productFactoryId);
-                product.setProductLogisticsId(productLogisticsId);
-                product.setProductBatchId(productBatchId);
                 product.setProductStatus(productStatus);
             foodManageService.insertProduct(product);
             jsonResult=new JsonResult("200","添加食品成功",productId);

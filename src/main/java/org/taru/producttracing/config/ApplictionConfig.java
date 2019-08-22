@@ -45,17 +45,17 @@ public class ApplictionConfig implements  WebMvcConfigurer{
     }
 
 
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(atuchInterceptor()).addPathPatterns("/api/**").excludePathPatterns("/api/user/login","/api/logout");
-    }
-
-
-
-    @Bean
-    public  AtuchInterceptor  atuchInterceptor(){
-        return  new AtuchInterceptor();
-    }
+//    @Override
+//    public void addInterceptors(InterceptorRegistry registry) {
+//        registry.addInterceptor(atuchInterceptor()).addPathPatterns("/api/**").excludePathPatterns("/api/user/login","/api/logout");
+//    }
+//
+//
+//
+//    @Bean
+//    public AtuchInterceptor atuchInterceptor(){
+//        return  new AtuchInterceptor();
+//    }
 
 
 
