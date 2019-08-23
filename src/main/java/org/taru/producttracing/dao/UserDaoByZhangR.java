@@ -23,7 +23,7 @@ public interface UserDaoByZhangR {
      * time:2019/8/20/16:52
      * 前台用户注册
      */
-    public int userRegister(User user);
+    public int userRegister(@Param("openId") String openId, @Param("nickName") String nickName, @Param("userAddress")  String userAddress, @Param("avatarUrl") String avatarUrl);
 
     /**
      * 用户个人信息获取

@@ -2,10 +2,7 @@ package org.taru.producttracing.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.taru.producttracing.pojo.Complain;
 import org.taru.producttracing.pojo.User;
 import org.taru.producttracing.service.UserServiceByZhangR;
@@ -62,11 +59,15 @@ public class UserApiByZhang {
      * time：2019/8/20-17：40
       */
     @RequestMapping(value = "/api/user/register" , method = RequestMethod.POST)
-    public JsonResult userRegister(User user){
+    public JsonResult userRegister(@RequestParam(value = "openId", required = true) String openId,
+                                   @RequestParam(value = "nickName", required = true) String nickName,
+                                   @RequestParam(value = "userAddress", required = true) String userAddress,
+                                   @RequestParam(value = "avatarUrl", required = true) String avatarUrl){
         JsonResult result=null;
+        System.out.println(openId+nickName+userAddress+avatarUrl);
         int i=0;
         try{
-            i = userServiceByZhangR.register(user);
+            i = userServiceByZhangR.register(openId,nickName,userAddress,avatarUrl);
            if(i!=0 ){
                 result = new JsonResult("200", "用户注册成功", i);
            }else{
