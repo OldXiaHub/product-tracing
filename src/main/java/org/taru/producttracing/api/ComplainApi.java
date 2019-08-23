@@ -1,7 +1,5 @@
 
-
 package org.taru.producttracing.api;
-
         import com.github.pagehelper.PageHelper;
         import com.github.pagehelper.PageInfo;
         import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +8,7 @@ package org.taru.producttracing.api;
         import org.springframework.web.bind.annotation.RestController;
         import org.taru.producttracing.pojo.Complain;
         import org.taru.producttracing.service.ComplainService;
-
         import org.taru.producttracing.vo.JsonResult;
-
         import java.util.List;
 /**
  * 徐大伟
@@ -23,7 +19,7 @@ package org.taru.producttracing.api;
 public class ComplainApi {
 
     @Autowired
-    ComplainService logisticsServicedao;
+    ComplainService complainService;
     /**
      * 查看所有投诉
      */
@@ -31,7 +27,7 @@ public class ComplainApi {
     public JsonResult queryAll(Integer pageNum,Integer pageSize){
         JsonResult result=null;
         PageHelper.startPage(pageNum,pageSize);
-        List<Complain> list= logisticsServicedao.queryComplain();
+        List<Complain> list= complainService.queryComplain();
         PageInfo pageinfo=new PageInfo(list);
         try{
             PageHelper.startPage(pageNum,pageSize);
@@ -53,7 +49,7 @@ public class ComplainApi {
     @RequestMapping(value = "/api/adminlog/accept")
     public JsonResult acceptCom(String complainId){
         JsonResult result=null;
-        logisticsServicedao.acceptComplain(complainId);
+        complainService.acceptComplain(complainId);
         try{
             result=new JsonResult("200","受理成功","");
         }catch (Exception ex){

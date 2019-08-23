@@ -2,6 +2,7 @@ package org.taru.producttracing.api;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import io.lettuce.core.dynamic.annotation.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -86,8 +87,25 @@ public class FoodManageApi {
     public JsonResult selectProductByid(String productId){
         JsonResult jsonResult=null;
         try {
-            System.out.println("???");
             List<Product> product=foodManageService.selectProductByid(productId);
+            if(product!=null){
+                jsonResult=new JsonResult("200","查询成功",product);
+            }else {
+                jsonResult=new JsonResult("404","查询失败","");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            jsonResult=new JsonResult("500","出错了",e.getMessage());
+        }
+        return jsonResult;
+    }
+
+    /*模糊查询食品*/
+    @RequestMapping("/api/adminfood/selectfoodbyname")
+    public JsonResult selectProductByname(String productName){
+        JsonResult jsonResult=null;
+        try {
+            List<Product> product=foodManageService.fuzzySearch(productName);
             if(product!=null){
                 jsonResult=new JsonResult("200","查询成功",product);
             }else {

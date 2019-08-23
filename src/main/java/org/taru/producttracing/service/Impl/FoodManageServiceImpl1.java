@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.taru.producttracing.dao.FoodManageDao1;
 import org.taru.producttracing.pojo.Batch;
 import org.taru.producttracing.service.FoodManageService1;
+import org.taru.producttracing.util.IdUtil;
 import org.taru.producttracing.util.QRFactory;
 
 /**
@@ -22,6 +23,8 @@ public class FoodManageServiceImpl1 implements FoodManageService1 {
      */
     @Override
     public void addBatch(Batch batch) {
+        String batchId = IdUtil.getDateId();
+        batch.setBatchId(batchId);
         foodManageDao1.sendGoods(batch);
         QRFactory.creteQRFile(batch.getBatchId());
         String qr=QRFactory.getImageBinary(batch.getBatchId());

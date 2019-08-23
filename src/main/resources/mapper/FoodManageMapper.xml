@@ -11,28 +11,43 @@
     <result property="productComment" column="product_comment" jdbcType="VARCHAR"></result>
     <result property="productFactoryId" column="product_factory_id" jdbcType="VARCHAR"></result>
     <result property="productStatus" column="product_status" jdbcType="TINYINT"></result>
+        <association property="factory" javaType="org.taru.producttracing.pojo.Factory">
+            <id property="factoryId" column="factory_id" jdbcType="VARCHAR"></id>
+            <result property="factoryName" column="factory_name" jdbcType="VARCHAR"></result>
+            <result property="factoryLogo" column="factory_logo" jdbcType="VARCHAR"></result>
+            <result property="factoryTelphone" column="factory_telphone" jdbcType="VARCHAR"></result>
+            <result property="factoryAddress" column="factory_address" jdbcType="VARCHAR"></result>
+            <result property="factoryGeo" column="factory_geo" jdbcType="DECIMAL"></result>
+            <result property="factoryLicense" column="factory_license" jdbcType="VARCHAR"></result>
+        </association>
+
 </resultMap>
 
     <!--食品添加-->
     <insert id="insertProduct" parameterType="org.taru.producttracing.pojo.Product">
         insert into
         product(product_id,product_name,product_photo,product_comment,product_factory_id,product_status)
-        values(#{productId},#{productName},#{productPhoto},#{productComment},#{productFactoryId},#{productStatus})
+            values(#{productId},#{productName},#{productPhoto},#{productComment},#{productFactoryId},#{productStatus})
     </insert>
 
     <!--查询食品-->
     <select id="selectProduct" resultMap="ProductMap">
-        select * from product where product_status=1
+        select * from product left join factory f on product_factory_id=factory_id where product_status=1
     </select>
 
-    <!--查询单个食品-->
+    <!--根据ID查询食品-->
     <select id="selectProductByid" resultMap="ProductMap">
-        select * from product where product_status=1 and product_id=#{productId}
-    </select>
+            select * from product p left join factory f on product_factory_id=factory_id where product_status=1 and product_id=#{productId}
+  </select>
 
     <!--食品作废-->
     <update id="deleteProduct">
         update product set product_status=0 where product_id=#{productId}
     </update>
 
+    <!--模糊查询食品-->
+    <select id="fuzzySearch" resultMap="ProductMap">
+        <bind name="patternl" value="'%'+_parameter.roleName+'%'"/>
+        SELECT * FROM product WHERE product_name LIKE #{patternl};
+    </select>
 </mapper>

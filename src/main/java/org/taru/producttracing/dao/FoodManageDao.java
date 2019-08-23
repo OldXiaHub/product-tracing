@@ -27,4 +27,7 @@ public interface FoodManageDao {
    根据ID查食品
     */
    List<Product> selectProductByid(String productId);
+   /*模糊查询食品*/
+    List<Product> fuzzySearch(@Param("roleName") String productName);
+
 }
