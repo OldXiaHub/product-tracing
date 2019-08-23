@@ -11,13 +11,13 @@ public class Product {
   private String productComment;
   private String productFactoryId;
   private long productStatus;
-  private List<Factory> factory;
+  private Factory factory;
 
-  public List<Factory> getFactory() {
+  public Factory getFactory() {
     return factory;
   }
 
-  public void setFactory(List<Factory> factory) {
+  public void setFactory(Factory factory) {
     this.factory = factory;
   }
 
