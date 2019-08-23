@@ -1,5 +1,6 @@
 package org.taru.producttracing.service.Impl;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.taru.producttracing.dao.UserDaoByZhangR;
@@ -33,13 +34,13 @@ UserDaoByZhangR userDaoByZhangR;
      * 前台用户注册
      */
     @Override
-    public int register(User user) {
+    public int register(@Param("openId") String openId, @Param("nickName") String nickName, @Param("userAddress")  String userAddress, @Param("avatarUrl") String avatarUrl) {
         //用 MD5生成用户id
         int i ;
 //        long k=System.currentTimeMillis();
 //        String j=StringUtil.valueof(k);
 //        user.setOpenId(SecurityUtl.getMd5String(j));
-        i = userDaoByZhangR.userRegister(user);
+        i = userDaoByZhangR.userRegister( openId,  nickName, userAddress,  avatarUrl);
         return i;
     }
 
@@ -54,15 +55,15 @@ UserDaoByZhangR userDaoByZhangR;
         return user;
     }
 
-    /**
-     * 添加用户个人信息
-     * author:zhangrui
-     * time:2019/8/21-15:37
-     */
-    public int addUserInfo(User nickName){
-        int i = userDaoByZhangR.addUserInfo(nickName);
-        return i;
-    }
+//    /**
+//     * 添加用户个人信息
+//     * author:zhangrui
+//     * time:2019/8/21-15:37
+//     */
+//    public int addUserInfo(User nickName){
+//        int i = userDaoByZhangR.addUserInfo(nickName);
+//        return i;
+//    }
 
     /**
      * 查询自己的投诉记录

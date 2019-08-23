@@ -24,26 +24,26 @@
         <result property="userStatus"   column="USER_STATUS" jdbcType="TINYINT"></result>
     </resultMap>
 
-    <!--/**
-     * 添加用户个人信息
-     * author:zhangrui
-     * time:2019/8/21-15:37
-     */-->
-    <insert id="addUserInfo" parameterType="org.taru.producttracing.pojo.User">
-        INSERT INTO USER ( user_id, user_name, user_telphone, user_address, user_comment, user_status, user_url )
-        VALUES
-            ( #{openId}, #{nickName}, #{userTelphone}, #{userAddress}, #{userComment}, #{userStatus}, #{avatarUrl} );
-    </insert>
+<!--    &lt;!&ndash;/**-->
+<!--     * 添加用户个人信息-->
+<!--     * author:zhangrui-->
+<!--     * time:2019/8/21-15:37-->
+<!--     */&ndash;&gt;-->
+<!--    <insert id="addUserInfo" parameterType="org.taru.producttracing.pojo.User">-->
+<!--        INSERT INTO USER ( user_id, user_name, user_telphone, user_address, user_comment, user_status, user_url )-->
+<!--        VALUES-->
+<!--            ( #{openId}, #{nickName}, #{userTelphone}, #{userAddress}, #{userComment}, #{userStatus}, #{avatarUrl} );-->
+<!--    </insert>-->
 
     <!--/**
      * 注册用户
      * author:zhangrui
      * time:2019/8/22-22:10
      */-->
-    <insert id="userRegister" parameterType="org.taru.producttracing.pojo.User">
-        INSERT INTO USER ( user_id, user_name, user_telphone, user_address, user_comment, user_status, user_url )
+    <insert id="userRegister" parameterType="String">
+        INSERT INTO USER ( user_id, user_name, user_address, user_status, user_url )
         VALUES
-            ( #{openId}, #{nickName}, #{userTelphone}, #{userAddress}, #{userComment}, #{userStatus},#{avatarUrl} );
+            ( #{openId}, #{nickName}, #{userAddress}, 1,#{avatarUrl});
     </insert>
     <!--/**
      * 用户个人信息获取
