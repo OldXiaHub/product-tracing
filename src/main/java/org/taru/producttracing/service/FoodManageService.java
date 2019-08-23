@@ -11,4 +11,5 @@ public interface FoodManageService {
     public List<Product> selectProduct();
     public void deleteProduct(String productId);
     public List<Product> selectProductByid(String productId);
+    public List<Product> fuzzySearch(String productName);
 }
