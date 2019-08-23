@@ -92,4 +92,15 @@ UserDaoByZhangR userDaoByZhangR;
         System.out.println(i);
         return i;
     }
+
+    /**
+     * 查询所有用户信息
+     * author：zhangrui
+     * time:2019/8/83-21:29
+     */
+    public List<User> queryUser(){
+        List<User> list=null;
+        list=userDaoByZhangR.queryUser();
+        return list;
+    }
 }

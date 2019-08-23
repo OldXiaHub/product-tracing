@@ -7,6 +7,7 @@ import org.taru.producttracing.pojo.Complain;
 import org.taru.producttracing.pojo.User;
 import org.taru.producttracing.service.UserServiceByZhangR;
 import org.taru.producttracing.util.SecurityUtl;
+import org.taru.producttracing.util.StringUtil;
 import org.taru.producttracing.vo.JsonResult;
 
 import javax.servlet.http.Cookie;
@@ -64,19 +65,24 @@ public class UserApiByZhang {
                                    @RequestParam(value = "userAddress", required = true) String userAddress,
                                    @RequestParam(value = "avatarUrl", required = true) String avatarUrl){
         JsonResult result=null;
-        System.out.println(openId+nickName+userAddress+avatarUrl);
         int i=0;
-        try{
-            i = userServiceByZhangR.register(openId,nickName,userAddress,avatarUrl);
-           if(i!=0 ){
-                result = new JsonResult("200", "用户注册成功", i);
-           }else{
-               result = new JsonResult("404", "用户注册失败", i);
-           }
-        }
-        catch (Exception e){
-            e.printStackTrace();
-            result = new JsonResult("500", e.getMessage(), "");
+        if (openId!=null) {
+            try {
+                User user3 = userServiceByZhangR.getUserInfo(openId);
+                if(user3==null){
+                    i = userServiceByZhangR.register(openId, nickName, userAddress, avatarUrl);
+                    User user1 = userServiceByZhangR.getUserInfo(openId);
+                    result = new JsonResult("200", "注册成功", user1);
+                }
+                else {
+                    result = new JsonResult("200","该用户已注册" , user3);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                result = new JsonResult("500", e.getMessage(), i);
+            }
+        }else {
+            result = new JsonResult("500", "openId为空", "");
         }
         return result;
     }
