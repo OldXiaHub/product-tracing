@@ -155,7 +155,7 @@ public class UserApiByZhang {
      * author:zhangrui
      * time:2019/8/22-23:10
      */
-    @RequestMapping(value = "/api/user/activecomplaint")
+    @RequestMapping(value = "/api/user/activecomplaint" ,method = RequestMethod.POST)
     public JsonResult complain(Complain complain){
         JsonResult result=null;
         int i=0;
