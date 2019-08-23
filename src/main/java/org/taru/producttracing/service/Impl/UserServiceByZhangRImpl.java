@@ -54,15 +54,15 @@ UserDaoByZhangR userDaoByZhangR;
         return user;
     }
 
-    /**
-     * 添加用户个人信息
-     * author:zhangrui
-     * time:2019/8/21-15:37
-     */
-    public int addUserInfo(User nickName){
-        int i = userDaoByZhangR.addUserInfo(nickName);
-        return i;
-    }
+//    /**
+//     * 添加用户个人信息
+//     * author:zhangrui
+//     * time:2019/8/21-15:37
+//     */
+//    public int addUserInfo(User nickName){
+//        int i = userDaoByZhangR.addUserInfo(nickName);
+//        return i;
+//    }
 
     /**
      * 查询自己的投诉记录

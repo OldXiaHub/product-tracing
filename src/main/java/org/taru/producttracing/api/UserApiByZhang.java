@@ -81,28 +81,28 @@ public class UserApiByZhang {
     }
 
 
-    /**
-     * 添加用户个人信息
-     * author:zhangrui
-     * time:2019/8/21-15:37
-     */
-    @RequestMapping(value = "/api/user/adduserinfo" ,method = RequestMethod.POST)
-    public JsonResult addUserInfo(User user){
-        JsonResult result=null;
-        int i=0;
-        try{
-            i=userServiceByZhangR.addUserInfo(user);
-            if (i!=0){
-                result = new JsonResult("200", "添加用户个人信息成功", i);
-            }else {
-                result = new JsonResult("404", "添加用户个人信息失败", i);
-            }
-        }catch(Exception e){
-            e.printStackTrace();
-            result = new JsonResult("500", e.getMessage(), "");
-        }
-        return result;
-    }
+//    /**
+//     * 添加用户个人信息
+//     * author:zhangrui
+//     * time:2019/8/21-15:37
+//     */
+//    @RequestMapping(value = "/api/user/adduserinfo" ,method = RequestMethod.POST)
+//    public JsonResult addUserInfo(User user){
+//        JsonResult result=null;
+//        int i=0;
+//        try{
+//            i=userServiceByZhangR.addUserInfo(user);
+//            if (i!=0){
+//                result = new JsonResult("200", "添加用户个人信息成功", i);
+//            }else {
+//                result = new JsonResult("404", "添加用户个人信息失败", i);
+//            }
+//        }catch(Exception e){
+//            e.printStackTrace();
+//            result = new JsonResult("500", e.getMessage(), "");
+//        }
+//        return result;
+//    }
 
     /**
      * 查询自己的投诉记录

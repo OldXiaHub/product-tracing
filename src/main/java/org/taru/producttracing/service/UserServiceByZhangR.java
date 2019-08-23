@@ -20,12 +20,12 @@ public interface UserServiceByZhangR {
      */
     public int register(User user);
 
-    /**
-     * 添加用户个人信息
-     * author:zhangrui
-     * time:2019/8/21-15:37
-     */
-    public int addUserInfo(User user);
+//    /**
+//     * 添加用户个人信息
+//     * author:zhangrui
+//     * time:2019/8/21-15:37
+//     */
+//    public int addUserInfo(User user);
 
     /**
      * 用户个人信息获取
