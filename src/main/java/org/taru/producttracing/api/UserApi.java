@@ -10,6 +10,7 @@ import org.taru.producttracing.pojo.Factory;
 import org.taru.producttracing.service.UserService;
 import org.taru.producttracing.vo.JsonResult;
 
+import javax.swing.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -166,6 +167,29 @@ public class UserApi {
         }catch (Exception e){
             e.printStackTrace();
             result =new JsonResult("500","查询工厂详情异常",e.getMessage());
+        }
+        return  result;
+    }
+
+    /**
+     * 模糊查询工厂
+     * 湛玉欣 2019.8.23
+     * @param factoryName
+     * @return
+     */
+    @RequestMapping("/api/findfactorybyname")
+    public JsonResult findFactoryByName(String factoryName){
+        JsonResult result =null;
+        try{
+            List<Factory> factorys = userService.findFactoryByName(factoryName);
+            if (factorys.size()>0){
+                result =new JsonResult("200","查询工厂成功",factorys);
+            }else{
+                result =new JsonResult("404","查询工厂失败","");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            result =new JsonResult("500","查询工厂异常",e.getMessage());
         }
         return  result;
     }
