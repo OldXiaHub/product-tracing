@@ -26,12 +26,12 @@ UserDaoByZhangR userDaoByZhangR;
         User user= userDaoByZhangR.login(username,password);
         return user;
     }
+
     /**
      * autnor:zhangrui
      * time:2019/8/20-17:27
      * 前台用户注册
      */
-
     @Override
     public int register(User user) {
         //用 MD5生成用户id
@@ -84,7 +84,11 @@ UserDaoByZhangR userDaoByZhangR;
     @Override
     public int complain(Complain complain) {
         int i=0;
-        i = userDaoByZhangR.complain(complain);
+        if(complain!=null){
+            complain.setComplainId(StringUtil.valueof(System.currentTimeMillis()));
+            i = userDaoByZhangR.complain(complain);
+        }
+        System.out.println(i);
         return i;
     }
 }
