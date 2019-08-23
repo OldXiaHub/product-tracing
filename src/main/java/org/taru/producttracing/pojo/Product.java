@@ -1,6 +1,8 @@
 package org.taru.producttracing.pojo;
 
 
+import java.util.List;
+
 public class Product {
 
   private String productId;
@@ -9,7 +11,15 @@ public class Product {
   private String productComment;
   private String productFactoryId;
   private long productStatus;
+  private List<Factory> factory;
 
+  public List<Factory> getFactory() {
+    return factory;
+  }
+
+  public void setFactory(List<Factory> factory) {
+    this.factory = factory;
+  }
 
   public String getProductId() {
     return productId;
