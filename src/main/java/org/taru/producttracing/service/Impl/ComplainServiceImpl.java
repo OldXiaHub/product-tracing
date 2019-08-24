@@ -30,4 +30,25 @@ public class ComplainServiceImpl implements ComplainService {
     public void acceptComplain(String complainId,long complainStatus) {
         complainDao.acceptCom(complainId,complainStatus);
     }
+
+    /**
+     * 查看投诉详情
+     * @param complainId
+     * @return
+     */
+    @Override
+    public Complain queryComplain(String complainId) {
+        return complainDao.queryComplainById(complainId);
+    }
+
+    /**
+     * 模糊查询
+     * @param complainName
+     * @return
+     */
+    @Override
+    public List<Complain> fuzzycomplain(String complainName) {
+        return complainDao.fuzzy(complainName);
+    }
+
 }
