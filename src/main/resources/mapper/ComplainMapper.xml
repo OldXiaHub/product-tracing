@@ -20,9 +20,7 @@
         select * from complain a left join user b on a.complain_user_name=b.user_name
     </select>
     <!--受理投诉-->
-    <!--<update id="acceptCom" parameterType="org.taru.producttracing.pojo.Complain">-->
-        <!--update complain set complain_status=0 where complain_id=#{complainId}-->
-    <!--</update>-->
+
     <update id="acceptCom">
         update complain
         <set>
@@ -32,4 +30,20 @@
         </set>
         where complain_id=#{complainId}
     </update>
+    <!--&lt;!&ndash;查询投诉详情&ndash;&gt;-->
+    <!--<resultMap id="BaseResult" type="org.taru.producttracing.pojo.Complain">-->
+        <!--<id column="complain_id" property="complainId"/>-->
+        <!--<result column="complain_name" property="complainName"/>-->
+        <!--<result column="complain_content" property="complainContent" />-->
+        <!--<result column="complain_status" property="complainStatus"/>-->
+        <!--<association property="user" javaType="org.taru.producttracing.pojo.User">-->
+            <!--<id  column="user_id" property="openId"/>-->
+            <!--<result column="user_name" property="nickName"/>-->
+        <!--</association>-->
+    <!--</resultMap>-->
+    <!--<select id="queryComplainById" resultMap="BaseResult">-->
+        <!--select * from complain a-->
+        <!--left join user b on a.complain_user_name=b.user_name-->
+        <!--where complain_id=#{complainId}-->
+    <!--</select>-->
 </mapper>
