@@ -17,7 +17,7 @@ import java.util.List;
 @CrossOrigin
 public class NewsApi {
     /**
-     * 查询新闻
+     * 查询新闻 王凯飞
      */
     @Autowired
     NewsServiceImpl serviceImpl;
@@ -41,14 +41,14 @@ public class NewsApi {
     }
     /**
      * 删除新闻
-     * @param id
+     * @param newsId
      * @return
      */
     @RequestMapping(value = "/api/adminews/delnews")
-    public JsonResult deleteNews(String id) {
+    public JsonResult deleteNews(String newsId) {
         JsonResult  result=null;
         try {
-            int i=serviceImpl.deleteNews(id);
+            int i=serviceImpl.deleteNews(newsId);
             if (i!=0) {
                 result = new JsonResult("200", "删除成功", i);
             } else {
@@ -64,10 +64,10 @@ public class NewsApi {
      * 根据id查询新闻
      */
     @RequestMapping(value = "/api/adminews/selectNewsById")
-    public JsonResult selectNewsById(String id) {
+    public JsonResult selectNewsById(String newsId) {
         JsonResult  result=null;
         try {
-            News news=serviceImpl.selectNewsById(id);
+            News news=serviceImpl.selectNewsById(newsId);
             if (news!=null) {
                 result = new JsonResult("200", "查询成功", news);
             } else {
@@ -79,22 +79,29 @@ public class NewsApi {
         }
         return result;
     }
-    /*发布新闻*/
-    @RequestMapping(value = "/api/adminews/insertNews")
-    public JsonResult insertNews(News news){
-        JsonResult result=null;
-        if (news!=null) {
-            try {
-                serviceImpl.insertNews(news);
-                result = new JsonResult("200", "发布新闻成功", null);
-            } catch (Exception e) {
-                e.printStackTrace();
-                result = new JsonResult("500", "发布新闻失败", null);
+    /**
+     * 根据时间排序
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    @RequestMapping(value = "/api/adminews/sortByTime")
+    public JsonResult sortByTime(Integer pageNum,Integer pageSize){
+        JsonResult  result=null;
+        try {
+            PageHelper.startPage(pageNum,pageSize);
+            List<News> news=serviceImpl.sortByTime();
+            PageInfo pageInfo=new PageInfo(news);
+            if(news==null){
+                result=new JsonResult("404","排序失败","");
+            }else {
+                result=new JsonResult("200","排序成功",pageInfo);
             }
-        }else {
-            result = new JsonResult("404", "未输入", null);
+        }catch (Exception e){
+            e.printStackTrace();
+            result  =new JsonResult("500","error","");
         }
-
         return result;
     }
+
 }
