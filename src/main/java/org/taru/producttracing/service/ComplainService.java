@@ -19,4 +19,13 @@ public interface ComplainService {
      * 受理投诉
      */
     public void acceptComplain(String complainId,long complainStatus);
+    /**
+     * 查看投诉详情
+     */
+    public Complain queryComplain(String complainId);
+    /**
+     * 徐大伟2019.8.24
+     * 模糊查询
+     */
+    public List<Complain> fuzzycomplain(String complainName);
 }
