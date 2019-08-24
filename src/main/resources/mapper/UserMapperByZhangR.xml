@@ -99,6 +99,6 @@
     <insert id="complain" parameterType="org.taru.producttracing.pojo.Complain">
         INSERT INTO complain ( complain_id, complain_name, complain_content, complain_photo, complain_user_name, complain_status )
         VALUES
-            (#{complainId}, #{complainName}, #{complainContent}, #{complainPhoto}, #{complainUserId}, #{complainStatus} )
+            (#{complainId}, #{complainName}, #{complainContent}, #{complainPhoto}, #{complainUserId}, 0 )
     </insert>
 </mapper>
