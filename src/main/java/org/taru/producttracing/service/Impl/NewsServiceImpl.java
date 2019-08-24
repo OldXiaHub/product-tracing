@@ -5,8 +5,6 @@ import org.springframework.stereotype.Service;
 import org.taru.producttracing.dao.NewsDao;
 import org.taru.producttracing.pojo.News;
 import org.taru.producttracing.service.NewsService;
-import org.taru.producttracing.util.IdUtil;
-
 import java.util.List;
 @Service
 public class NewsServiceImpl implements NewsService {
@@ -22,25 +20,27 @@ public class NewsServiceImpl implements NewsService {
     }
     /**
      * 删除新闻
-     * @param id
+     * @param newsId
      * @return
      */
     @Override
-    public int deleteNews(String id){
-        int news=newsDao.delNewsById(id);
+    public int deleteNews(String newsId){
+        int news=newsDao.delNewsById(newsId);
         return news;
     }
     /**
      * 根据id查询新闻
      */
-    public News selectNewsById(String id){
-        return newsDao.selectNewsById(id);
+    public News selectNewsById(String newsId){
+        return newsDao.selectNewsById(newsId);
     }
-    /*发布新闻*/
-    @Override
-    public void insertNews(News news){
-        String newId= IdUtil.getLongTimeId();
-        news.setNewsId(newId);
-        newsDao.insertNews(news);
+    /**
+     *
+     *
+     * 根据时间排序新闻
+     */
+    public List<News> sortByTime(){
+        return newsDao.sortByTime();
     }
+
 }
