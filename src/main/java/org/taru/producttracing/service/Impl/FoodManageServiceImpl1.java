@@ -8,6 +8,8 @@ import org.taru.producttracing.service.FoodManageService1;
 import org.taru.producttracing.util.IdUtil;
 import org.taru.producttracing.util.QRFactory;
 
+import java.util.List;
+
 /**
  * 徐大伟2019.8.22
  * 批次添加
@@ -42,4 +44,8 @@ public class FoodManageServiceImpl1 implements FoodManageService1 {
         return foodManageDao1.queryBatchById(batchBarcode);
     }
 
+    @Override
+    public List<Batch> queryall() {
+        return foodManageDao1.querybatch();
+    }
 }
