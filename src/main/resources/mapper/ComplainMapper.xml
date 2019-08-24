@@ -20,8 +20,16 @@
         select * from complain a left join user b on a.complain_user_name=b.user_name
     </select>
     <!--受理投诉-->
-    <update id="acceptCom" parameterType="org.taru.producttracing.pojo.Complain">
-        update complain set complain_status=0 where complain_id=#{complainId}
+    <!--<update id="acceptCom" parameterType="org.taru.producttracing.pojo.Complain">-->
+        <!--update complain set complain_status=0 where complain_id=#{complainId}-->
+    <!--</update>-->
+    <update id="acceptCom">
+        update complain
+        <set>
+            <if test="complainStatus == 0">complain_status=#{complainStatus},</if>
+            <if test="complainStatus == 1">complain_status=#{complainStatus},</if>
+            <if test="complainStatus == 2">complain_status=#{complainStatus},</if>
+        </set>
+        where complain_id=#{complainId}
     </update>
-
 </mapper>
