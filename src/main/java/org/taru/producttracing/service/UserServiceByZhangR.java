@@ -48,4 +48,11 @@ public interface UserServiceByZhangR {
      * time:2019/8/22-21:10
      */
     public int complain(Complain complain);
+
+    /**
+     * 查询所有用户信息
+     * author：zhangrui
+     * time:2019/8/83-21:29
+     */
+    public List<User> queryUser();
 }
