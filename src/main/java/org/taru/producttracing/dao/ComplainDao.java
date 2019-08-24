@@ -26,5 +26,14 @@ public interface ComplainDao {
      * @param complainId
      */
     public void acceptCom(@Param("complainId") String complainId,@Param("complainStatus") long complainStatus);
-
+    /**
+     * 徐大伟2019.8.24
+     * 查询投诉详情
+     */
+    public Complain queryComplainById(@Param("complainId") String complainId);
+    /**
+     * 徐大伟2019.8.24
+     * 模糊查询
+     */
+    public List<Complain> fuzzy(@Param("complainName") String complainName);
 }
