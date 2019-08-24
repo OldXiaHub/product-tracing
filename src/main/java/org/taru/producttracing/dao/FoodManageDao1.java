@@ -5,6 +5,8 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 import org.taru.producttracing.pojo.Batch;
 
+import java.util.List;
+
 /**
  * 徐大伟2019.8.21
  * 批次发货
@@ -25,4 +27,8 @@ public interface FoodManageDao1 {
      * 插入批次表二维码
      */
     public void addQr(@Param("batchBarcode") String batchBarcode,@Param("qr") String qr);
+    /**
+     * 查询所有批次
+     */
+    public List<Batch> querybatch();
 }
