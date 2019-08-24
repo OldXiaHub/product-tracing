@@ -24,5 +24,5 @@ public interface FoodManageDao1 {
     /**
      * 插入批次表二维码
      */
-    public void addQr(@Param("batchId") String batchId,@Param("qr") String qr);
+    public void addQr(@Param("batchBarcode") String batchBarcode,@Param("qr") String qr);
 }
