@@ -25,5 +25,7 @@ public interface NewsDao {
      *
      */
     public News selectNewsById(String id);
+     /*发布新闻*/
+    public void insertNews(News news);
 }
 

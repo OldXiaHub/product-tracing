@@ -37,4 +37,10 @@
         <include refid="BaseSqlColumn"></include>
         from  News where news_id =#{id}
     </select>
+
+    <!--发布新闻-->
+    <insert id="insertNews" parameterType="org.taru.producttracing.pojo.News">
+        insert into news(news_id,news_name,news_content,news_photo,news_time,news_status)
+        values (#{newsId},#{newsName},#{newsContent},#{newsPhoto},#{newsTime},#{newsStatus})
+    </insert>
 </mapper>
