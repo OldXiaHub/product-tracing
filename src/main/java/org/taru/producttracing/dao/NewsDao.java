@@ -19,13 +19,18 @@ public interface NewsDao {
     /**
      * 删除新闻
      */
-    public int delNewsById(@Param("id") String id);
+    public int delNewsById(@Param("newsId") String newsId);
     /**
      * 根据id查询新闻
      *
      */
-    public News selectNewsById(String id);
-     /*发布新闻*/
-    public void insertNews(News news);
+    public News selectNewsById(String newsId);
+    /**
+     *NewsDao
+     *
+     * 根据时间排序新闻
+     */
+    public List<News> sortByTime();
+
 }
 
