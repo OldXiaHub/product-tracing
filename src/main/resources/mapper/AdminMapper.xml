@@ -60,4 +60,5 @@
         factory_distributor_id as factoryDistributorId,factory_status as fatoryStatus,factory_admin_id as factoryAdminId
         from factory where factory_name like #{pattern}
     </select>
+
 </mapper>
