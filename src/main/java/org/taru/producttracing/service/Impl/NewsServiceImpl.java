@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import org.taru.producttracing.dao.NewsDao;
 import org.taru.producttracing.pojo.News;
 import org.taru.producttracing.service.NewsService;
+import org.taru.producttracing.util.IdUtil;
+
 import java.util.List;
 @Service
 public class NewsServiceImpl implements NewsService {
@@ -33,5 +35,12 @@ public class NewsServiceImpl implements NewsService {
      */
     public News selectNewsById(String id){
         return newsDao.selectNewsById(id);
+    }
+    /*发布新闻*/
+    @Override
+    public void insertNews(News news){
+        String newId= IdUtil.getLongTimeId();
+        news.setNewsId(newId);
+        newsDao.insertNews(news);
     }
 }

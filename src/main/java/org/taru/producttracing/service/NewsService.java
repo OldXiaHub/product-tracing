@@ -19,4 +19,6 @@ public interface NewsService {
      * 根据id查询新闻
      */
     public News selectNewsById(String id);
+    /*发布新闻*/
+    public void insertNews(News news);
 }
