@@ -29,17 +29,17 @@ public class FoodManageServiceImpl1 implements FoodManageService1 {
         QRFactory.creteQRFile(batch.getBatchBarcode());
         String qr=QRFactory.getImageBinary(batch.getBatchBarcode());
         System.out.println(qr);
-        foodManageDao1.addQr(batch.getBatchId(),qr);
+        foodManageDao1.addQr(batch.getBatchBarcode(),qr);
     }
 
     /**
      * 根据id 查询批次
-     * @param batchId
+     * @param batchBarcode
      * @return
      */
     @Override
-    public Batch queryBatch(String batchId) {
-        return foodManageDao1.queryBatchById(batchId);
+    public Batch queryBatch(String batchBarcode) {
+        return foodManageDao1.queryBatchById(batchBarcode);
     }
 
 }
