@@ -16,34 +16,47 @@ import java.util.List;
 public class FoodManageServiceImpl implements FoodManageService {
     @Autowired
     private FoodManageDao foodManageDao;
+
     /*
     食品添加
      */
     @Override
-    public void insertProduct(Product product){
+    public void insertProduct(Product product) {
         String productId = IdUtil.getDateId();
         product.setProductId(productId);
         foodManageDao.insertProduct(product);
     }
+
     /*
     查询所有食品
      */
     @Override
-    public List<Product> selectProduct(){
+    public List<Product> selectProduct() {
         return foodManageDao.selectProduct();
     }
+
     /*
     食品作废
      */
     @Override
-    public void deleteProduct(String productId){
+    public void deleteProduct(String productId) {
         foodManageDao.deleteProduct(productId);
     }
+
     /*
-   查询所有食品
+   根据ID查询食品
     */
     @Override
-    public List<Product> selectProductByid(String productId){
+    public List<Product> selectProductByid(String productId) {
         return foodManageDao.selectProductByid(productId);
     }
+
+    /*模糊查询食品*/
+    @Override
+    public List<Product> fuzzySearch(String productName) {
+        return foodManageDao.fuzzySearch(productName);
+    }
+
+
+
 }

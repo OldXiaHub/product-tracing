@@ -58,4 +58,12 @@ public interface UserService {
      * @return
      */
     Factory findFactoryById(String factoryId);
+
+    /**
+     * 模糊查询工厂
+     * 湛玉欣 2019.8.23
+     * @param factoryName
+     * @return
+     */
+    List<Factory> findFactoryByName(String factoryName);
 }

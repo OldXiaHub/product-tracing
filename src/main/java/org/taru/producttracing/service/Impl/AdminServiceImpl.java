@@ -78,4 +78,16 @@ public class AdminServiceImpl implements UserService {
         return factory;
     }
 
+    /**
+     * 模糊查询工厂
+     * 湛玉欣 2019.8.23
+     * @param factoryName
+     * @return
+     */
+    @Override
+    public List<Factory> findFactoryByName(String factoryName) {
+        List factorys=userDao.findFactoryByName(factoryName);
+        return factorys;
+    }
+
 }

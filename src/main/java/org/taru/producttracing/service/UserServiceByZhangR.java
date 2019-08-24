@@ -1,5 +1,6 @@
 package org.taru.producttracing.service;
 
+import org.apache.ibatis.annotations.Param;
 import org.taru.producttracing.pojo.Complain;
 import org.taru.producttracing.pojo.User;
 
@@ -18,14 +19,14 @@ public interface UserServiceByZhangR {
      * time:2019/8/20-17:26
      * 前台用户注册
      */
-    public int register(User user);
+    public int register(@Param("openId") String openId, @Param("nickName") String nickName, @Param("userAddress")  String userAddress, @Param("avatarUrl") String avatarUrl);
 
-    /**
-     * 添加用户个人信息
-     * author:zhangrui
-     * time:2019/8/21-15:37
-     */
-    public int addUserInfo(User user);
+//    /**
+//     * 添加用户个人信息
+//     * author:zhangrui
+//     * time:2019/8/21-15:37
+//     */
+//    public int addUserInfo(User user);
 
     /**
      * 用户个人信息获取
@@ -47,4 +48,11 @@ public interface UserServiceByZhangR {
      * time:2019/8/22-21:10
      */
     public int complain(Complain complain);
+
+    /**
+     * 查询所有用户信息
+     * author：zhangrui
+     * time:2019/8/83-21:29
+     */
+    public List<User> queryUser();
 }

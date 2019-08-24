@@ -23,7 +23,7 @@ public interface UserDaoByZhangR {
      * time:2019/8/20/16:52
      * 前台用户注册
      */
-    public int userRegister(User user);
+    public int userRegister(@Param("openId") String openId, @Param("nickName") String nickName, @Param("userAddress")  String userAddress, @Param("avatarUrl") String avatarUrl);
 
     /**
      * 用户个人信息获取
@@ -32,12 +32,12 @@ public interface UserDaoByZhangR {
      */
     public User getUserInfo(String openId);
 
-    /**
-     * 添加用户个人信息
-     * author:zhangrui
-     * time:2019/8/21-15:37
-     */
-    public int addUserInfo(User nickName);
+//    /**
+//     * 添加用户个人信息
+//     * author:zhangrui
+//     * time:2019/8/21-15:37
+//     */
+//    public int addUserInfo(User nickName);
 
     /**
      * 查询自己的投诉记录
@@ -52,4 +52,11 @@ public interface UserDaoByZhangR {
      * time:2019/8/22-21:10
      */
     public int complain(Complain complain);
+
+    /**
+     * 查询所有用户信息
+     * author：zhangrui
+     * time:2019/8/83-21:29
+     */
+    public List<User> queryUser();
 }

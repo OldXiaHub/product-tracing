@@ -65,4 +65,10 @@ public interface UserDao {
      */
     public Factory findFactoryById(@Param("factoryId") String factoryId);
 
+    /**
+     * 模糊查询工厂
+     * @param factoryName
+     * @return
+     */
+    public List<Factory> findFactoryByName(@Param("factoryName") String factoryName);
 }
