@@ -79,4 +79,22 @@ public class NewsApi {
         }
         return result;
     }
+    /*发布新闻*/
+    @RequestMapping(value = "/api/adminews/insertNews")
+    public JsonResult insertNews(News news){
+        JsonResult result=null;
+        if (news!=null) {
+            try {
+                serviceImpl.insertNews(news);
+                result = new JsonResult("200", "发布新闻成功", null);
+            } catch (Exception e) {
+                e.printStackTrace();
+                result = new JsonResult("500", "发布新闻失败", null);
+            }
+        }else {
+            result = new JsonResult("404", "未输入", null);
+        }
+
+        return result;
+    }
 }
