@@ -58,4 +58,43 @@ public class ComplainApi {
         }
         return result;
     }
+    /**
+     * 查看投诉详情
+     */
+    @RequestMapping(value = "/api/adminlog/querycomplainById")
+    public JsonResult query(String complainId){
+        JsonResult result=null;
+        Complain complain= complainService.queryComplain(complainId);
+        try{
+            if( complain != null){
+                result=new JsonResult("200","查询成功",complain);
+            }else {
+                result=new JsonResult("400","查询失败","");
+            }
+        }catch (Exception ex){
+            ex.printStackTrace();
+            result=new JsonResult("500","error","");
+        }
+        return result;
+    }
+    /**
+     * 模糊查询投诉
+     */
+    @RequestMapping(value = "/api/adminlog/fuzzycomplain")
+    public JsonResult fuuzy(String complainName){
+        JsonResult result=null;
+        List<Complain> complain= complainService.fuzzycomplain(complainName);
+        System.out.println(complain);
+        try{
+            if( complain.size()>0){
+                result=new JsonResult("200","查询成功",complain);
+            }else {
+                result=new JsonResult("400","查询失败","");
+            }
+        }catch (Exception ex){
+            ex.printStackTrace();
+            result=new JsonResult("500","error","");
+        }
+        return result;
+    }
 }
