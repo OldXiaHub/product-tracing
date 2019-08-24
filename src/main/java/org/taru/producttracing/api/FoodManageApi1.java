@@ -9,6 +9,8 @@ import org.taru.producttracing.service.FoodManageService1;
 import org.taru.producttracing.util.IdUtil;
 import org.taru.producttracing.vo.JsonResult;
 
+import java.util.List;
+
 /**
  * 徐大伟2019.8.21
  * 添加批次
@@ -42,6 +44,26 @@ public class FoodManageApi1 {
         JsonResult jsonResult=null;
         try {
             Batch batch=foodManageService1.queryBatch(batchBarcode);
+            if(batch!=null){
+                jsonResult=new JsonResult("200","查询成功",batch);
+            }else {
+                jsonResult=new JsonResult("404","查询失败","");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            jsonResult=new JsonResult("500",e.getMessage(),"");
+        }
+        return jsonResult;
+    }
+    /**
+     * 查询所有批次
+     * @return
+     */
+    @RequestMapping("/Api/queryallbatch")
+    public JsonResult querybatch(){
+        JsonResult jsonResult=null;
+        try {
+            List<Batch> batch=foodManageService1.queryall();
             if(batch!=null){
                 jsonResult=new JsonResult("200","查询成功",batch);
             }else {
