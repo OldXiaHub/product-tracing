@@ -50,4 +50,10 @@
        from factory
        where  factory_id=#{factoryId}
     </select>
+
+    <!--模糊搜索工厂-->
+    <select id="findFactoryByName" resultType="hashmap">
+        <bind name="pattern" value="'%'+_parameter.factoryName+'%'"/>
+        select * from factory where factory_name like #{pattern}
+    </select>
 </mapper>
