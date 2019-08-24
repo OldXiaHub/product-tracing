@@ -15,13 +15,13 @@ import java.io.IOException;
  */
 public class QRFactory {
     static BASE64Encoder encoder = new sun.misc.BASE64Encoder();
-    public static void creteQRFile(String batchId)
+    public static void creteQRFile(String batchBarcode)
     {
-        String info = String.format("http://127.0.0.1/Api/querybatch?batchId=%s",batchId);
-        String destPath = "E:\\QRcodefile\\"+batchId;
+        String info = String.format("http://127.0.0.1/Api/querybatch?batchId=%s",batchBarcode);
+        String destPath = "E:\\QRcodefile\\"+batchBarcode;
         try {
             QRCode.encode(info, null, destPath, true);
-            String resultStr = QRCode.decode("E:\\QRcodefile\\"+batchId);
+            String resultStr = QRCode.decode("E:\\QRcodefile\\"+batchBarcode);
         } catch (Exception e) {
             e.printStackTrace();
         }
