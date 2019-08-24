@@ -1,5 +1,6 @@
 package org.taru.producttracing.api;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
@@ -163,11 +164,16 @@ public class UserApiByZhang {
      * time:2019/8/22-23:10
      */
     @RequestMapping(value = "/api/user/activecomplaint" ,method = RequestMethod.POST)
-    public JsonResult complain(Complain complain){
+    public JsonResult complain(@RequestParam(value = "complainId", required = true) String complainId,
+                               @RequestParam(value = "complainName", required = true) String complainName,
+                               @RequestParam(value ="complainContent", required = true) String complainContent,
+                               @RequestParam(value ="complainPhoto", required = true) String complainPhoto,
+                               @RequestParam(value ="complainUserId", required = true) String complainUserId,
+                               @RequestParam(value = "complainTime", required = true) String complainTime){
         JsonResult result=null;
         int i=0;
         try{
-            i=userServiceByZhangR.complain(complain);
+            i=userServiceByZhangR.complain(complainId,complainName,complainContent,complainPhoto,complainUserId,complainTime);
             if (i!=0){
                 result = new JsonResult("200", "用户投诉成功", i);
             }else {

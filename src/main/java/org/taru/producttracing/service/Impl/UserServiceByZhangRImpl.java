@@ -10,6 +10,8 @@ import org.taru.producttracing.service.UserServiceByZhangR;
 import org.taru.producttracing.util.SecurityUtl;
 import org.taru.producttracing.util.StringUtil;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 
@@ -83,13 +85,18 @@ UserDaoByZhangR userDaoByZhangR;
      * time:2019/8/22-22:10
      */
     @Override
-    public int complain(Complain complain) {
+    public int complain(@Param("complainId")String complainId, @Param("complainName") String complainName,@Param("complainContent") String complainContent,@Param("complainPhoto") String complainPhoto,@Param("complainUserId") String complainUserId,@Param("complainTime") String complainTime) {
         int i=0;
-        if(complain!=null){
-            complain.setComplainId(StringUtil.valueof(System.currentTimeMillis()));
-            i = userDaoByZhangR.complain(complain);
-        }
-        System.out.println(i);
+        Complain complain =new Complain();
+        complainId =StringUtil.valueof(System.currentTimeMillis());
+        complain.setComplainId(complainId);
+
+        Date date = new Date();
+        SimpleDateFormat ss = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        complainTime=ss.format(date);
+        complain.setComplainTime(complainTime);
+
+        i = userDaoByZhangR.complain(complainId,complainName,complainContent,complainPhoto,complainUserId,complainTime);
         return i;
     }
 

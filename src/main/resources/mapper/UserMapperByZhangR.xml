@@ -96,9 +96,10 @@
      * author:zhangrui
      * time:2019/8/22-21:10
      */-->
-    <insert id="complain" parameterType="org.taru.producttracing.pojo.Complain">
-        INSERT INTO complain ( complain_id, complain_name, complain_content, complain_photo, complain_user_name, complain_status )
+    <insert id="complain" parameterType="String">
+        INSERT INTO
+        complain ( complain_id, complain_name, complain_content, complain_photo, complain_user_name, complain_status,complain_time )
         VALUES
-            (#{complainId}, #{complainName}, #{complainContent}, #{complainPhoto}, #{complainUserId}, 0 )
+            (#{complainId}, #{complainName}, #{complainContent}, #{complainPhoto}, #{complainUserId}, 0 ,#{complainTime})
     </insert>
 </mapper>
