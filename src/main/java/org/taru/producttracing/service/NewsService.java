@@ -11,14 +11,19 @@ public interface NewsService {
 
     /**
      * 删除新闻
-     * @param id
+     * @param newsId
      * @return
      */
-    public int deleteNews(String id);
+    public int deleteNews(String newsId);
     /**
      * 根据id查询新闻
      */
-    public News selectNewsById(String id);
-    /*发布新闻*/
-    public void insertNews(News news);
+    public News selectNewsById(String newsId);
+    /**
+     *
+     *
+     * 根据时间排序新闻
+     */
+    public List<News> sortByTime();
+
 }
