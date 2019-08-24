@@ -28,7 +28,7 @@ public class FoodManageServiceImpl1 implements FoodManageService1 {
         foodManageDao1.sendGoods(batch);
         QRFactory.creteQRFile(batch.getBatchBarcode());
         String qr=QRFactory.getImageBinary(batch.getBatchBarcode());
-        System.out.println(qr);
+//        System.out.println(qr);
         foodManageDao1.addQr(batch.getBatchBarcode(),qr);
     }
 
