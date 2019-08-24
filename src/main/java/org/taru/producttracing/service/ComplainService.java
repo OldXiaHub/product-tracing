@@ -18,5 +18,5 @@ public interface ComplainService {
     /**
      * 受理投诉
      */
-    public void acceptComplain(String complainId);
+    public void acceptComplain(String complainId,long complainStatus);
 }

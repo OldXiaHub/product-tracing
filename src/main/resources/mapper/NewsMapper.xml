@@ -16,25 +16,27 @@
     <sql id="BaseSqlColumn">
         news_id,news_name,news_content,news_photo,news_time,news_status
     </sql>
-
+    <!--查询所有新闻-->
     <select id="selectNews"    resultMap="BaseResultMap" >
 
         select
-            /**news_id as newsId
-            news_name as newsName
-            news_content as newsContent
-            news_photo as newsPhoto
-            news_time as newsTime
-            news_status as newsStatus*/
         <include refid="BaseSqlColumn"></include>
-        from  News
+        from  News where news_status='1'
     </select>
+    <!--删除新闻-->
     <update id="delNewsById">
-        update news set news_status='0' where news_id =#{id}
+        update news set news_status='0' where news_id =#{newsId}
     </update>
     <select id="selectNewsById"    resultMap="BaseResultMap" >
         select
         <include refid="BaseSqlColumn"></include>
-        from  News where news_id =#{id}
+        from  News where news_id =#{newsId}
     </select>
+    <!-- 排序新闻-->
+    <select id="sortByTime" resultMap="BaseResultMap" >
+    select
+    <include refid="BaseSqlColumn"></include>
+    from  News where  news_status='1' order by  news_time  desc
+    </select>
+
 </mapper>

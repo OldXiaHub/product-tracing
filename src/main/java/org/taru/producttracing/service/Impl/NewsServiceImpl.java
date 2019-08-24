@@ -20,18 +20,27 @@ public class NewsServiceImpl implements NewsService {
     }
     /**
      * 删除新闻
-     * @param id
+     * @param newsId
      * @return
      */
     @Override
-    public int deleteNews(String id){
-        int news=newsDao.delNewsById(id);
+    public int deleteNews(String newsId){
+        int news=newsDao.delNewsById(newsId);
         return news;
     }
     /**
      * 根据id查询新闻
      */
-    public News selectNewsById(String id){
-        return newsDao.selectNewsById(id);
+    public News selectNewsById(String newsId){
+        return newsDao.selectNewsById(newsId);
     }
+    /**
+     *
+     *
+     * 根据时间排序新闻
+     */
+    public List<News> sortByTime(){
+        return newsDao.sortByTime();
+    }
+
 }

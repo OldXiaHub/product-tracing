@@ -47,9 +47,9 @@ public class ComplainApi {
      * 受理投诉
      */
     @RequestMapping(value = "/api/adminlog/accept")
-    public JsonResult acceptCom(String complainId){
+    public JsonResult acceptCom(String complainId,long complainStatus){
         JsonResult result=null;
-        complainService.acceptComplain(complainId);
+        complainService.acceptComplain(complainId,complainStatus);
         try{
             result=new JsonResult("200","受理成功","");
         }catch (Exception ex){

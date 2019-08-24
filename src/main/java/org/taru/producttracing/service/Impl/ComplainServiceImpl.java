@@ -27,7 +27,7 @@ public class ComplainServiceImpl implements ComplainService {
      * 受理投诉
      */
     @Override
-    public void acceptComplain(String complainId) {
-        complainDao.acceptCom(complainId);
+    public void acceptComplain(String complainId,long complainStatus) {
+        complainDao.acceptCom(complainId,complainStatus);
     }
 }

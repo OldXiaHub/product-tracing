@@ -15,6 +15,6 @@ public interface FoodManageService1 {
     /**
      * id查询批次
      */
-    public Batch queryBatch(String batchId);
+    public Batch queryBatch(String batchBarcode);
 
 }

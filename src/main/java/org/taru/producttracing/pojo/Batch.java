@@ -8,6 +8,7 @@ public class Batch {
   private String batchTime;
   private long batchStatus;
   private String batchQrcode;
+  private String batchBarcode;
   private String batchProductId;
   private String batchProductName;
   private String batchProductPhoto;
@@ -62,6 +63,15 @@ public class Batch {
 
   public void setBatchQrcode(String batchQrcode) {
     this.batchQrcode = batchQrcode;
+  }
+
+
+  public String getBatchBarcode() {
+    return batchBarcode;
+  }
+
+  public void setBatchBarcode(String batchBarcode) {
+    this.batchBarcode = batchBarcode;
   }
 
 

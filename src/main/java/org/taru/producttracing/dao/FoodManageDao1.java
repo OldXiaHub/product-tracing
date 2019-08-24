@@ -20,9 +20,9 @@ public interface FoodManageDao1 {
     /**
      * 根据ID查询批次
      */
-    public Batch queryBatchById(@Param("batchId") String batchId);
+    public Batch queryBatchById(@Param("batchBarcode") String batchBarcode);
     /**
      * 插入批次表二维码
      */
-    public void addQr(@Param("batchId") String batchId,@Param("qr") String qr);
+    public void addQr(@Param("batchBarcode") String batchBarcode,@Param("qr") String qr);
 }
