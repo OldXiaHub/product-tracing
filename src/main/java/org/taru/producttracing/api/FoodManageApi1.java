@@ -38,10 +38,10 @@ public class FoodManageApi1 {
      * @return
      */
     @RequestMapping("/Api/querybatch")
-    public JsonResult selectProduct(String batchId){
+    public JsonResult selectProduct(String batchBarcode){
         JsonResult jsonResult=null;
         try {
-            Batch batch=foodManageService1.queryBatch(batchId);
+            Batch batch=foodManageService1.queryBatch(batchBarcode);
             if(batch!=null){
                 jsonResult=new JsonResult("200","查询成功",batch);
             }else {

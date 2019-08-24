@@ -38,16 +38,17 @@
                 a.batch_time,
                 a.batch_product_name,
                 a.batch_product_photo,
+
                 a.batch_product_create_time,
                 a.batch_product_quality_time,
 				a.batch_startjidu_geo,
 				a.batch_end_geo,
 				a.batch_startweidu_geo
-			from batch a WHERE batch_id=#{batchId}
+			from batch a WHERE batch_barcode=#{batchBarcode}
     </select>
     <!--添加批次二维码-->
     <select id="addQr" parameterType="org.taru.producttracing.pojo.Batch">
-        update batch set batch_qrcode=#{qr} where batch_id=#{batchId}
+        update batch set batch_qrcode=#{qr} where batch_barcode=#{batchBarcode
     </select>
 
 
