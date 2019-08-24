@@ -25,6 +25,6 @@ public interface ComplainDao {
      * 受理投诉
      * @param complainId
      */
-    public void acceptCom(@Param("complainId") String complainId);
+    public void acceptCom(@Param("complainId") String complainId,@Param("complainStatus") long complainStatus);
 
 }
