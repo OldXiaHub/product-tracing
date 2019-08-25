@@ -26,7 +26,6 @@ public class Batch {
   private String batchProductUnit;
   private String batchProductStandard;
 
-
   public String getBatchId() {
     return batchId;
   }
