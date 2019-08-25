@@ -5,9 +5,11 @@ public class Factory {
 
   private String factoryId;
   private String factoryName;
+  private String factoryLogo;
   private String factoryTelphone;
   private String factoryAddress;
   private double factoryGeo;
+  private String factoryBusinessPhoto;
   private String factoryLicense;
   private String factoryRegisterTime;
   private String factoryLegalperson;
@@ -30,6 +32,15 @@ public class Factory {
 
   public void setFactoryName(String factoryName) {
     this.factoryName = factoryName;
+  }
+
+
+  public String getFactoryLogo() {
+    return factoryLogo;
+  }
+
+  public void setFactoryLogo(String factoryLogo) {
+    this.factoryLogo = factoryLogo;
   }
 
 
@@ -57,6 +68,15 @@ public class Factory {
 
   public void setFactoryGeo(double factoryGeo) {
     this.factoryGeo = factoryGeo;
+  }
+
+
+  public String getFactoryBusinessPhoto() {
+    return factoryBusinessPhoto;
+  }
+
+  public void setFactoryBusinessPhoto(String factoryBusinessPhoto) {
+    this.factoryBusinessPhoto = factoryBusinessPhoto;
   }
 
 
