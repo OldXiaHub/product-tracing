@@ -14,10 +14,10 @@
     <!--添加工厂 湛玉欣 2019.8.21-->
     <insert id="addFactory" parameterType="org.taru.producttracing.pojo.Factory">
         insert into
-        factory(factory_id,factory_name,factory_logo,factory_telphone,factory_address,factory_geo,factory_license,
-                factory_register_time,factory_distributor_id,factory_status,factory_admin_id)
-        values  (#{factoryId},#{factoryName},#{factoryLogo},#{factoryTelphone},#{factoryAddress},#{factoryGeo},#{factoryLicense},
-                #{factoryRegisterTime},#{factoryDistributorId},#{factoryStatus},#{factoryAdminId})
+        factory(factory_id,factory_name,factory_telphone,factory_address,factory_geo,factory_license,
+                factory_register_time,factory_distributor_id,factory_status,factory_legalperson)
+        values  (#{factoryId},#{factoryName},#{factoryTelphone},#{factoryAddress},#{factoryGeo},
+                #{factoryLicense},#{factoryRegisterTime},#{factoryDistributorId},#{factoryStatus},#{factoryLegalperson})
     </insert>
 
     <!--删除工厂 湛玉欣 2019.8.21-->
@@ -27,26 +27,26 @@
 
     <!--修改工厂 湛玉欣 2019.8.21-->
     <update id="modifyFactory" parameterType="org.taru.producttracing.pojo.Factory">
-        update factory set  factory_name=#{factoryName},factory_logo=#{factoryLogo},factory_telphone=#{factoryTelphone},
-                            factory_address=#{factoryAddress},factory_geo=#{factoryGeo},factory_license=#{factoryLicense},
-                            factory_register_time=#{factoryRegisterTime},factory_distributor_id=#{factoryDistributorId},
-                            factory_status=#{factoryStatus},factory_admin_id=#{factoryAdminId}
-                    where factory_id=#{factoryId}
+        update factory set  factory_name=#{factoryName},factory_telphone=#{factoryTelphone},factory_address=#{factoryAddress},
+                            factory_geo=#{factoryGeo},factory_license=#{factoryLicense},factory_register_time=#{factoryRegisterTime},
+                            factory_distributor_id=#{factoryDistributorId},factory_legalperson=#{factoryLegalperson},
+                            factory_status=#{factoryStatus}
+                    where   factory_id=#{factoryId}
     </update>
 
     <!--查询工厂 湛玉欣 2019.8.21-->
     <select id="findAllFactory" resultType="hashMap">
-       select factory_id as factoryId,factory_name as factoryName,factory_logo as factoryLogo,factory_telphone as factoryTelphone,
-              factory_address as factoryAddress,factory_geo as factoryGeo,factory_license as factoryLicense,factory_register_time as factoryRegisterTime,
-              factory_distributor_id as factoryDistributorId,factory_status as fatoryStatus,factory_admin_id as factoryAdminId
+       select factory_id as factoryId,factory_name as factoryName,factory_telphone as factoryTelphone,factory_legalperson as factoryLegalperson,
+        factory_address as factoryAddress,factory_geo as factoryGeo,factory_license as factoryLicense,factory_register_time as factoryRegisterTime,
+        factory_distributor_id as factoryDistributorId,factory_status as fatoryStatus
        from factory
     </select>
 
     <!--根据id查询工厂详情-->
     <select id="findFactoryById" resultType="org.taru.producttracing.pojo.Factory">
-       select factory_id as factoryId,factory_name as factoryName,factory_logo as factoryLogo,factory_telphone as factoryTelphone,
-              factory_address as factoryAddress,factory_geo as factoryGeo,factory_license as factoryLicense,factory_register_time as factoryRegisterTime,
-              factory_distributor_id as factoryDistributorId,factory_status as fatoryStatus,factory_admin_id as factoryAdminId
+       select factory_id as factoryId,factory_name as factoryName,factory_telphone as factoryTelphone,factory_legalperson as factoryLegalperson,
+        factory_address as factoryAddress,factory_geo as factoryGeo,factory_license as factoryLicense,factory_register_time as factoryRegisterTime,
+        factory_distributor_id as factoryDistributorId,factory_status as fatoryStatus
        from factory
        where  factory_id=#{factoryId}
     </select>
@@ -55,9 +55,9 @@
     <select id="findFactoryByName" resultType="hashmap">
         <bind name="pattern" value="'%'+_parameter.factoryName+'%'"/>
         select
-        factory_id as factoryId,factory_name as factoryName,factory_logo as factoryLogo,factory_telphone as factoryTelphone,
+        factory_id as factoryId,factory_name as factoryName,factory_telphone as factoryTelphone,factory_legalperson as factoryLegalperson,
         factory_address as factoryAddress,factory_geo as factoryGeo,factory_license as factoryLicense,factory_register_time as factoryRegisterTime,
-        factory_distributor_id as factoryDistributorId,factory_status as fatoryStatus,factory_admin_id as factoryAdminId
+        factory_distributor_id as factoryDistributorId,factory_status as fatoryStatus
         from factory where factory_name like #{pattern}
     </select>
 

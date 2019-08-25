@@ -1,12 +1,15 @@
 package org.taru.producttracing.api;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.taru.producttracing.pojo.Batch;
-import org.taru.producttracing.pojo.Product;
+
+import org.taru.producttracing.pojo.Complain;
 import org.taru.producttracing.service.FoodManageService1;
-import org.taru.producttracing.util.IdUtil;
+
 import org.taru.producttracing.vo.JsonResult;
 
 import java.util.List;
@@ -60,12 +63,15 @@ public class FoodManageApi1 {
      * @return
      */
     @RequestMapping("/Api/queryallbatch")
-    public JsonResult querybatch(){
+    public JsonResult querybatch(Integer pageNum,Integer pageSize){
         JsonResult jsonResult=null;
         try {
+            PageHelper.startPage(pageNum,pageSize);
             List<Batch> batch=foodManageService1.queryall();
+            PageInfo pageInfo=new PageInfo(batch);
+
             if(batch!=null){
-                jsonResult=new JsonResult("200","查询成功",batch);
+                jsonResult=new JsonResult("200","查询成功",pageInfo);
             }else {
                 jsonResult=new JsonResult("404","查询失败","");
             }

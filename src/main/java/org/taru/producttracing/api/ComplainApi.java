@@ -7,6 +7,7 @@ package org.taru.producttracing.api;
         import org.springframework.web.bind.annotation.RequestMapping;
         import org.springframework.web.bind.annotation.RestController;
         import org.taru.producttracing.pojo.Complain;
+        import org.taru.producttracing.pojo.News;
         import org.taru.producttracing.service.ComplainService;
         import org.taru.producttracing.vo.JsonResult;
         import java.util.List;
@@ -81,13 +82,14 @@ public class ComplainApi {
      * 模糊查询投诉
      */
     @RequestMapping(value = "/api/adminlog/fuzzycomplain")
-    public JsonResult fuuzy(String complainName){
+    public JsonResult fuuzy(String complainName,Integer pageNum ,Integer pageSize){
         JsonResult result=null;
+        PageHelper.startPage(pageNum,pageSize);
         List<Complain> complain= complainService.fuzzycomplain(complainName);
-        System.out.println(complain);
+        PageInfo pageInfo=new PageInfo(complain);
         try{
             if( complain.size()>0){
-                result=new JsonResult("200","查询成功",complain);
+                result=new JsonResult("200","查询成功",pageInfo);
             }else {
                 result=new JsonResult("400","查询失败","");
             }

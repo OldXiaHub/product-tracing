@@ -60,7 +60,7 @@ public class UserApi {
     @RequestMapping("/api/addfactory")
     public JsonResult addFactory(Factory factory) throws ParseException {
 
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         df.format(new Date());// new Date()为获取当前系统时间
           factory.setFactoryRegisterTime(df.format(new Date()));
 
@@ -130,10 +130,11 @@ public class UserApi {
     public JsonResult findAllFactory(Integer pageNum,Integer pageSize){
         JsonResult result=null;
         try{
-            //分页：将需要进行分页的语句 上下两句代码夹在中间
+
             PageHelper.startPage(pageNum,pageSize);//这条分页语句，一定要和下面将要进行分页的语句紧挨着
             List<Factory> factorys=userService.findAllFactory();
             PageInfo pageInfo=new PageInfo(factorys);
+
             if (factorys.size()>0){
                 result =new JsonResult("200","查询所有工厂成功",pageInfo);
             }else{
@@ -178,12 +179,14 @@ public class UserApi {
      * @return
      */
     @RequestMapping("/api/findfactorybyname")
-    public JsonResult findFactoryByName(String factoryName){
+    public JsonResult findFactoryByName(Integer pageNum,Integer pageSize,String factoryName){
         JsonResult result =null;
         try{
+            PageHelper.startPage(pageNum,pageSize);
             List<Factory> factorys = userService.findFactoryByName(factoryName);
+            PageInfo pageInfo=new PageInfo(factorys);
             if (factorys.size()>0){
-                result =new JsonResult("200","查询工厂成功",factorys);
+                result =new JsonResult("200","查询工厂成功",pageInfo);
             }else{
                 result =new JsonResult("404","查询工厂失败","");
             }

@@ -1,4 +1,6 @@
 package org.taru.producttracing.pojo;
+
+
 public class Factory {
 
   private String factoryId;
@@ -6,13 +8,13 @@ public class Factory {
   private String factoryLogo;
   private String factoryTelphone;
   private String factoryAddress;
-
   private double factoryGeo;
+  private String factoryBusinessPhoto;
   private String factoryLicense;
   private String factoryRegisterTime;
+  private String factoryLegalperson;
   private String factoryDistributorId;
   private long factoryStatus;
-  private String factoryAdminId;
 
 
   public String getFactoryId() {
@@ -69,6 +71,15 @@ public class Factory {
   }
 
 
+  public String getFactoryBusinessPhoto() {
+    return factoryBusinessPhoto;
+  }
+
+  public void setFactoryBusinessPhoto(String factoryBusinessPhoto) {
+    this.factoryBusinessPhoto = factoryBusinessPhoto;
+  }
+
+
   public String getFactoryLicense() {
     return factoryLicense;
   }
@@ -84,6 +95,15 @@ public class Factory {
 
   public void setFactoryRegisterTime(String factoryRegisterTime) {
     this.factoryRegisterTime = factoryRegisterTime;
+  }
+
+
+  public String getFactoryLegalperson() {
+    return factoryLegalperson;
+  }
+
+  public void setFactoryLegalperson(String factoryLegalperson) {
+    this.factoryLegalperson = factoryLegalperson;
   }
 
 
@@ -104,29 +124,4 @@ public class Factory {
     this.factoryStatus = factoryStatus;
   }
 
-
-  public String getFactoryAdminId() {
-    return factoryAdminId;
-  }
-
-  public void setFactoryAdminId(String factoryAdminId) {
-    this.factoryAdminId = factoryAdminId;
-  }
-
-  @Override
-  public String toString() {
-    return "Factory{" +
-            "factoryId='" + factoryId + '\'' +
-            ", factoryName='" + factoryName + '\'' +
-            ", factoryLogo='" + factoryLogo + '\'' +
-            ", factoryTelphone='" + factoryTelphone + '\'' +
-            ", factoryAddress='" + factoryAddress + '\'' +
-            ", factoryGeo=" + factoryGeo +
-            ", factoryLicense='" + factoryLicense + '\'' +
-            ", factoryRegisterTime='" + factoryRegisterTime + '\'' +
-            ", factoryDistributorId='" + factoryDistributorId + '\'' +
-            ", factoryStatus=" + factoryStatus +
-            ", factoryAdminId='" + factoryAdminId + '\'' +
-            '}';
-  }
 }
