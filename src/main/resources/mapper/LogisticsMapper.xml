@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.taru.producttracing.dao.LogisticsDao">
+
+   <resultMap id="BaseResult" type="org.taru.producttracing.pojo.Logistics">
+       <id column="logistics_id" property="logisticsId" jdbcType="VARCHAR"></id>
+       <result property="logisticsTime" column="logistics_time" jdbcType="VARCHAR"></result>
+       <result property="logisticsBatchBarcode" column="logistics_batch_barcode" jdbcType="VARCHAR"></result>
+       <result property="logisticsStartPerson" column="logistics_start_person" jdbcType="VARCHAR"></result>
+       <result property="logisticsStartPersonTelphone" column="logistics_start_person_telphone" jdbcType="VARCHAR"></result>
+       <result property="logisticsStartAddress" column="logistics_start_address" jdbcType="VARCHAR"></result>
+       <result property="logisticsEndPerson" column="logistics_end_person" jdbcType="VARCHAR"></result>
+       <result property="logisticsEndPersonTelphone" column="logistics_end_person_telphone" jdbcType="VARCHAR"></result>
+       <result property="logisticsEndAddress" column="logistics_end_address" jdbcType="VARCHAR"></result>
+       <result property="logisticsStartjingduGeo" column="logistics_startjingdu_geo" jdbcType="VARCHAR"></result>
+       <result property="logisticsStartWeiduGeo" column="logistics_start_weidu_geo" jdbcType="VARCHAR"></result>
+       <result property="logisticsEndjingduGeo" column="logistics_endjingdu_geo" jdbcType="VARCHAR"></result>
+       <result property="logisticsEndweiduGeo" column="logistics_endweidu_geo" jdbcType="VARCHAR"></result>
+   </resultMap>
+    <!--* 查询物流信息-->
+    <select id="queryRouter" resultMap="BaseResult">
+        select * from logistics where logistics_batch_barcode=#{logisticsBatchBarcode}
+    </select>
+
+</mapper>
