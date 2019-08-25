@@ -1,4 +1,4 @@
-package com.sample;
+package org.taru.producttracing.pojo;
 
 
 public class Factory {
