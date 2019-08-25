@@ -20,6 +20,7 @@
         <id column="batch_id" property="batchId" jdbcType="VARCHAR"></id>
         <result property="batchName" column="batch_name" jdbcType="VARCHAR"></result>
         <result property="batchTime" column="batch_time" jdbcType="VARCHAR"></result>
+        <result property="batchStatus" column="batch_status" jdbcType="VARCHAR"></result>
         <result property="batchProductName" column="batch_product_name" jdbcType="VARCHAR"></result>
         <result property="batchProductPhoto" column="batch_product_photo" jdbcType="VARCHAR"></result>
         <result property="batchProductCreateTime" column="batch_product_create_time" jdbcType="VARCHAR"></result>
@@ -29,8 +30,9 @@
         <result property="batchStartweiduGeo" column="batch_startweidu_geo" jdbcType="VARCHAR"></result>
 
     </resultMap>
+    <!--查询所有批次-->
     <select id="querybatch" resultMap="queryByid">
-        select * from batch
+        select * from batch where batch_status=1
     </select>
 
     <!--根据批次ID查询批次-->
