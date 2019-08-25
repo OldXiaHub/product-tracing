@@ -3,18 +3,20 @@ package org.taru.producttracing.pojo;
 
 public class Admin {
 
-  private String adminId;
+  private long adminId;
   private String adminName;
   private String adminPassword;
+  private String adminPhoto;
+  private String adminAddress;
+  private String adminTelphone;
   private long adminStatus;
-  private long adminFactoryStatus;
 
 
-  public String getAdminId() {
+  public long getAdminId() {
     return adminId;
   }
 
-  public void setAdminId(String adminId) {
+  public void setAdminId(long adminId) {
     this.adminId = adminId;
   }
 
@@ -37,21 +39,39 @@ public class Admin {
   }
 
 
+  public String getAdminPhoto() {
+    return adminPhoto;
+  }
+
+  public void setAdminPhoto(String adminPhoto) {
+    this.adminPhoto = adminPhoto;
+  }
+
+
+  public String getAdminAddress() {
+    return adminAddress;
+  }
+
+  public void setAdminAddress(String adminAddress) {
+    this.adminAddress = adminAddress;
+  }
+
+
+  public String getAdminTelphone() {
+    return adminTelphone;
+  }
+
+  public void setAdminTelphone(String adminTelphone) {
+    this.adminTelphone = adminTelphone;
+  }
+
+
   public long getAdminStatus() {
     return adminStatus;
   }
 
   public void setAdminStatus(long adminStatus) {
     this.adminStatus = adminStatus;
-  }
-
-
-  public long getAdminFactoryStatus() {
-    return adminFactoryStatus;
-  }
-
-  public void setAdminFactoryStatus(long adminFactoryStatus) {
-    this.adminFactoryStatus = adminFactoryStatus;
   }
 
 }
