@@ -167,13 +167,12 @@ public class UserApiByZhang {
     public JsonResult complain(@RequestParam(value = "complainId", required = true) String complainId,
                                @RequestParam(value = "complainName", required = true) String complainName,
                                @RequestParam(value ="complainContent", required = true) String complainContent,
-                               @RequestParam(value ="complainPhoto", required = true) String complainPhoto,
                                @RequestParam(value ="complainUserId", required = true) String complainUserId,
                                @RequestParam(value = "complainTime", required = true) String complainTime){
         JsonResult result=null;
         int i=0;
         try{
-            i=userServiceByZhangR.complain(complainId,complainName,complainContent,complainPhoto,complainUserId,complainTime);
+            i=userServiceByZhangR.complain(complainId,complainName,complainContent,complainUserId,complainTime);
             if (i!=0){
                 result = new JsonResult("200", "用户投诉成功", i);
             }else {

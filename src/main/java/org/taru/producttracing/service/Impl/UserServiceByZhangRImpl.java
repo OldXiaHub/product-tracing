@@ -85,7 +85,7 @@ UserDaoByZhangR userDaoByZhangR;
      * time:2019/8/22-22:10
      */
     @Override
-    public int complain(@Param("complainId")String complainId, @Param("complainName") String complainName,@Param("complainContent") String complainContent,@Param("complainPhoto") String complainPhoto,@Param("complainUserId") String complainUserId,@Param("complainTime") String complainTime) {
+    public int complain(@Param("complainId")String complainId, @Param("complainName") String complainName,@Param("complainContent") String complainContent,@Param("complainUserId") String complainUserId,@Param("complainTime") String complainTime) {
         int i=0;
         Complain complain =new Complain();
         complainId =StringUtil.valueof(System.currentTimeMillis());
@@ -96,7 +96,7 @@ UserDaoByZhangR userDaoByZhangR;
         complainTime=ss.format(date);
         complain.setComplainTime(complainTime);
 
-        i = userDaoByZhangR.complain(complainId,complainName,complainContent,complainPhoto,complainUserId,complainTime);
+        i = userDaoByZhangR.complain(complainId,complainName,complainContent,complainUserId,complainTime);
         return i;
     }
 

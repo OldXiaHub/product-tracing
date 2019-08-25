@@ -47,7 +47,7 @@ public interface UserServiceByZhangR {
      * author:zhangrui
      * time:2019/8/22-21:10
      */
-    public int complain(@Param("complainId")String complainId,@Param("complainName") String complainName,@Param("complainContent") String complainContent,@Param("complainPhoto") String complainPhoto,@Param("complainUserId") String complainUserId,@Param("complainTime") String complainTime);
+    public int complain(@Param("complainId")String complainId,@Param("complainName") String complainName,@Param("complainContent") String complainContent,@Param("complainUserId") String complainUserId,@Param("complainTime") String complainTime);
 
     /**
      * 查询所有用户信息
