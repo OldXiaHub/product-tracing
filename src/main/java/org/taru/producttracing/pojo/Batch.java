@@ -1,6 +1,5 @@
 package org.taru.producttracing.pojo;
 
-
 public class Batch {
 
   private String batchId;
@@ -12,13 +11,20 @@ public class Batch {
   private String batchProductId;
   private String batchProductName;
   private String batchProductPhoto;
+  private String batchLicensePhoto;
   private String batchProductComment;
   private String batchProductCreateTime;
   private String batchProductQualityTime;
   private String batchFactoryId;
+  private String batchStartAddress;
   private double batchStartjiduGeo;
   private double batchStartweiduGeo;
-  private double batchEndGeo;
+  private String batchEndAddress;
+  private double batchEndjingduGeo;
+  private double batchEndweiduGeo;
+  private String batchProductPrice;
+  private String batchProductUnit;
+  private String batchProductStandard;
 
 
   public String getBatchId() {
@@ -102,6 +108,15 @@ public class Batch {
   }
 
 
+  public String getBatchLicensePhoto() {
+    return batchLicensePhoto;
+  }
+
+  public void setBatchLicensePhoto(String batchLicensePhoto) {
+    this.batchLicensePhoto = batchLicensePhoto;
+  }
+
+
   public String getBatchProductComment() {
     return batchProductComment;
   }
@@ -138,6 +153,15 @@ public class Batch {
   }
 
 
+  public String getBatchStartAddress() {
+    return batchStartAddress;
+  }
+
+  public void setBatchStartAddress(String batchStartAddress) {
+    this.batchStartAddress = batchStartAddress;
+  }
+
+
   public double getBatchStartjiduGeo() {
     return batchStartjiduGeo;
   }
@@ -156,12 +180,57 @@ public class Batch {
   }
 
 
-  public double getBatchEndGeo() {
-    return batchEndGeo;
+  public String getBatchEndAddress() {
+    return batchEndAddress;
   }
 
-  public void setBatchEndGeo(double batchEndGeo) {
-    this.batchEndGeo = batchEndGeo;
+  public void setBatchEndAddress(String batchEndAddress) {
+    this.batchEndAddress = batchEndAddress;
+  }
+
+
+  public double getBatchEndjingduGeo() {
+    return batchEndjingduGeo;
+  }
+
+  public void setBatchEndjingduGeo(double batchEndjingduGeo) {
+    this.batchEndjingduGeo = batchEndjingduGeo;
+  }
+
+
+  public double getBatchEndweiduGeo() {
+    return batchEndweiduGeo;
+  }
+
+  public void setBatchEndweiduGeo(double batchEndweiduGeo) {
+    this.batchEndweiduGeo = batchEndweiduGeo;
+  }
+
+
+  public String getBatchProductPrice() {
+    return batchProductPrice;
+  }
+
+  public void setBatchProductPrice(String batchProductPrice) {
+    this.batchProductPrice = batchProductPrice;
+  }
+
+
+  public String getBatchProductUnit() {
+    return batchProductUnit;
+  }
+
+  public void setBatchProductUnit(String batchProductUnit) {
+    this.batchProductUnit = batchProductUnit;
+  }
+
+
+  public String getBatchProductStandard() {
+    return batchProductStandard;
+  }
+
+  public void setBatchProductStandard(String batchProductStandard) {
+    this.batchProductStandard = batchProductStandard;
   }
 
 }
