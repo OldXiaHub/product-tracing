@@ -10,10 +10,10 @@
         insert into
         batch(batch_id,batch_name,batch_time,batch_status,batch_barcode,batch_product_id,batch_product_name,
         batch_product_photo,batch_product_comment,batch_product_create_time,
-        batch_product_quality_time,batch_factory_id,batch_startjidu_geo,batch_end_geo,batch_startweidu_geo)
+        batch_product_quality_time,batch_factory_id,batch_startjidu_geo,batch_startweidu_geo)
         values(#{batchId},#{batchName},#{batchTime},#{batchStatus},#{batchBarcode},#{batchProductId},
         #{batchProductName},#{batchProductPhoto},#{batchProductComment},#{batchProductCreateTime},
-        #{batchProductQualityTime},#{batchFactoryId},#{batchStartjiduGeo},#{batchEndGeo},#{batchStartweiduGeo})
+        #{batchProductQualityTime},#{batchFactoryId},#{batchStartjiduGeo},#{batchStartweiduGeo})
     </insert>
 
     <resultMap id="queryByid" type="org.taru.producttracing.pojo.Batch">
@@ -22,6 +22,8 @@
         <result property="batchTime" column="batch_time" jdbcType="VARCHAR"></result>
         <result property="batchStatus" column="batch_status" jdbcType="VARCHAR"></result>
         <result property="batchProductId" column="batch_product_id" jdbcType="VARCHAR"></result>
+        <result property="batchQrcode" column="batch_qrcode" jdbcType="VARCHAR"></result>
+        <result property="batchBarcode" column="batch_barcode" jdbcType="VARCHAR"></result>
         <result property="batchProductName" column="batch_product_name" jdbcType="VARCHAR"></result>
         <result property="batchProductPhoto" column="batch_product_photo" jdbcType="VARCHAR"></result>
         <result property="batchLicensePhoto" column="batch_license_photo" jdbcType="VARCHAR"></result>
