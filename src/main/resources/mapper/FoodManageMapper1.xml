@@ -11,13 +11,11 @@
         batch(batch_id,batch_name,batch_time,batch_status,batch_barcode,batch_product_id,batch_product_name,
         batch_product_photo,batch_product_comment,batch_product_create_time,
         batch_product_quality_time,batch_factory_id,batch_start_address,batch_startjidu_geo,batch_startweidu_geo,
-        batch_end_address,batch_endjingdu_geo,batch_endweidu_geo,batch_product_price,batch_product_unit,
-        batch_product_standard)
+        batch_end_address,batch_endjingdu_geo,batch_endweidu_geo)
         values(#{batchId},#{batchName},#{batchTime},#{batchStatus},#{batchBarcode},#{batchProductId},
         #{batchProductName},#{batchProductPhoto},#{batchProductComment},#{batchProductCreateTime},
         #{batchProductQualityTime},#{batchFactoryId},#{batchStartAddress},#{batchStartjiduGeo},#{batchStartweiduGeo},
-        #{batchEndAddress},#{batchEndjingduGeo},#{batchEndweiduGeo},#{batchProductPrice},#{batchProductUnit},
-        #{batchProductStandard})
+        #{batchEndAddress},#{batchEndjingduGeo},#{batchEndweiduGeo})
     </insert>
 
     <resultMap id="queryByid" type="org.taru.producttracing.pojo.Batch">
@@ -30,7 +28,6 @@
         <result property="batchBarcode" column="batch_barcode" jdbcType="VARCHAR"></result>
         <result property="batchProductName" column="batch_product_name" jdbcType="VARCHAR"></result>
         <result property="batchProductPhoto" column="batch_product_photo" jdbcType="VARCHAR"></result>
-        <result property="batchLicensePhoto" column="batch_license_photo" jdbcType="VARCHAR"></result>
         <result property="batchProductComment" column="batch_product_comment" jdbcType="VARCHAR"></result>
         <result property="batchProductCreateTime" column="batch_product_create_time" jdbcType="VARCHAR"></result>
         <result property="batchProductQualityTime" column="batch_product_quality_time" jdbcType="VARCHAR"></result>
@@ -42,13 +39,19 @@
         <result property="batchEndAddress" column="batch_end_address" jdbcType="VARCHAR"></result>
         <result property="batchEndjingduGeo" column="batch_endjingdu_geo" jdbcType="VARCHAR"></result>
         <result property="batchEndweiduGeo" column="batch_endweidu_geo" jdbcType="VARCHAR"></result>
-        <result property="batchProductPrice" column="batch_product_price" jdbcType="VARCHAR"></result>
-        <result property="batchProductUnit" column="batch_product_unit" jdbcType="VARCHAR"></result>
-        <result property="batchProductStandard" column="batch_product_standard" jdbcType="VARCHAR"></result>
+
+        <association property="factory" javaType="org.taru.producttracing.pojo.Factory">
+            <id column="factory_id" property="factoryId"></id>
+            <result column="factory_name" property="factoryName"></result>
+            <result column="factory_business_photo" property="factoryBusinessPhoto"></result>
+            <result column="factory_address" property="factoryAddress"></result>
+            <result column="factory_telphone" property="factoryTelphone"></result>
+            <result column="factory_legalperson" property="factoryLegalperson"></result>
+        </association>
     </resultMap>
     <!--查询所有批次-->
     <select id="querybatch" resultMap="queryByid">
-        select * from batch where batch_status=1
+        select * from batch a left join factory b on a.batch_factory_id=b.factory_id where a.batch_status=1
     </select>
 
     <!--根据批次ID查询批次-->
