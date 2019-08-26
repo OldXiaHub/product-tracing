@@ -7,13 +7,16 @@ public class Complain {
   private String complainName;
   private String complainContent;
   private String complainPhoto;
-  private String complainUserName;
+  private String complainUserId;
   private long complainStatus;
   private String complainTime;
+  private String complainUserTelphone;
   private User user;
+
   public User getUser() {
     return user;
   }
+
   public void setUser(User user) {
     this.user = user;
   }
@@ -54,12 +57,12 @@ public class Complain {
   }
 
 
-  public String getComplainUserName() {
-    return complainUserName;
+  public String getComplainUserId() {
+    return complainUserId;
   }
 
-  public void setComplainUserName(String complainUserName) {
-    this.complainUserName = complainUserName;
+  public void setComplainUserId(String complainUserId) {
+    this.complainUserId = complainUserId;
   }
 
 
@@ -78,6 +81,15 @@ public class Complain {
 
   public void setComplainTime(String complainTime) {
     this.complainTime = complainTime;
+  }
+
+
+  public String getComplainUserTelphone() {
+    return complainUserTelphone;
+  }
+
+  public void setComplainUserTelphone(String complainUserTelphone) {
+    this.complainUserTelphone = complainUserTelphone;
   }
 
 }

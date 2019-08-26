@@ -23,5 +23,11 @@
     <select id="queryRouter" resultMap="BaseResult">
         select * from logistics where logistics_batch_barcode=#{logisticsBatchBarcode}
     </select>
+    
+   <!--更新物流状态-->
+    <update id="update" parameterType="org.taru.producttracing.pojo.Logistics">
+        update logistics set logisitics_sign_status = 1 where logistics_batch_barcode=#{logisticsBatchBarcode}
+    </update>
+   
 
 </mapper>

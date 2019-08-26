@@ -79,9 +79,9 @@
             a.user_id
         FROM
             complain b
-            LEFT JOIN `user` a ON complain_user_name = a.user_id
+            LEFT JOIN `user` a ON complain_user_id = a.user_id
         WHERE
-            complain_user_name = #{openId}
+            complain_user_id = #{openId}
     </select>
     <resultMap id="UserMap2" type="org.taru.producttracing.pojo.Complain">
         <id     property="complainId"      column="complain_id"      jdbcType="VARCHAR"></id>
@@ -98,8 +98,8 @@
      */-->
     <insert id="complain" parameterType="String">
         INSERT INTO
-        complain ( complain_id, complain_name, complain_content, complain_user_name, complain_status,complain_time )
+        complain ( complain_id, complain_name, complain_content, complain_user_id, complain_status,complain_time, complain_user_telphone )
         VALUES
-            (#{complainId}, #{complainName}, #{complainContent}, #{complainUserId}, 0 ,#{complainTime})
+            (#{complainId}, #{complainName}, #{complainContent}, #{complainUserId}, 0 ,#{complainTime}, #{complainUserTelphone})
     </insert>
 </mapper>
