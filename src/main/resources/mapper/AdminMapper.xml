@@ -106,7 +106,7 @@
     </select>
 
     <!--模糊搜索工厂-->
-    <select id="findFactoryByName" resultType="hashmap">
+    <select id="findAllFactoryByName" resultType="hashmap">
         <bind name="pattern" value="'%'+_parameter.factoryName+'%'"/>
         select
         factory_id as factoryId,
@@ -122,6 +122,11 @@
         factory_distributor_id as factoryDistributorId,
         factory_status as fatoryStatus
         from factory where factory_name like #{pattern}
+    </select>
+
+    <!--查询工厂姓名-->
+    <select id="findAllFactoryName" resultType="hashmap">
+        select factory_name as factoryName from factory
     </select>
 
 </mapper>
