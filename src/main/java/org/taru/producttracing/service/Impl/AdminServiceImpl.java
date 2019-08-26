@@ -90,4 +90,14 @@ public class AdminServiceImpl implements UserService {
         return factorys;
     }
 
+    /**
+     * 查询工厂名称
+     * @return
+     */
+    @Override
+    public List<Factory> findAllFactoryName() {
+        List factoryNames=userDao.findAllFactoryName();
+        return factoryNames;
+    }
+
 }
