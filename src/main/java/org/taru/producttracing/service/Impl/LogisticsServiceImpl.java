@@ -25,4 +25,11 @@ public class LogisticsServiceImpl implements LogisticsService {
     public List<Logistics> query(String logisticsBatchBarcode) {
         return logisticsDao.queryRouter(logisticsBatchBarcode);
     }
+    /**
+     * 更新物流状态
+     */
+    @Override
+    public void updatestatus(String logisticsBatchBarcode) {
+        logisticsDao.update(logisticsBatchBarcode);
+    }
 }
