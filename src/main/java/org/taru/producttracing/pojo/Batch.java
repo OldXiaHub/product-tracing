@@ -12,7 +12,6 @@ public class Batch {
   private String batchProductId;
   private String batchProductName;
   private String batchProductPhoto;
-  private String batchLicensePhoto;
   private String batchProductComment;
   private String batchProductCreateTime;
   private String batchProductQualityTime;
@@ -109,13 +108,6 @@ public class Batch {
   }
 
 
-  public String getBatchLicensePhoto() {
-    return batchLicensePhoto;
-  }
-
-  public void setBatchLicensePhoto(String batchLicensePhoto) {
-    this.batchLicensePhoto = batchLicensePhoto;
-  }
 
 
   public String getBatchProductComment() {
