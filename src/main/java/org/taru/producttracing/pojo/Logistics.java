@@ -17,6 +17,8 @@ public class Logistics {
   private double logisticsEndjingduGeo;
   private double logisticsEndweiduGeo;
   private long logisiticsSignStatus;
+  private double logisiticsCarjingduGeo;
+  private double logisiticsCarweiduGeo;
 
 
   public String getLogisticsId() {
@@ -142,6 +144,24 @@ public class Logistics {
 
   public void setLogisiticsSignStatus(long logisiticsSignStatus) {
     this.logisiticsSignStatus = logisiticsSignStatus;
+  }
+
+
+  public double getLogisiticsCarjingduGeo() {
+    return logisiticsCarjingduGeo;
+  }
+
+  public void setLogisiticsCarjingduGeo(double logisiticsCarjingduGeo) {
+    this.logisiticsCarjingduGeo = logisiticsCarjingduGeo;
+  }
+
+
+  public double getLogisiticsCarweiduGeo() {
+    return logisiticsCarweiduGeo;
+  }
+
+  public void setLogisiticsCarweiduGeo(double logisiticsCarweiduGeo) {
+    this.logisiticsCarweiduGeo = logisiticsCarweiduGeo;
   }
 
 }

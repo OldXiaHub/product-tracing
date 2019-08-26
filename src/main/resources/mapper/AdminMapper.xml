@@ -126,7 +126,9 @@
 
     <!--查询工厂姓名-->
     <select id="findAllFactoryName" resultType="hashmap">
-        select factory_name as factoryName from factory
+        select  factory_name as factoryName,
+                factory_id as factoryId
+        from factory
     </select>
 
 </mapper>

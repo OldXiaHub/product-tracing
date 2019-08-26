@@ -65,7 +65,7 @@ public interface UserService {
      * @param factoryName
      * @return
      */
-    List<Factory> findFactoryByName(String factoryName);
+    List<Factory> findAllFactoryByName(String factoryName);
 
     /**
      * 查询工厂名称

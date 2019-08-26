@@ -85,8 +85,8 @@ public class AdminServiceImpl implements UserService {
      * @return
      */
     @Override
-    public List<Factory> findFactoryByName(String factoryName) {
-        List factorys=userDao.findFactoryByName(factoryName);
+    public List<Factory> findAllFactoryByName(String factoryName) {
+        List factorys=userDao.findAllFactoryByName(factoryName);
         return factorys;
     }
 
