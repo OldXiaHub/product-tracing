@@ -32,4 +32,9 @@ public class LogisticsServiceImpl implements LogisticsService {
     public void updatestatus(String logisticsId) {
         logisticsDao.update(logisticsId);
     }
+
+    @Override
+    public Logistics querymessage(String logisticsId) {
+        return logisticsDao.queryById(logisticsId);
+    }
 }
