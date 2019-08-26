@@ -98,7 +98,7 @@
      */-->
     <insert id="complain" parameterType="String">
         INSERT INTO
-        complain ( complain_id, complain_name, complain_content, complain_user_name, complain_status,complain_time )
+        complain ( complain_id, complain_name, complain_content, complain_user_id, complain_status,complain_time )
         VALUES
             (#{complainId}, #{complainName}, #{complainContent}, #{complainUserId}, 0 ,#{complainTime})
     </insert>
