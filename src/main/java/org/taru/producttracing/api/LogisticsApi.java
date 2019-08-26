@@ -37,10 +37,10 @@ public class LogisticsApi {
      * 更新物流状态
      */
     @RequestMapping("/api/updatestatus")
-    public JsonResult updateStatu(String logisticsBatchBarcode){
+    public JsonResult updateStatu(String logisticsId){
         JsonResult result=null;
         try{
-           logisticsService.updatestatus(logisticsBatchBarcode);
+           logisticsService.updatestatus(logisticsId);
             result=new JsonResult("200","修改成功","");
         }catch (Exception e){
             e.printStackTrace();
