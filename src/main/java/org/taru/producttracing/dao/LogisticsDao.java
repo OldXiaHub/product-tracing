@@ -15,4 +15,9 @@ public interface LogisticsDao {
      * 查询物流信息
      */
     public List<Logistics> queryRouter(@Param("logisticsBatchBarcode") String logisticsBatchBarcode);
+    /**
+     * 2019.8.26
+     * 更新物流状态
+     */
+    public void update(@Param("logisticsBatchBarcode") String logisticsBatchBarcode);
 }
