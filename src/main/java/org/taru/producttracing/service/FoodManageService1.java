@@ -22,4 +22,8 @@ public interface FoodManageService1 {
      * 查询所有批次
      */
     public List<Batch> queryall();
+    /**
+     * 查询批次产品
+     */
+    public List<Batch> querybatchproduct();
 }
