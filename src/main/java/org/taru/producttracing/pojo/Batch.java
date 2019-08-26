@@ -25,9 +25,17 @@ public class Batch {
   private String batchProductPrice;
   private String batchProductUnit;
   private String batchProductStandard;
+  private Factory factory;
 
+    public Factory getFactory() {
+        return factory;
+    }
 
-  public String getBatchId() {
+    public void setFactory(Factory factory) {
+        this.factory = factory;
+    }
+
+    public String getBatchId() {
     return batchId;
   }
 
