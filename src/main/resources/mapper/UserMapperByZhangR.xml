@@ -79,9 +79,9 @@
             a.user_id
         FROM
             complain b
-            LEFT JOIN `user` a ON complain_user_name = a.user_id
+            LEFT JOIN `user` a ON complain_user_id = a.user_id
         WHERE
-            complain_user_name = #{openId}
+            complain_user_id = #{openId}
     </select>
     <resultMap id="UserMap2" type="org.taru.producttracing.pojo.Complain">
         <id     property="complainId"      column="complain_id"      jdbcType="VARCHAR"></id>
