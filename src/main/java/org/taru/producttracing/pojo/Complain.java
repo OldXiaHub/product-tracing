@@ -13,6 +13,15 @@ public class Complain {
   private String complainUserTelphone;
   private String complainBatchBarcode;
 
+  public User getUser() {
+    return user;
+  }
+
+  public void setUser(User user) {
+    this.user = user;
+  }
+
+  private User user;
 
   public String getComplainId() {
     return complainId;
