@@ -27,12 +27,15 @@
     <!--</select>-->
 
     <select id="queryRouter" resultType="org.taru.producttracing.pojo.Logistics">
-    select * from logistics where logistics_batch_barcode=#{logisticsBatchBarcode}
+        select * from logistics where logistics_batch_barcode=#{logisticsBatchBarcode}
     </select>
    <!--更新物流状态-->
     <update id="update" parameterType="org.taru.producttracing.pojo.Logistics">
         update logistics set logisitics_sign_status = 1 where logistics_id=#{logisticsId}
     </update>
-   
+    <!--根据物流Id查询信息-->
+    <select id="queryById" resultType="org.taru.producttracing.pojo.Logistics">
+        select * from logistics where logistics_id=#{logisticsId}
+    </select>
 
 </mapper>
