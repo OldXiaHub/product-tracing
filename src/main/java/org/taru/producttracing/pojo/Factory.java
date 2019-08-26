@@ -3,25 +3,23 @@ package org.taru.producttracing.pojo;
 
 public class Factory {
 
-  private String factoryId;
+  private long factoryId;
   private String factoryName;
   private String factoryLogo;
   private String factoryTelphone;
   private String factoryAddress;
-  private double factoryGeo;
   private String factoryBusinessPhoto;
   private String factoryLicense;
   private String factoryRegisterTime;
   private String factoryLegalperson;
-  private String factoryDistributorId;
   private long factoryStatus;
 
 
-  public String getFactoryId() {
+  public long getFactoryId() {
     return factoryId;
   }
 
-  public void setFactoryId(String factoryId) {
+  public void setFactoryId(long factoryId) {
     this.factoryId = factoryId;
   }
 
@@ -62,15 +60,6 @@ public class Factory {
   }
 
 
-  public double getFactoryGeo() {
-    return factoryGeo;
-  }
-
-  public void setFactoryGeo(double factoryGeo) {
-    this.factoryGeo = factoryGeo;
-  }
-
-
   public String getFactoryBusinessPhoto() {
     return factoryBusinessPhoto;
   }
@@ -104,15 +93,6 @@ public class Factory {
 
   public void setFactoryLegalperson(String factoryLegalperson) {
     this.factoryLegalperson = factoryLegalperson;
-  }
-
-
-  public String getFactoryDistributorId() {
-    return factoryDistributorId;
-  }
-
-  public void setFactoryDistributorId(String factoryDistributorId) {
-    this.factoryDistributorId = factoryDistributorId;
   }
 
 
