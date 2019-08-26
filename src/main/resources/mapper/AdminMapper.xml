@@ -26,24 +26,20 @@
                         factory_logo,
                         factory_telphone,
                         factory_address,
-                        factory_geo,
                         factory_business_photo,
                         factory_license,
                         factory_register_time,
                         factory_legalperson,
-                        factory_distributor_id,
                         factory_status)
         values (#{factoryId},
                 #{factoryName},
                 #{factoryLogo},
                 #{factoryTelphone},
                 #{factoryAddress},
-                #{factoryGeo},
                 #{factoryBusinessPhoto},
                 #{factoryLicense},
                 #{factoryRegisterTime},
                 #{factoryLegalperson},
-                #{factoryDistributorId},
                 #{factoryStatus})
     </insert>
 
@@ -58,12 +54,10 @@
                             factory_logo=#{factoryLogo},
                             factory_telphone=#{factoryTelphone},
                             factory_address=#{factoryAddress},
-                            factory_geo=#{factoryGeo},
                             factory_business_photo=#{factoryBusinessPhoto},
                             factory_license=#{factoryLicense},
                             factory_register_time=#{factoryRegisterTime},
                             factory_legalperson=#{factoryLegalperson},
-                            factory_distributor_id=#{factoryDistributorId},
                             factory_status=#{factoryStatus}
                     where   factory_id=#{factoryId}
     </update>
@@ -76,12 +70,10 @@
                 factory_logo as factoryLogo ,
                 factory_telphone as factoryTelphone,
                 factory_address as factoryAddress,
-                factory_geo as factoryGeo,
                 factory_business_photo as factoryBusinessPhoto,
                 factory_license as factoryLicense,
                 factory_register_time as factoryRegisterTime,
                 factory_legalperson as factoryLegalperson,
-                factory_distributor_id as factoryDistributorId,
                 factory_status as fatoryStatus
        from factory
     </select>
@@ -94,12 +86,10 @@
                 factory_logo as factoryLogo ,
                 factory_telphone as factoryTelphone,
                 factory_address as factoryAddress,
-                factory_geo as factoryGeo,
                 factory_business_photo as factoryBusinessPhoto,
                 factory_license as factoryLicense,
                 factory_register_time as factoryRegisterTime,
                 factory_legalperson as factoryLegalperson,
-                factory_distributor_id as factoryDistributorId,
                 factory_status as fatoryStatus
        from factory
        where  factory_id=#{factoryId}
@@ -114,12 +104,10 @@
         factory_logo as factoryLogo ,
         factory_telphone as factoryTelphone,
         factory_address as factoryAddress,
-        factory_geo as factoryGeo,
         factory_business_photo as factoryBusinessPhoto,
         factory_license as factoryLicense,
         factory_register_time as factoryRegisterTime,
         factory_legalperson as factoryLegalperson,
-        factory_distributor_id as factoryDistributorId,
         factory_status as fatoryStatus
         from factory where factory_name like #{pattern}
     </select>
