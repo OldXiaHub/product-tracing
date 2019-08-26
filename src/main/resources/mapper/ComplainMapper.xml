@@ -17,7 +17,7 @@
     </resultMap>
     <!--查询所有投诉-->
     <select id="queryAllComplain" resultMap="queryComplain">
-        select * from complain a left join user b on a.complain_user_name=b.user_name
+        select * from complain a left join user b on a.complain_user_id=b.user_id
     </select>
     <!--模糊查询投诉-->
     <select id="fuzzy" resultMap="queryComplain" parameterType="org.taru.producttracing.pojo.Complain">
