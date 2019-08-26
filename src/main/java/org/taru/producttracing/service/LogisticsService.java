@@ -21,4 +21,8 @@ public interface LogisticsService {
      * 更新物流状态
      */
     public void updatestatus(String logisticsId);
+    /**
+     * 根据物流ID查询
+     */
+    public Logistics querymessage(String logisticsId);
 }
