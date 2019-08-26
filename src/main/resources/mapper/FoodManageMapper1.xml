@@ -60,6 +60,13 @@
     <select id="addQr" parameterType="org.taru.producttracing.pojo.Batch">
         update batch set batch_qrcode=#{qr} where batch_barcode=#{batchBarcode}
     </select>
-
+    <resultMap id="BaseResultbatch" type="org.taru.producttracing.pojo.Batch">
+        <id property="batchProductId" column="batch_product_id"></id>
+        <result property="batchProductName" column="batch_product_name" jdbcType="VARCHAR"></result>
+    </resultMap>
+    <!--查询批次产品-->
+    <select id="query" parameterType="org.taru.producttracing.pojo.Batch" resultMap="BaseResultbatch">
+        select batch_product_id,batch_product_name from batch
+    </select>
 
 </mapper>
