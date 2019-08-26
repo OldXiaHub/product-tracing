@@ -81,4 +81,24 @@ public class FoodManageApi1 {
         }
         return jsonResult;
     }
+    /**
+     * 查询批次产品
+     * @return
+     */
+    @RequestMapping("/Api/querybatchproduct")
+    public JsonResult querybatchproduct(){
+        JsonResult jsonResult=null;
+        try {
+            List<Batch> batch=foodManageService1.querybatchproduct();
+            if(batch!=null){
+                jsonResult=new JsonResult("200","查询成功",batch);
+            }else {
+                jsonResult=new JsonResult("404","查询失败","");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            jsonResult=new JsonResult("500",e.getMessage(),"");
+        }
+        return jsonResult;
+    }
 }
