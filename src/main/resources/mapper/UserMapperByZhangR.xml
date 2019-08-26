@@ -98,8 +98,8 @@
      */-->
     <insert id="complain" parameterType="String">
         INSERT INTO
-        complain ( complain_id, complain_name, complain_content, complain_user_id, complain_status,complain_time, complain_user_telphone )
+        complain ( complain_id, complain_name, complain_content, complain_user_id, complain_status,complain_time, complain_user_telphone ,complain_batch_barcode)
         VALUES
-            (#{complainId}, #{complainName}, #{complainContent}, #{complainUserId}, 0 ,#{complainTime}, #{complainUserTelphone})
+            (#{complainId}, #{complainName}, #{complainContent}, #{complainUserId}, 0 ,#{complainTime}, #{complainUserTelphone},#{complainBatchBarcode})
     </insert>
 </mapper>
