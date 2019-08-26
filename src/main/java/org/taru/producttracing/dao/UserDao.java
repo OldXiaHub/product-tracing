@@ -71,7 +71,7 @@ public interface UserDao {
      * @param factoryName
      * @return
      */
-    public List<Factory> findFactoryByName(@Param("factoryName") String factoryName);
+    public List<Factory> findAllFactoryByName(@Param("factoryName") String factoryName);
 
     /**
      * 查询工厂名称
