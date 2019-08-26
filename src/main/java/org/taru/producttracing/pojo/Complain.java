@@ -11,15 +11,8 @@ public class Complain {
   private long complainStatus;
   private String complainTime;
   private String complainUserTelphone;
-  private User user;
+  private String complainBatchBarcode;
 
-  public User getUser() {
-    return user;
-  }
-
-  public void setUser(User user) {
-    this.user = user;
-  }
 
   public String getComplainId() {
     return complainId;
@@ -90,6 +83,15 @@ public class Complain {
 
   public void setComplainUserTelphone(String complainUserTelphone) {
     this.complainUserTelphone = complainUserTelphone;
+  }
+
+
+  public String getComplainBatchBarcode() {
+    return complainBatchBarcode;
+  }
+
+  public void setComplainBatchBarcode(String complainBatchBarcode) {
+    this.complainBatchBarcode = complainBatchBarcode;
   }
 
 }

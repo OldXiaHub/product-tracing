@@ -1,5 +1,6 @@
 package org.taru.producttracing.pojo;
 
+
 public class Batch {
 
   private String batchId;
@@ -25,6 +26,7 @@ public class Batch {
   private String batchProductPrice;
   private String batchProductUnit;
   private String batchProductStandard;
+
 
   public String getBatchId() {
     return batchId;
