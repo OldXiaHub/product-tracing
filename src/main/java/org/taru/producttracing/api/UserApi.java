@@ -63,6 +63,7 @@ public class UserApi {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         df.format(new Date());// new Date()为获取当前系统时间
           factory.setFactoryRegisterTime(df.format(new Date()));
+          factory.setFactoryStatus(Long.valueOf(1));
 
         JsonResult result=null;
         try{
