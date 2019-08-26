@@ -183,7 +183,7 @@ public class UserApi {
         JsonResult result =null;
         try{
             PageHelper.startPage(pageNum,pageSize);
-            List<Factory> factorys = userService.findFactoryByName(factoryName);
+            List<Factory> factorys = userService.findAllFactoryByName(factoryName);
             PageInfo pageInfo=new PageInfo(factorys);
             if (factorys.size()>0){
                 result =new JsonResult("200","查询工厂成功",pageInfo);
