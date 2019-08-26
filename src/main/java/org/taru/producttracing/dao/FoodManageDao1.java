@@ -31,4 +31,9 @@ public interface FoodManageDao1 {
      * 查询所有批次
      */
     public List<Batch> querybatch();
+    /**
+     * 查询批次产品
+     */
+    public List<Batch> query();
+
 }
