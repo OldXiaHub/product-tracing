@@ -18,6 +18,7 @@
        <result property="logisticsStartWeiduGeo" column="logistics_start_weidu_geo" jdbcType="VARCHAR"></result>
        <result property="logisticsEndjingduGeo" column="logistics_endjingdu_geo" jdbcType="VARCHAR"></result>
        <result property="logisticsEndweiduGeo" column="logistics_endweidu_geo" jdbcType="VARCHAR"></result>
+       <result property="logisiticsSignStatus" column="logisitics_sign_status" jdbcType="VARCHAR"></result>
    </resultMap>
     <!--* 查询物流信息-->
     <select id="queryRouter" resultMap="BaseResult">
@@ -26,7 +27,7 @@
     
    <!--更新物流状态-->
     <update id="update" parameterType="org.taru.producttracing.pojo.Logistics">
-        update logistics set logisitics_sign_status = 1 where logistics_batch_barcode=#{logisticsBatchBarcode}
+        update logistics set logisitics_sign_status = 1 where logistics_id=#{logisticsId}
     </update>
    
 
