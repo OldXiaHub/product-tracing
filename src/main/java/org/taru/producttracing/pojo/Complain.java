@@ -11,7 +11,15 @@ public class Complain {
   private long complainStatus;
   private String complainTime;
   private String complainUserTelphone;
+  private User user;
 
+  public User getUser() {
+    return user;
+  }
+
+  public void setUser(User user) {
+    this.user = user;
+  }
 
   public String getComplainId() {
     return complainId;
