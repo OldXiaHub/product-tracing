@@ -29,7 +29,7 @@ public class LogisticsServiceImpl implements LogisticsService {
      * 更新物流状态
      */
     @Override
-    public void updatestatus(String logisticsBatchBarcode) {
-        logisticsDao.update(logisticsBatchBarcode);
+    public void updatestatus(String logisticsId) {
+        logisticsDao.update(logisticsId);
     }
 }
