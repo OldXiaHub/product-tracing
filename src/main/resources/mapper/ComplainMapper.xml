@@ -10,9 +10,11 @@
         <result column="complain_name" property="complainName"/>
         <result column="complain_content" property="complainContent" />
         <result column="complain_status" property="complainStatus"/>
+        <result column="complain_user_telphone" property="complainUserTelphone"/>
         <association property="user" javaType="org.taru.producttracing.pojo.User">
             <id  column="user_id" property="openId"/>
             <result column="user_name" property="nickName"/>
+
         </association>
     </resultMap>
     <!--查询所有投诉-->
