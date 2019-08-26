@@ -48,4 +48,19 @@ public class LogisticsApi {
         }
         return result;
     }
+    /**
+     * 更新物流状态
+     */
+    @RequestMapping("/api/querylogistics")
+    public JsonResult querylogistics(String logisticsId){
+        JsonResult result=null;
+        try{
+            Logistics logistics=logisticsService.querymessage(logisticsId);
+            result=new JsonResult("200","查询成功",logistics);
+        }catch (Exception e){
+            e.printStackTrace();
+            result=new JsonResult("400","查询失败","");
+        }
+        return result;
+    }
 }
