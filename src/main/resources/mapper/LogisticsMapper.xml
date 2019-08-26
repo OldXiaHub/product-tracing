@@ -18,7 +18,8 @@
        <result property="logisticsStartWeiduGeo" column="logistics_start_weidu_geo" jdbcType="VARCHAR"></result>
        <result property="logisticsEndjingduGeo" column="logistics_endjingdu_geo" jdbcType="VARCHAR"></result>
        <result property="logisticsEndweiduGeo" column="logistics_endweidu_geo" jdbcType="VARCHAR"></result>
-       <result property="logisiticsSignStatus" column="logisitics_sign_status" jdbcType="VARCHAR"></result>
+       <result property="logisiticsCarjingduGeo" column="logisitics_carjingdu_geo" jdbcType="VARCHAR"></result>
+       <result property="logisiticsCarweiduGeo" column="logisitics_carweidu_geo" jdbcType="VARCHAR"></result>
    </resultMap>
     <!--* 查询物流信息-->
     <select id="queryRouter" resultMap="BaseResult">
