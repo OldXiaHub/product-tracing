@@ -1,7 +1,6 @@
 package org.taru.producttracing.pojo;
 
 
-
 public class Complain {
 
   private String complainId;
@@ -11,15 +10,8 @@ public class Complain {
   private String complainUserId;
   private long complainStatus;
   private String complainTime;
-  private User user;
+  private String complainUserTelphone;
 
-  public User getUser() {
-    return user;
-  }
-
-  public void setUser(User user) {
-    this.user = user;
-  }
 
   public String getComplainId() {
     return complainId;
@@ -81,6 +73,15 @@ public class Complain {
 
   public void setComplainTime(String complainTime) {
     this.complainTime = complainTime;
+  }
+
+
+  public String getComplainUserTelphone() {
+    return complainUserTelphone;
+  }
+
+  public void setComplainUserTelphone(String complainUserTelphone) {
+    this.complainUserTelphone = complainUserTelphone;
   }
 
 }
