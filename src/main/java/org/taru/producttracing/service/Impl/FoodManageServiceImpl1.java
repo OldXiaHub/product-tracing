@@ -1,5 +1,6 @@
 package org.taru.producttracing.service.Impl;
 
+import org.apache.ibatis.annotations.Lang;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -9,7 +10,10 @@ import org.taru.producttracing.pojo.Batch;
 import org.taru.producttracing.service.FoodManageService1;
 import org.taru.producttracing.util.IdUtil;
 import org.taru.producttracing.util.QRFactory;
+import org.taru.producttracing.util.StringUtil;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -30,6 +34,11 @@ public class FoodManageServiceImpl1 implements FoodManageService1 {
      */
     @Override
     public void addBatch(Batch batch) {
+        Date date = new Date();
+        SimpleDateFormat ss = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        String s=batch.getBatchTime();
+        s=ss.format(date);
+        batch.setBatchTime(s);
         String batchId = IdUtil.getDateId();
         batch.setBatchId(batchId);
         brcode=batch.getBatchQrcode();
