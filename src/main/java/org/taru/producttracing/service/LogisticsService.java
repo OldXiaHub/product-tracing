@@ -20,5 +20,5 @@ public interface LogisticsService {
     /**
      * 更新物流状态
      */
-    public void updatestatus(String logisticsBatchBarcode);
+    public void updatestatus(String logisticsId);
 }

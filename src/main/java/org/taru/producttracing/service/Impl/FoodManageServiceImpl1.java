@@ -65,4 +65,11 @@ public class FoodManageServiceImpl1 implements FoodManageService1 {
         }
         return list;
     }
+    /**
+     * 查询批次产品
+     */
+    public List<Batch> querybatchproduct(){
+
+        return foodManageDao1.query();
+    }
 }
