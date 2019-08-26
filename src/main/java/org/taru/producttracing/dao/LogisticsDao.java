@@ -20,4 +20,8 @@ public interface LogisticsDao {
      * 更新物流状态
      */
     public void update(@Param("logisticsId") String logisticsId);
+    /**
+     * 根据物流Id查询
+     */
+    public Logistics queryById(@Param("logisticsId") String logisticsId);
 }
