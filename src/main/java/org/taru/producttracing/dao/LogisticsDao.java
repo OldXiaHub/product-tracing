@@ -19,5 +19,5 @@ public interface LogisticsDao {
      * 2019.8.26
      * 更新物流状态
      */
-    public void update(@Param("logisticsBatchBarcode") String logisticsBatchBarcode);
+    public void update(@Param("logisticsId") String logisticsId);
 }
