@@ -17,4 +17,8 @@ public interface LogisticsService {
      * 查询物流信息
      */
     public List<Logistics> query(String logisticsBatchBarcode);
+    /**
+     * 更新物流状态
+     */
+    public void updatestatus(String logisticsBatchBarcode);
 }
