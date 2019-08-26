@@ -59,7 +59,7 @@ public interface UserDao {
     /**
      * 查询工厂详情
      *
-     * 湛玉欣 2019.8。22
+     * 湛玉欣 2019.8.22
      * @param factoryId
      * @return
      */
@@ -67,8 +67,16 @@ public interface UserDao {
 
     /**
      * 模糊查询工厂
+     * 湛玉欣 2019.8.22
      * @param factoryName
      * @return
      */
     public List<Factory> findFactoryByName(@Param("factoryName") String factoryName);
+
+    /**
+     * 查询工厂名称
+     * 湛玉欣 2019.8.22
+     * @return
+     */
+    public List<Factory> findAllFactoryName();
 }

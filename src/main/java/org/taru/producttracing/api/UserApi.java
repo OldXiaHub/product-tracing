@@ -196,4 +196,25 @@ public class UserApi {
         }
         return  result;
     }
+
+    /**
+     * 查询工厂名称
+     * @return
+     */
+    @RequestMapping("/api/findallfactoryname")
+    public JsonResult findAllFactoryName(){
+        JsonResult result =null;
+        try{
+           List factoryNames=userService.findAllFactoryName();
+           if(factoryNames.size()>0){
+               result =new JsonResult("200","查询工厂名称成功",factoryNames);
+           }else{
+               result =new JsonResult("404","查询工厂名称失败","");
+           }
+        }catch (Exception e){
+            e.printStackTrace();
+            result =new JsonResult("500","查询工厂名称异常","");
+        }
+        return  result;
+    }
 }

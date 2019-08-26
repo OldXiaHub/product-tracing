@@ -66,4 +66,11 @@ public interface UserService {
      * @return
      */
     List<Factory> findFactoryByName(String factoryName);
+
+    /**
+     * 查询工厂名称
+     * 湛玉欣 2019.8.26
+     * @return
+     */
+    List<Factory> findAllFactoryName();
 }
