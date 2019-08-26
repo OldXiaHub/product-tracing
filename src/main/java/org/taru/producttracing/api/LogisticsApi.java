@@ -33,4 +33,19 @@ public class LogisticsApi {
         }
         return result;
     }
+    /**
+     * 更新物流状态
+     */
+    @RequestMapping("/api/updatestatus")
+    public JsonResult updateStatu(String logisticsBatchBarcode){
+        JsonResult result=null;
+        try{
+           logisticsService.updatestatus(logisticsBatchBarcode);
+            result=new JsonResult("200","修改成功","");
+        }catch (Exception e){
+            e.printStackTrace();
+            result=new JsonResult("400","修改失败","");
+        }
+        return result;
+    }
 }
