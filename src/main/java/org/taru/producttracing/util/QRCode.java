@@ -114,7 +114,7 @@ public class QRCode {
         BufferedImage image = QRCode.createImage(content, logoImagePath, needCompressed);
         // 默认将生成的二维码存放至D盘根目录下
         if(destPath == null || destPath.equals(""))
-            destPath = "D:\\QRcodefile\\";
+            destPath = "C:\\Users\\Administrator\\Desktop\\product_trace\\product-tracing\\src\\main\\resources\\static\\images";
         FileUtil.mkdirs(destPath);
         ImageIO.write(image, FORMAT, new File(destPath));
     }

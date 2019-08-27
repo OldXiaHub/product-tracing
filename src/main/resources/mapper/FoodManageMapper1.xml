@@ -8,11 +8,11 @@
     <!--添批次表-->
     <insert id="sendGoods" parameterType="org.taru.producttracing.pojo.Batch">
         insert into
-        batch(batch_id,batch_name,batch_time,batch_status,batch_barcode,batch_product_id,batch_product_name,
+        batch (batch_id,batch_name,batch_time,batch_status,batch_barcode,batch_product_id,batch_product_name,
         batch_product_photo,batch_product_comment,batch_product_create_time,
         batch_product_quality_time,batch_factory_id,batch_start_address,batch_startjidu_geo,batch_startweidu_geo,
         batch_end_address,batch_endjingdu_geo,batch_endweidu_geo)
-        values(#{batchId},#{batchName},#{batchTime},#{batchStatus},#{batchBarcode},#{batchProductId},
+        values(#{batchId},#{batchName},#{batchTime},#{1},#{batchBarcode},#{batchProductId},
         #{batchProductName},#{batchProductPhoto},#{batchProductComment},#{batchProductCreateTime},
         #{batchProductQualityTime},#{batchFactoryId},#{batchStartAddress},#{batchStartjiduGeo},#{batchStartweiduGeo},
         #{batchEndAddress},#{batchEndjingduGeo},#{batchEndweiduGeo})
@@ -39,7 +39,6 @@
         <result property="batchEndAddress" column="batch_end_address" jdbcType="VARCHAR"></result>
         <result property="batchEndjingduGeo" column="batch_endjingdu_geo" jdbcType="VARCHAR"></result>
         <result property="batchEndweiduGeo" column="batch_endweidu_geo" jdbcType="VARCHAR"></result>
-
         <association property="factory" javaType="org.taru.producttracing.pojo.Factory">
             <id column="factory_id" property="factoryId"></id>
             <result column="factory_name" property="factoryName"></result>

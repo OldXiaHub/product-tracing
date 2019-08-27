@@ -6,7 +6,11 @@ import org.springframework.stereotype.Service;
 import org.taru.producttracing.dao.LogisticsDao;
 import org.taru.producttracing.pojo.Logistics;
 import org.taru.producttracing.service.LogisticsService;
+import org.taru.producttracing.util.IdUtil;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -50,5 +54,20 @@ public class LogisticsServiceImpl implements LogisticsService {
     @Override
     public Logistics querymessage(String logisticsId) {
         return logisticsDao.queryById(logisticsId);
+    }
+
+    /**
+     * 插入物流信息
+     * @param logistics
+     */
+    @Override
+    public void insertmessage(Logistics logistics) {
+
+        logisticsDao.insert(logistics);
+    }
+
+    @Override
+    public List<Logistics> fuzzy(String logisticsBatchBarcode) {
+        return logisticsDao.fuzzySearch(logisticsBatchBarcode);
     }
 }
