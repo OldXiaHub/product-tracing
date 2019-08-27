@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import org.taru.producttracing.pojo.Complain;
 import org.taru.producttracing.pojo.Logistics;
 
+import java.util.HashMap;
 import java.util.List;
 @Mapper
 @Repository
@@ -14,7 +15,10 @@ public interface LogisticsDao {
      * 查询所有物流
      */
     public List<Logistics> queryAllRouter();
-
+    /**
+     * 插入物流信息
+     */
+    public void insert(@Param("logistics") Logistics logistics);
     /**
      * 徐大伟2019.8.25
      * 查询物流信息
