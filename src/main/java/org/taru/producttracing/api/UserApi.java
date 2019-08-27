@@ -44,9 +44,10 @@ public class UserApi {
         JsonResult result=null;
         try{
             Admin admin=userService.login(adminName,adminPassword);
+            System.out.println(admin);
             if(admin != null){
                 String token_JsonId=SecurityUtl.getMd5String(adminName);
-                redisTemplate.opsForHash().put("loginAdminUserKey",token_JsonId, admin.getAdminId());
+                redisTemplate.opsForHash().put("loginUserKey",token_JsonId, admin.getAdminId());
                 Cookie cookie=new Cookie("token",token_JsonId);
                 cookie.setPath("/");
                 cookie.setMaxAge(60*60*60);
@@ -74,7 +75,7 @@ public class UserApi {
         JsonResult result=null;
         try{
             session.invalidate();
-            redisTemplate.opsForHash().delete("loginAdminUserKey");
+            redisTemplate.opsForHash().delete("loginUserKey");
             result =new JsonResult("200","退出登录成功","");
         }catch (Exception e){
             e.printStackTrace();
