@@ -106,4 +106,23 @@ public class LogisticsApi {
         }
         return result;
     }
+    /**
+     * 根据logisticsBatchBarcode模糊搜索
+     */
+    @RequestMapping("/api/fuzzysearch")
+    public JsonResult fuzzysearchligistic(String logisticsBatchBarcode,Integer pageNum,Integer pageSize){
+        JsonResult result=null;
+
+        try{
+
+            PageHelper.startPage(pageNum,pageSize);
+            List<Logistics> logistics=logisticsService.fuzzy(logisticsBatchBarcode);
+            PageInfo pageInfo=new PageInfo(logistics);
+            result=new JsonResult("200","搜索成功",logistics);
+        }catch (Exception e){
+            e.printStackTrace();
+            result=new JsonResult("400","搜索失败","");
+        }
+        return result;
+    }
 }
