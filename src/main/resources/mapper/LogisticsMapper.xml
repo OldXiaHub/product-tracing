@@ -25,7 +25,9 @@
     <!--<select id="queryRouter" resultMap="BaseResult">-->
         <!--select * from logistics where logistics_batch_barcode=#{logisticsBatchBarcode}-->
     <!--</select>-->
-
+    <select id="queryAllRouter" resultType="org.taru.producttracing.pojo.Logistics">
+        select * from logistics
+    </select>
     <select id="queryRouter" resultType="org.taru.producttracing.pojo.Logistics">
         select * from logistics where logistics_batch_barcode=#{logisticsBatchBarcode}
     </select>
