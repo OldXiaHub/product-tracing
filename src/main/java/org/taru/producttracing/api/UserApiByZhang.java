@@ -24,8 +24,7 @@ public class UserApiByZhang {
     UserServiceByZhangR userServiceByZhangR;
     @Autowired
     RedisTemplate redisTemplate;
-    @Autowired
-    FoodManageService1 foodManageService1;
+
 
     /**前台用户登录
      * time:2019/8/20-11:31
@@ -199,7 +198,7 @@ public class UserApiByZhang {
     public JsonResult selectProduct(String batchBarcode){
         JsonResult jsonResult=null;
         try {
-            Batch batch=foodManageService1.queryBatch(batchBarcode);
+            Batch batch=userServiceByZhangR.queryBatch(batchBarcode);
             if(batch!=null){
                 jsonResult=new JsonResult("200","查询成功",batch);
             }else {
