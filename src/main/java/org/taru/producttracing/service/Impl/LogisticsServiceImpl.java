@@ -63,8 +63,6 @@ public class LogisticsServiceImpl implements LogisticsService {
     @Override
     public void insertmessage(Logistics logistics) {
         String logisticsId = IdUtil.getDateId();
-        System.out.println("11111111111111111111111111");
-        System.out.println(logisticsId);
         logistics.setLogisticsId(logisticsId);
         logisticsDao.insert(logistics);
     }
