@@ -22,7 +22,7 @@ import java.util.List;
 public class FoodManageApi1 {
     @Autowired
     FoodManageService1 foodManageService1;
-    @RequestMapping("/Api/insertbatch")
+    @RequestMapping("/api/insertbatch")
     /*
     批次添加
      */
@@ -42,7 +42,7 @@ public class FoodManageApi1 {
      * 根据id查询批次
      * @return
      */
-    @RequestMapping("/Api/querybatch")
+    @RequestMapping("/api/querybatch")
     public JsonResult selectProduct(String batchBarcode){
         JsonResult jsonResult=null;
         try {
@@ -62,7 +62,7 @@ public class FoodManageApi1 {
      * 查询所有批次
      * @return
      */
-    @RequestMapping("/Api/queryallbatch")
+    @RequestMapping("/api/queryallbatch")
     public JsonResult querybatch(Integer pageNum,Integer pageSize){
         JsonResult jsonResult=null;
         try {
@@ -85,7 +85,7 @@ public class FoodManageApi1 {
      * 查询批次产品
      * @return
      */
-    @RequestMapping("/Api/querybatchproduct")
+    @RequestMapping("/api/querybatchproduct")
     public JsonResult querybatchproduct(){
         JsonResult jsonResult=null;
         try {
@@ -95,6 +95,21 @@ public class FoodManageApi1 {
             }else {
                 jsonResult=new JsonResult("404","查询失败","");
             }
+        }catch (Exception e){
+            e.printStackTrace();
+            jsonResult=new JsonResult("500",e.getMessage(),"");
+        }
+        return jsonResult;
+    }
+    /**
+     * 删除批次
+     */
+    @RequestMapping("/api/updatebatch")
+    public JsonResult update(String batchId){
+        JsonResult jsonResult=null;
+        try {
+            foodManageService1.deletebatch(batchId);
+                jsonResult=new JsonResult("200","删除成功","");
         }catch (Exception e){
             e.printStackTrace();
             jsonResult=new JsonResult("500",e.getMessage(),"");
