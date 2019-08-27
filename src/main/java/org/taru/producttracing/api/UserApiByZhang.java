@@ -60,7 +60,7 @@ public class UserApiByZhang {
      * author：zhangrui
      * time：2019/8/20-17：40
       */
-    @RequestMapping(value = "/api/user/register" , method = RequestMethod.POST)
+    @RequestMapping(value = "/Api/user/register" , method = RequestMethod.POST)
     public JsonResult userRegister(@RequestParam(value = "openId", required = true) String openId,
                                    @RequestParam(value = "nickName", required = true) String nickName,
                                    @RequestParam(value = "userAddress", required = true) String userAddress,
@@ -117,7 +117,7 @@ public class UserApiByZhang {
      * author:zhangrui
      * time:2019/8/22-9:30
      */
-    @RequestMapping(value = "/api/user/complain" ,  method = RequestMethod.GET)
+    @RequestMapping(value = "/Api/user/complain" ,  method = RequestMethod.GET)
     public JsonResult userComplain(String openId){
         JsonResult result=null;
         List<Complain> list=null;
@@ -163,7 +163,7 @@ public class UserApiByZhang {
      * author:zhangrui
      * time:2019/8/22-23:10
      */
-    @RequestMapping(value = "/api/user/activecomplaint" ,method = RequestMethod.POST)
+    @RequestMapping(value = "/Api/user/activecomplaint" ,method = RequestMethod.POST)
     public JsonResult complain(@RequestParam(value = "complainId", required = true) String complainId,
                                @RequestParam(value = "complainName", required = true) String complainName,
                                @RequestParam(value ="complainContent", required = true) String complainContent,
