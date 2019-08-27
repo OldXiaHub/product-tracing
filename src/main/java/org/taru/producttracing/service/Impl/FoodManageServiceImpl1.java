@@ -41,6 +41,9 @@ public class FoodManageServiceImpl1 implements FoodManageService1 {
         batch.setBatchTime(s);
         String batchId = IdUtil.getDateId();
         batch.setBatchId(batchId);
+        int i=1;
+        batch.setBatchStatus(i);
+        batch.setBatchProductId(IdUtil.getUuid());
         brcode=batch.getBatchQrcode();
         foodManageDao1.sendGoods(batch);
         QRFactory.creteQRFile(batch.getBatchBarcode());
