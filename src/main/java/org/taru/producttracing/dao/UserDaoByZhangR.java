@@ -3,6 +3,7 @@ package org.taru.producttracing.dao;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
+import org.taru.producttracing.pojo.Batch;
 import org.taru.producttracing.pojo.Complain;
 import org.taru.producttracing.pojo.User;
 
@@ -59,4 +60,9 @@ public interface UserDaoByZhangR {
      * time:2019/8/83-21:29
      */
     public List<User> queryUser();
+
+    /**
+     * 根据ID查询批次
+     */
+    public Batch queryBatchById(@Param("batchBarcode") String batchBarcode);
 }

@@ -4,8 +4,10 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
+import org.taru.producttracing.pojo.Batch;
 import org.taru.producttracing.pojo.Complain;
 import org.taru.producttracing.pojo.User;
+import org.taru.producttracing.service.FoodManageService1;
 import org.taru.producttracing.service.UserServiceByZhangR;
 import org.taru.producttracing.util.SecurityUtl;
 import org.taru.producttracing.util.StringUtil;
@@ -22,6 +24,8 @@ public class UserApiByZhang {
     UserServiceByZhangR userServiceByZhangR;
     @Autowired
     RedisTemplate redisTemplate;
+    @Autowired
+    FoodManageService1 foodManageService1;
 
     /**前台用户登录
      * time:2019/8/20-11:31
@@ -185,5 +189,26 @@ public class UserApiByZhang {
             result = new JsonResult("500", e.getMessage(), "");
         }
         return result;
+    }
+
+    /**
+     * 根据id查询批次
+     * @return
+     */
+    @RequestMapping("/Api/querybatch")
+    public JsonResult selectProduct(String batchBarcode){
+        JsonResult jsonResult=null;
+        try {
+            Batch batch=foodManageService1.queryBatch(batchBarcode);
+            if(batch!=null){
+                jsonResult=new JsonResult("200","查询成功",batch);
+            }else {
+                jsonResult=new JsonResult("404","查询失败","");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            jsonResult=new JsonResult("500",e.getMessage(),"");
+        }
+        return jsonResult;
     }
 }

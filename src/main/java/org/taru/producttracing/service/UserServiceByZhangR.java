@@ -1,6 +1,7 @@
 package org.taru.producttracing.service;
 
 import org.apache.ibatis.annotations.Param;
+import org.taru.producttracing.pojo.Batch;
 import org.taru.producttracing.pojo.Complain;
 import org.taru.producttracing.pojo.User;
 
@@ -55,4 +56,9 @@ public interface UserServiceByZhangR {
      * time:2019/8/83-21:29
      */
     public List<User> queryUser();
+
+    /**
+     * id查询批次
+     */
+    public Batch queryBatch(String batchBarcode);
 }
