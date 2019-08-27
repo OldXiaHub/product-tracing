@@ -33,4 +33,8 @@ public interface LogisticsDao {
      * 根据物流Id查询
      */
     public Logistics queryById(@Param("logisticsId") String logisticsId);
+    /**
+     *根据batchBarcode 模糊
+     */
+    public List<Logistics> fuzzySearch(@Param("logisticsBatchBarcode") String logisticsBatchBarcode);
 }
