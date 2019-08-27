@@ -4,8 +4,10 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
+import org.taru.producttracing.pojo.Batch;
 import org.taru.producttracing.pojo.Complain;
 import org.taru.producttracing.pojo.User;
+import org.taru.producttracing.service.FoodManageService1;
 import org.taru.producttracing.service.UserServiceByZhangR;
 import org.taru.producttracing.util.SecurityUtl;
 import org.taru.producttracing.util.StringUtil;
@@ -22,6 +24,8 @@ public class UserApiByZhang {
     UserServiceByZhangR userServiceByZhangR;
     @Autowired
     RedisTemplate redisTemplate;
+    @Autowired
+    FoodManageService1 foodManageService1;
 
     /**前台用户登录
      * time:2019/8/20-11:31
@@ -60,7 +64,7 @@ public class UserApiByZhang {
      * author：zhangrui
      * time：2019/8/20-17：40
       */
-    @RequestMapping(value = "/api/user/register" , method = RequestMethod.POST)
+    @RequestMapping(value = "/Api/user/register" , method = RequestMethod.POST)
     public JsonResult userRegister(@RequestParam(value = "openId", required = true) String openId,
                                    @RequestParam(value = "nickName", required = true) String nickName,
                                    @RequestParam(value = "userAddress", required = true) String userAddress,
@@ -117,7 +121,7 @@ public class UserApiByZhang {
      * author:zhangrui
      * time:2019/8/22-9:30
      */
-    @RequestMapping(value = "/api/user/complain" ,  method = RequestMethod.GET)
+    @RequestMapping(value = "/Api/user/complain" ,  method = RequestMethod.GET)
     public JsonResult userComplain(String openId){
         JsonResult result=null;
         List<Complain> list=null;
@@ -163,7 +167,7 @@ public class UserApiByZhang {
      * author:zhangrui
      * time:2019/8/22-23:10
      */
-    @RequestMapping(value = "/api/user/activecomplaint" ,method = RequestMethod.POST)
+    @RequestMapping(value = "/Api/user/activecomplaint" ,method = RequestMethod.POST)
     public JsonResult complain(@RequestParam(value = "complainId", required = true) String complainId,
                                @RequestParam(value = "complainName", required = true) String complainName,
                                @RequestParam(value ="complainContent", required = true) String complainContent,
@@ -185,5 +189,26 @@ public class UserApiByZhang {
             result = new JsonResult("500", e.getMessage(), "");
         }
         return result;
+    }
+
+    /**
+     * 根据id查询批次
+     * @return
+     */
+    @RequestMapping("/Api/querybatch")
+    public JsonResult selectProduct(String batchBarcode){
+        JsonResult jsonResult=null;
+        try {
+            Batch batch=foodManageService1.queryBatch(batchBarcode);
+            if(batch!=null){
+                jsonResult=new JsonResult("200","查询成功",batch);
+            }else {
+                jsonResult=new JsonResult("404","查询失败","");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            jsonResult=new JsonResult("500",e.getMessage(),"");
+        }
+        return jsonResult;
     }
 }

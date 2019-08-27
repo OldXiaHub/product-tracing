@@ -60,9 +60,9 @@ public class ApplictionConfig implements  WebMvcConfigurer{
     }
 
 
-    @Override
+   /* @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(atuchInterceptor()).addPathPatterns("/api/**").excludePathPatterns("/api/adminlogin","/api/loginout");
+        registry.addInterceptor(atuchInterceptor()).addPathPatterns("/api/**").excludePathPatterns("/api/adminlogin","/api/loginout","/Api/**");
     }
 
 
@@ -70,7 +70,7 @@ public class ApplictionConfig implements  WebMvcConfigurer{
     @Bean
     public AtuchInterceptor atuchInterceptor(){
         return  new AtuchInterceptor();
-    }
+    }*/
 
 
 
