@@ -8,44 +8,71 @@
     <!--添批次表-->
     <insert id="sendGoods" parameterType="org.taru.producttracing.pojo.Batch">
         insert into
-        batch(batch_id,batch_name,batch_time,batch_status,batch_product_id,batch_product_name,
+        batch(batch_id,batch_name,batch_time,batch_status,batch_barcode,batch_product_id,batch_product_name,
         batch_product_photo,batch_product_comment,batch_product_create_time,
-        batch_product_quality_time,batch_factory_id,batch_start_geo,batch_end_geo)
-        values(#{batchId},#{batchName},#{batchTime},#{batchStatus},#{batchProductId},
+        batch_product_quality_time,batch_factory_id,batch_start_address,batch_startjidu_geo,batch_startweidu_geo,
+        batch_end_address,batch_endjingdu_geo,batch_endweidu_geo)
+        values(#{batchId},#{batchName},#{batchTime},#{batchStatus},#{batchBarcode},#{batchProductId},
         #{batchProductName},#{batchProductPhoto},#{batchProductComment},#{batchProductCreateTime},
-        #{batchProductQualityTime},#{batchFactoryId},#{batchStartGeo},#{batchEndGeo})
+        #{batchProductQualityTime},#{batchFactoryId},#{batchStartAddress},#{batchStartjiduGeo},#{batchStartweiduGeo},
+        #{batchEndAddress},#{batchEndjingduGeo},#{batchEndweiduGeo})
     </insert>
 
     <resultMap id="queryByid" type="org.taru.producttracing.pojo.Batch">
         <id column="batch_id" property="batchId" jdbcType="VARCHAR"></id>
         <result property="batchName" column="batch_name" jdbcType="VARCHAR"></result>
         <result property="batchTime" column="batch_time" jdbcType="VARCHAR"></result>
+        <result property="batchStatus" column="batch_status" jdbcType="VARCHAR"></result>
+        <result property="batchProductId" column="batch_product_id" jdbcType="VARCHAR"></result>
+        <result property="batchQrcode" column="batch_qrcode" jdbcType="VARCHAR"></result>
+        <result property="batchBarcode" column="batch_barcode" jdbcType="VARCHAR"></result>
         <result property="batchProductName" column="batch_product_name" jdbcType="VARCHAR"></result>
         <result property="batchProductPhoto" column="batch_product_photo" jdbcType="VARCHAR"></result>
+        <result property="batchProductComment" column="batch_product_comment" jdbcType="VARCHAR"></result>
         <result property="batchProductCreateTime" column="batch_product_create_time" jdbcType="VARCHAR"></result>
         <result property="batchProductQualityTime" column="batch_product_quality_time" jdbcType="VARCHAR"></result>
-        <result property="batchStartGeo" column="batch_start_geo" jdbcType="VARCHAR"></result>
-        <result property="batchEndGeo" column="batch_end_geo" jdbcType="VARCHAR"></result>
-    </resultMap>
+        <result property="batchFactoryId" column="batch_factory_id" jdbcType="VARCHAR"></result>
+        <result property="batchStartAddress" column="batch_start_address" jdbcType="VARCHAR"></result>
+        <result property="batchFactoryId" column="batch_factory_id" jdbcType="VARCHAR"></result>
+        <result property="batchStartjiduGeo" column="batch_startjidu_geo" jdbcType="VARCHAR"></result>
+        <result property="batchStartweiduGeo" column="batch_startweidu_geo" jdbcType="VARCHAR"></result>
+        <result property="batchEndAddress" column="batch_end_address" jdbcType="VARCHAR"></result>
+        <result property="batchEndjingduGeo" column="batch_endjingdu_geo" jdbcType="VARCHAR"></result>
+        <result property="batchEndweiduGeo" column="batch_endweidu_geo" jdbcType="VARCHAR"></result>
 
+        <association property="factory" javaType="org.taru.producttracing.pojo.Factory">
+            <id column="factory_id" property="factoryId"></id>
+            <result column="factory_name" property="factoryName"></result>
+            <result column="factory_business_photo" property="factoryBusinessPhoto"></result>
+            <result column="factory_address" property="factoryAddress"></result>
+            <result column="factory_telphone" property="factoryTelphone"></result>
+            <result column="factory_legalperson" property="factoryLegalperson"></result>
+        </association>
+    </resultMap>
+    <!--查询所有批次-->
+    <select id="querybatch" resultMap="queryByid">
+        select * from batch a left join factory b on a.batch_factory_id=b.factory_id where a.batch_status=1
+    </select>
 
     <!--根据批次ID查询批次-->
     <select id="queryBatchById" resultMap="queryByid">
-        select  a.batch_id,
-                a.batch_name,
-                a.batch_time,
-                a.batch_product_name,
-                a.batch_product_photo,
-                a.batch_product_create_time,
-                a.batch_product_quality_time,
-				a.batch_start_geo,
-				a.batch_end_geo
-			from batch a WHERE batch_id=#{batchId}
+        select *
+			from batch a WHERE batch_barcode=#{batchBarcode}
     </select>
     <!--添加批次二维码-->
     <select id="addQr" parameterType="org.taru.producttracing.pojo.Batch">
-        update batch set batch_qrcode=#{qr} where batch_id=#{batchId}
+        update batch set batch_qrcode=#{qr} where batch_barcode=#{batchBarcode}
     </select>
-
-
+    <resultMap id="BaseResultbatch" type="org.taru.producttracing.pojo.Batch">
+        <id property="batchProductId" column="batch_product_id"></id>
+        <result property="batchProductName" column="batch_product_name" jdbcType="VARCHAR"></result>
+    </resultMap>
+    <!--查询批次产品-->
+    <select id="query" parameterType="org.taru.producttracing.pojo.Batch" resultMap="BaseResultbatch">
+        select batch_product_id,batch_product_name from batch
+    </select>
+    <!--删除批次-->
+    <update id="update" parameterType="org.taru.producttracing.pojo.Batch">
+        update batch set batch_status=0 where batch_id=#{batchId};
+    </update>
 </mapper>

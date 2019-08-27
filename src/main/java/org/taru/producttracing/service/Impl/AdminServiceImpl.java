@@ -64,4 +64,40 @@ public class AdminServiceImpl implements UserService {
         return factories;
     }
 
+    /**
+     * 查询工厂详情
+     *
+     * 湛玉欣 2019.8.22
+     *
+     * @param factoryId
+     * @return
+     */
+    @Override
+    public Factory findFactoryById(String factoryId) {
+        Factory factory=userDao.findFactoryById(factoryId);
+        return factory;
+    }
+
+    /**
+     * 模糊查询工厂
+     * 湛玉欣 2019.8.23
+     * @param factoryName
+     * @return
+     */
+    @Override
+    public List<Factory> findAllFactoryByName(String factoryName) {
+        List factorys=userDao.findAllFactoryByName(factoryName);
+        return factorys;
+    }
+
+    /**
+     * 查询工厂名称
+     * @return
+     */
+    @Override
+    public List<Factory> findAllFactoryName() {
+        List factoryNames=userDao.findAllFactoryName();
+        return factoryNames;
+    }
+
 }

@@ -5,23 +5,44 @@
 
 <mapper namespace="org.taru.producttracing.dao.ComplainDao">
 
-    <resultMap id="queryComplain" type="org.taru.producttracing.pojo.Complain">
+    <resultMap id="BaseResult" type="org.taru.producttracing.pojo.Complain">
         <id column="complain_id" property="complainId"/>
         <result column="complain_name" property="complainName"/>
         <result column="complain_content" property="complainContent" />
         <result column="complain_status" property="complainStatus"/>
+        <result column="complain_user_telphone" property="complainUserTelphone"/>
         <association property="user" javaType="org.taru.producttracing.pojo.User">
-            <id property="userId" column="user_id"/>
-            <result column="user_name" property="userName"/>
+            <id  column="user_id" property="openId"/>
+            <result column="user_name" property="nickName"/>
+            <result column="user_telphone" property="userTelphone"/>
         </association>
     </resultMap>
     <!--查询所有投诉-->
-    <select id="queryAllComplain" resultMap="queryComplain">
-        select * from complain a left join user b on a.complain_user_name=b.user_name
+    <select id="queryAllComplain" resultMap="BaseResult">
+        select * from complain a left join user b on a.complain_user_id=b.user_id
+    </select>
+    <!--模糊查询投诉-->
+    <select id="fuzzy" resultMap="BaseResult" parameterType="org.taru.producttracing.pojo.Complain">
+        <bind name="fuzzyParam" value="'%' + complainName + '%'"/>
+        select * from complain a left join user b on a.complain_user_id=b.user_id
+         where a.complain_name Like #{fuzzyParam}
     </select>
     <!--受理投诉-->
-    <update id="acceptCom" parameterType="org.taru.producttracing.pojo.Complain">
-        update complain set complain_status=0 where complain_id=#{complainId}
+
+    <update id="acceptCom">
+        update complain
+        <set>
+            <if test="complainStatus == 0">complain_status=#{complainStatus},</if>
+            <if test="complainStatus == 1">complain_status=#{complainStatus},</if>
+            <if test="complainStatus == 2">complain_status=#{complainStatus},</if>
+        </set>
+        where complain_id=#{complainId}
     </update>
+    <!--查询投诉详情-->
+    <select id="queryComplainById" resultMap="BaseResult">
+        select * from complain a
+        left join user b on a.complain_user_id=b.user_id
+        where complain_id=#{complainId}
+    </select>
 
 </mapper>

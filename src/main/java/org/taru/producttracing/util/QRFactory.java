@@ -1,10 +1,13 @@
 package org.taru.producttracing.util;
 
 import com.google.zxing.WriterException;
+import org.springframework.beans.factory.annotation.Value;
+import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -15,13 +18,19 @@ import java.io.IOException;
  */
 public class QRFactory {
     static BASE64Encoder encoder = new sun.misc.BASE64Encoder();
-    public static void creteQRFile(String batchId)
+    static BASE64Decoder decoder = new sun.misc.BASE64Decoder();
+
+    public static void main(String[] args) {
+        creteQRFile("6940863605377");
+        creteQRFile("6933266600025");
+    }
+    public static void creteQRFile(String batchBarcode)
     {
-        String info = String.format("http://127.0.0.1/Api/querybatch?batchId=%s",batchId);
-        String destPath = "E:\\QRcodefile\\"+batchId;
+        String info = String.format("http://127.0.0.1/Api/querybatch?batchBarcode=%s",batchBarcode);
+        String destPath = "E:\\QRcodefile\\"+batchBarcode+".jpg";
         try {
             QRCode.encode(info, null, destPath, true);
-            String resultStr = QRCode.decode("E:\\QRcodefile\\"+batchId);
+//            String resultStr = QRCode.decode("E:\\QRcodefile\\"+batchBarcode);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -29,11 +38,11 @@ public class QRFactory {
 
     /**
      * 图片转换为字节
-     * @param batchId
+     * @param batchBarcode
      * @return
      */
-    public static String getImageBinary(String batchId) {
-        File f = new File("E:\\QRcodefile\\"+batchId);
+    public static String getImageBinary(String batchBarcode) {
+        File f = new File("E:\\QRcodefile\\"+batchBarcode);
         BufferedImage bi;
         try {
             bi = ImageIO.read(f);
@@ -45,5 +54,20 @@ public class QRFactory {
             e.printStackTrace();
         }
         return null;
+    }
+    /**
+     * 字节转图片
+     */
+    public static void base64StringToImage(String savapath,String base64String){
+        try{
+            byte[] bytes1=decoder.decodeBuffer(base64String);
+            ByteArrayInputStream bais = new ByteArrayInputStream(bytes1);
+            BufferedImage bi1=ImageIO.read(bais);
+            File w2 = new File(savapath);
+            ImageIO.write(bi1,"jpg",w2);
+
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
     }
 }

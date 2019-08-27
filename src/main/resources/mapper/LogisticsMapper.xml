@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.taru.producttracing.dao.LogisticsDao">
+
+   <!--<resultMap id="BaseResult" type="org.taru.producttracing.pojo.Logistics">-->
+       <!--<id column="logistics_id" property="logisticsId" jdbcType="VARCHAR"></id>-->
+       <!--<result property="logisticsTime" column="logistics_time" jdbcType="VARCHAR"></result>-->
+       <!--<result property="logisticsBatchBarcode" column="logistics_batch_barcode" jdbcType="VARCHAR"></result>-->
+       <!--<result property="logisticsStartPerson" column="logistics_start_person" jdbcType="VARCHAR"></result>-->
+       <!--<result property="logisticsStartPersonTelphone" column="logistics_start_person_telphone" jdbcType="VARCHAR"></result>-->
+       <!--<result property="logisticsStartAddress" column="logistics_start_address" jdbcType="VARCHAR"></result>-->
+       <!--<result property="logisticsEndPerson" column="logistics_end_person" jdbcType="VARCHAR"></result>-->
+       <!--<result property="logisticsEndPersonTelphone" column="logistics_end_person_telphone" jdbcType="VARCHAR"></result>-->
+       <!--<result property="logisticsEndAddress" column="logistics_end_address" jdbcType="VARCHAR"></result>-->
+       <!--<result property="logisticsStartjingduGeo" column="logistics_startjingdu_geo" jdbcType="VARCHAR"></result>-->
+       <!--<result property="logisticsStartWeiduGeo" column="logistics_start_weidu_geo" jdbcType="VARCHAR"></result>-->
+       <!--<result property="logisticsEndjingduGeo" column="logistics_endjingdu_geo" jdbcType="VARCHAR"></result>-->
+       <!--<result property="logisticsEndweiduGeo" column="logistics_endweidu_geo" jdbcType="VARCHAR"></result>-->
+       <!--<result property="logisiticsCarjingduGeo" column="logisitics_carjingdu_geo" jdbcType="VARCHAR"></result>-->
+       <!--<result property="logisiticsCarweiduGeo" column="logisitics_carweidu_geo" jdbcType="VARCHAR"></result>-->
+   <!--</resultMap>-->
+    <!--* 查询物流信息-->
+    <!--<select id="queryRouter" resultMap="BaseResult">-->
+        <!--select * from logistics where logistics_batch_barcode=#{logisticsBatchBarcode}-->
+    <!--</select>-->
+    <!--查询所有物流新闻带分页-->
+    <select id="queryAllRouter" resultType="org.taru.producttracing.pojo.Logistics">
+        select * from logistics
+    </select>
+    <!--查询批次号物流信息-->
+    <select id="queryRouter" resultType="org.taru.producttracing.pojo.Logistics">
+        select * from logistics where logistics_batch_barcode=#{logisticsBatchBarcode}
+    </select>
+   <!--更新物流状态-->
+    <update id="update" parameterType="org.taru.producttracing.pojo.Logistics">
+        update logistics set logisitics_sign_status = 1 where logistics_id=#{logisticsId}
+    </update>
+    <!--根据物流Id查询信息-->
+    <select id="queryById" resultType="org.taru.producttracing.pojo.Logistics">
+        select * from logistics where logistics_id=#{logisticsId}
+    </select>
+
+</mapper>

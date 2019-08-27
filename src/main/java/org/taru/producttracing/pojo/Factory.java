@@ -1,25 +1,25 @@
 package org.taru.producttracing.pojo;
+
+
 public class Factory {
 
-  private String factoryId;
+  private long factoryId;
   private String factoryName;
   private String factoryLogo;
   private String factoryTelphone;
   private String factoryAddress;
-
-  private double factoryGeo;
+  private String factoryBusinessPhoto;
   private String factoryLicense;
   private String factoryRegisterTime;
-  private String factoryDistributorId;
+  private String factoryLegalperson;
   private long factoryStatus;
-  private String factoryAdminId;
 
 
-  public String getFactoryId() {
+  public long getFactoryId() {
     return factoryId;
   }
 
-  public void setFactoryId(String factoryId) {
+  public void setFactoryId(long factoryId) {
     this.factoryId = factoryId;
   }
 
@@ -60,12 +60,12 @@ public class Factory {
   }
 
 
-  public double getFactoryGeo() {
-    return factoryGeo;
+  public String getFactoryBusinessPhoto() {
+    return factoryBusinessPhoto;
   }
 
-  public void setFactoryGeo(double factoryGeo) {
-    this.factoryGeo = factoryGeo;
+  public void setFactoryBusinessPhoto(String factoryBusinessPhoto) {
+    this.factoryBusinessPhoto = factoryBusinessPhoto;
   }
 
 
@@ -87,12 +87,12 @@ public class Factory {
   }
 
 
-  public String getFactoryDistributorId() {
-    return factoryDistributorId;
+  public String getFactoryLegalperson() {
+    return factoryLegalperson;
   }
 
-  public void setFactoryDistributorId(String factoryDistributorId) {
-    this.factoryDistributorId = factoryDistributorId;
+  public void setFactoryLegalperson(String factoryLegalperson) {
+    this.factoryLegalperson = factoryLegalperson;
   }
 
 
@@ -104,29 +104,4 @@ public class Factory {
     this.factoryStatus = factoryStatus;
   }
 
-
-  public String getFactoryAdminId() {
-    return factoryAdminId;
-  }
-
-  public void setFactoryAdminId(String factoryAdminId) {
-    this.factoryAdminId = factoryAdminId;
-  }
-
-  @Override
-  public String toString() {
-    return "Factory{" +
-            "factoryId='" + factoryId + '\'' +
-            ", factoryName='" + factoryName + '\'' +
-            ", factoryLogo='" + factoryLogo + '\'' +
-            ", factoryTelphone='" + factoryTelphone + '\'' +
-            ", factoryAddress='" + factoryAddress + '\'' +
-            ", factoryGeo=" + factoryGeo +
-            ", factoryLicense='" + factoryLicense + '\'' +
-            ", factoryRegisterTime='" + factoryRegisterTime + '\'' +
-            ", factoryDistributorId='" + factoryDistributorId + '\'' +
-            ", factoryStatus=" + factoryStatus +
-            ", factoryAdminId='" + factoryAdminId + '\'' +
-            '}';
-  }
 }

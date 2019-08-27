@@ -56,5 +56,27 @@ public interface UserDao {
      */
     public List<Factory> findAllFactory();
 
+    /**
+     * 查询工厂详情
+     *
+     * 湛玉欣 2019.8.22
+     * @param factoryId
+     * @return
+     */
+    public Factory findFactoryById(@Param("factoryId") String factoryId);
 
+    /**
+     * 模糊查询工厂
+     * 湛玉欣 2019.8.22
+     * @param factoryName
+     * @return
+     */
+    public List<Factory> findAllFactoryByName(@Param("factoryName") String factoryName);
+
+    /**
+     * 查询工厂名称
+     * 湛玉欣 2019.8.22
+     * @return
+     */
+    public List<Factory> findAllFactoryName();
 }

@@ -48,4 +48,29 @@ public interface UserService {
      * @return
      */
     List<Factory> findAllFactory();
+
+    /**
+     * 查询工厂详情
+     *
+     * 湛玉欣 2019.8.22
+     *
+     * @param factoryId
+     * @return
+     */
+    Factory findFactoryById(String factoryId);
+
+    /**
+     * 模糊查询工厂
+     * 湛玉欣 2019.8.23
+     * @param factoryName
+     * @return
+     */
+    List<Factory> findAllFactoryByName(String factoryName);
+
+    /**
+     * 查询工厂名称
+     * 湛玉欣 2019.8.26
+     * @return
+     */
+    List<Factory> findAllFactoryName();
 }

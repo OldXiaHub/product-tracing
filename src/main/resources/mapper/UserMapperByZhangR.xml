@@ -21,7 +21,7 @@
         <result property="userTelphone" column="USER_TELPHONE" jdbcType="VARCHAR"></result>
         <result property="userAddress"  column="USER_ADDRESS" jdbcType="VARCHAR"></result>
         <result property="userComment"  column="USER_COMMENT" jdbcType="VARCHAR"></result>
-        <result property="userStatus"   column="USER_STATUS" jdbcType="VARCHAR"></result>
+        <result property="userStatus"   column="USER_STATUS" jdbcType="TINYINT"></result>
     </resultMap>
 
     <!--/**
@@ -29,12 +29,22 @@
      * author:zhangrui
      * time:2019/8/21-15:37
      */-->
-    <insert id="addUserInfo" parameterType="org.taru.producttracing.pojo.User">
-        INSERT INTO USER ( user_id, user_name, user_password, user_telphone, user_address, user_comment, user_status )
+    <update id="addUserInfo" parameterType="org.taru.producttracing.pojo.User">
+        INSERT INTO USER ( user_id, user_name, user_telphone, user_address, user_comment, user_status, user_url )
         VALUES
-            ( #{openId}, #{nickName}, #{userPassword}, #{userTelphone}, #{userAddress}, #{userComment}, #{userStatus} );
-    </insert>
+            ( #{openId}, #{nickName}, #{userTelphone}, #{userAddress}, #{userComment}, #{userStatus}, #{avatarUrl} );
+    </update>
 
+    <!--/**
+     * 注册用户
+     * author:zhangrui
+     * time:2019/8/22-22:10
+     */-->
+    <insert id="userRegister" parameterType="String">
+        INSERT INTO USER ( user_id, user_name, user_address, user_status, user_url )
+        VALUES
+            ( #{openId}, #{nickName}, #{userAddress}, 1,#{avatarUrl});
+    </insert>
     <!--/**
      * 用户个人信息获取
      *author:zhangrui
@@ -46,10 +56,16 @@
         FROM
         USER
         WHERE
-            user_name = #{nickName}
+            user_id = #{openId}
     </select>
     <resultMap id="UserMap1" type="org.taru.producttracing.pojo.User">
-
+        <id     property="openId"       column="user_id" jdbcType="VARCHAR"></id>
+        <result property="nickName"     column="user_name" jdbcType="VARCHAR"></result>
+        <result property="userTelphone" column="user_telphone" jdbcType="VARCHAR"></result>
+        <result property="userAddress"  column="user_address" jdbcType="VARCHAR"></result>
+        <result property="userComment"  column="user_comment" jdbcType="VARCHAR"></result>
+        <result property="userStatus"   column="user_status" jdbcType="TINYINT"></result>
+        <result property="avatarUrl"    column="user_url" jdbcType="VARCHAR"></result>
     </resultMap>
 
     <!--/**
@@ -60,12 +76,12 @@
     <select id="userComplain" parameterType="String" resultMap="UserMap2">
         SELECT
             b.*,
-            a.user_name
+            a.user_id
         FROM
             complain b
-            LEFT JOIN `user` a ON complain_user_name = a.user_name
+            LEFT JOIN `user` a ON complain_user_id = a.user_id
         WHERE
-            complain_user_name = #{nickName}
+            complain_user_id = #{openId}
     </select>
     <resultMap id="UserMap2" type="org.taru.producttracing.pojo.Complain">
         <id     property="complainId"      column="complain_id"      jdbcType="VARCHAR"></id>
@@ -74,4 +90,16 @@
         <result property="complainUserId"  column="complain_user_name" jdbcType="VARCHAR"></result>
         <result property="complainStatus"  column="complain_status"  jdbcType="TINYINT"></result>
     </resultMap>
+
+    <!--/**
+     * 用户主动投诉
+     * author:zhangrui
+     * time:2019/8/22-21:10
+     */-->
+    <insert id="complain" parameterType="String">
+        INSERT INTO
+        complain ( complain_id, complain_name, complain_content, complain_user_id, complain_status,complain_time, complain_user_telphone ,complain_batch_barcode)
+        VALUES
+            (#{complainId}, #{complainName}, #{complainContent}, #{complainUserId}, 0 ,#{complainTime}, #{complainUserTelphone},#{complainBatchBarcode})
+    </insert>
 </mapper>
