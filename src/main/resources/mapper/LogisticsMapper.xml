@@ -54,4 +54,10 @@
         #{logisticsStartjingduGeo},#{logisticsStartWeiduGeo},#{logisticsEndjingduGeo},
         #{logisticsEndweiduGeo},#{logisiticsCarjingduGeo},#{logisiticsCarweiduGeo},0,#{logisticsTime})
     </insert>
+    <!--根据物流订单号模糊搜索-->
+
+    <select id="fuzzySearch" resultType="org.taru.producttracing.pojo.Logistics">
+        <bind name="patternl" value="'%'+logisticsBatchBarcode+'%'"/>
+        SELECT * FROM logistics WHERE logistics_batch_barcode LIKE #{patternl};
+    </select>
 </mapper>
