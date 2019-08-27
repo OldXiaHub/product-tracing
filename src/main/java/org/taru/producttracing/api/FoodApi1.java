@@ -21,20 +21,21 @@ public class FoodApi1 {
         @Autowired
         FoodService1 foodService;
         //查询所有新闻资讯信息
-        @RequestMapping("/api/food/queryNews")
+        @RequestMapping("/Api/food/queryNews")
     public JsonResult queryNews(){
         JsonResult result=null;
         try{
             List list= foodService.queryNews();
             result=new JsonResult("200","查询成功",list);
         }catch (Exception e){
+
             e.printStackTrace();
             result=new JsonResult("400","查询失败","");
         }
         return result;
     }
         //查询新闻详情(根据id)
-        @RequestMapping("/api/food/queryNewsDetail")
+        @RequestMapping("/Api/food/queryNewsDetail")
         public JsonResult queryNewsDetail(String newsId){
             JsonResult result=null;
             try{
@@ -48,7 +49,7 @@ public class FoodApi1 {
         }
 
         //模糊搜索新闻资讯信息
-        @RequestMapping("/api/food/queryNewsByName")
+        @RequestMapping("/Api/food/queryNewsByName")
         public JsonResult queryNews(@RequestParam("name") String name){
             JsonResult result=null;
             try{
