@@ -23,9 +23,9 @@
     </select>
     <!--模糊查询投诉-->
     <select id="fuzzy" resultMap="BaseResult" parameterType="org.taru.producttracing.pojo.Complain">
-        <bind name="fuzzyParam" value="'%' + complainName + '%'"/>
+        <bind name="fuzzyParam" value="'%' + complainContent + '%'"/>
         select * from complain a left join user b on a.complain_user_id=b.user_id
-         where a.complain_name Like #{fuzzyParam}
+         where a.complain_content Like #{fuzzyParam}
     </select>
     <!--受理投诉-->
 
