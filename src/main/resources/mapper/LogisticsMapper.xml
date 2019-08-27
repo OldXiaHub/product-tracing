@@ -41,5 +41,15 @@
     <select id="queryById" resultType="org.taru.producttracing.pojo.Logistics">
         select * from logistics where logistics_id=#{logisticsId}
     </select>
-
+    <!--插入物流信息-->
+    <insert id="insert" parameterType="org.taru.producttracing.pojo.Logistics">
+        insert into logistics
+        (logistics_batch_barcode,logistics_start_person,logistics_start_person_telphone,logistics_start_address
+        ,logistics_end_person,logistics_end_person_telphone,logistics_end_address,logistics_startjingdu_geo,
+        logistics_start_weidu_geo,logistics_endjingdu_geo,logistics_endweidu_geo,
+        logisitics_carjingdu_geo,logisitics_carweidu_geo) values (#{logisticsBatchBarcode},#{logisticsStartPerson},#{logisticsStartPersonTelphone},
+        #{logisticsStartAddress},#{logisticsEndPerson},#{logisticsEndPersonTelphone},#{logisticsEndAddress},
+        #{logisticsStartjingduGeo},#{logisticsStartWeiduGeo},#{logisticsEndjingduGeo},
+        #{logisticsEndweiduGeo},#{logisiticsCarjingduGeo},#{logisiticsCarweiduGeo})
+    </insert>
 </mapper>
