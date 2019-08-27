@@ -18,6 +18,15 @@ public class LogisticsServiceImpl implements LogisticsService {
     @Autowired
     LogisticsDao logisticsDao;
     /**
+     * 查询所有物流
+     */
+
+    @Override
+    public List<Logistics> queryAllLog() {
+        return logisticsDao.queryAllRouter();
+    }
+
+    /**
      * 徐大伟2019.8.25
      * 查询物流信息
      */
@@ -33,6 +42,11 @@ public class LogisticsServiceImpl implements LogisticsService {
         logisticsDao.update(logisticsId);
     }
 
+    /**
+     * 根据物流Id
+     * @param logisticsId
+     * @return
+     */
     @Override
     public Logistics querymessage(String logisticsId) {
         return logisticsDao.queryById(logisticsId);
