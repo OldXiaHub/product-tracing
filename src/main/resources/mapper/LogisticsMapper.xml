@@ -47,7 +47,9 @@
         (logistics_id,logistics_batch_barcode,logistics_start_person,logistics_start_person_telphone,logistics_start_address
         ,logistics_end_person,logistics_end_person_telphone,logistics_end_address,logistics_startjingdu_geo,
         logistics_start_weidu_geo,logistics_endjingdu_geo,logistics_endweidu_geo,
-        logisitics_carjingdu_geo,logisitics_carweidu_geo,logisitics_sign_status,logistics_time) values (#{logisticsId},#{logisticsBatchBarcode},#{logisticsStartPerson},#{logisticsStartPersonTelphone},
+        logisitics_carjingdu_geo,logisitics_carweidu_geo,logisitics_sign_status,logistics_time) values (#{logisticsId},
+        #{logisticsBatchBarcode},#{logisticsStartPerson},
+        #{logisticsStartPersonTelphone},
         #{logisticsStartAddress},#{logisticsEndPerson},#{logisticsEndPersonTelphone},#{logisticsEndAddress},
         #{logisticsStartjingduGeo},#{logisticsStartWeiduGeo},#{logisticsEndjingduGeo},
         #{logisticsEndweiduGeo},#{logisiticsCarjingduGeo},#{logisiticsCarweiduGeo},0,#{logisticsTime})
