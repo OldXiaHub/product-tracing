@@ -12,6 +12,7 @@ import org.taru.producttracing.pojo.Logistics;
 import org.taru.producttracing.service.LogisticsService;
 import org.taru.producttracing.vo.JsonResult;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -27,14 +28,13 @@ public class LogisticsApi {
      * 查询所有物流
      */
     @RequestMapping("/api/querylogis")
-    public JsonResult queryAllRouter(){
+    public JsonResult queryAllRouter(Integer pageNum,Integer pageSize){
         JsonResult result=null;
         try{
-//            PageHelper.startPage(pageNum,pageSize);
+            PageHelper.startPage(pageNum,pageSize);
             List<Logistics> logistics=logisticsService.queryAllLog();
-//            System.out.println(logistics);
-//            PageInfo pageInfo=new PageInfo(logistics);
-            result=new JsonResult("200","查询成功",logistics);
+            PageInfo pageInfo=new PageInfo(logistics);
+            result=new JsonResult("200","查询成功",pageInfo);
         }catch (Exception e){
             e.printStackTrace();
             result=new JsonResult("400","查询失败","");
@@ -86,6 +86,21 @@ public class LogisticsApi {
         }catch (Exception e){
             e.printStackTrace();
             result=new JsonResult("400","查询失败","");
+        }
+        return result;
+    }
+    /**
+     *插入物流
+     */
+    @RequestMapping("/api/insertlogistics")
+    public JsonResult insertligistic(Logistics logistics){
+        JsonResult result=null;
+        try{
+            logisticsService.insertmessage(logistics);
+            result=new JsonResult("200","插入成功","");
+        }catch (Exception e){
+            e.printStackTrace();
+            result=new JsonResult("400","插入失败","");
         }
         return result;
     }
