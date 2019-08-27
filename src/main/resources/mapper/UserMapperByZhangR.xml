@@ -134,6 +134,7 @@
         <id column="factory_id" property="factoryId"></id>
         <result column="factory_name" property="factoryName"></result>
         <result column="factory_business_photo" property="factoryBusinessPhoto"></result>
+        <result column="factory_license" property="factoryLicense"></result>
         <result column="factory_address" property="factoryAddress"></result>
         <result column="factory_telphone" property="factoryTelphone"></result>
         <result column="factory_legalperson" property="factoryLegalperson"></result>
