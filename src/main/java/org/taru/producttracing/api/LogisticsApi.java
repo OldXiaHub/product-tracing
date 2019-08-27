@@ -96,7 +96,7 @@ public class LogisticsApi {
     @RequestMapping("/api/insertlogistics")
     public JsonResult insertligistic(Logistics logistics){
         JsonResult result=null;
-        System.out.println(StringUtil.valueof(logistics));
+
         try{
             logisticsService.insertmessage(logistics);
             result=new JsonResult("200","插入成功","");
