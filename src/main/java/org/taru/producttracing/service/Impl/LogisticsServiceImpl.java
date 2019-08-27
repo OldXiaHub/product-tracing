@@ -66,4 +66,9 @@ public class LogisticsServiceImpl implements LogisticsService {
         logistics.setLogisticsId(logisticsId);
         logisticsDao.insert(logistics);
     }
+
+    @Override
+    public List<Logistics> fuzzy(String logisticsBatchBarcode) {
+        return logisticsDao.fuzzySearch(logisticsBatchBarcode);
+    }
 }
