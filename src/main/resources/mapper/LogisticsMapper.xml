@@ -25,9 +25,11 @@
     <!--<select id="queryRouter" resultMap="BaseResult">-->
         <!--select * from logistics where logistics_batch_barcode=#{logisticsBatchBarcode}-->
     <!--</select>-->
+    <!--查询所有物流新闻带分页-->
     <select id="queryAllRouter" resultType="org.taru.producttracing.pojo.Logistics">
         select * from logistics
     </select>
+    <!--查询批次号物流信息-->
     <select id="queryRouter" resultType="org.taru.producttracing.pojo.Logistics">
         select * from logistics where logistics_batch_barcode=#{logisticsBatchBarcode}
     </select>
