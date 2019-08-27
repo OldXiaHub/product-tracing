@@ -84,4 +84,13 @@ public class FoodManageServiceImpl1 implements FoodManageService1 {
 
         return foodManageDao1.query();
     }
+
+    /**
+     * 删除批次
+     * @param batchId
+     */
+    @Override
+    public void deletebatch(String batchId) {
+        foodManageDao1.update(batchId);
+    }
 }

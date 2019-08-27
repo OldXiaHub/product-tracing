@@ -71,5 +71,8 @@
     <select id="query" parameterType="org.taru.producttracing.pojo.Batch" resultMap="BaseResultbatch">
         select batch_product_id,batch_product_name from batch
     </select>
-
+    <!--删除批次-->
+    <update id="update" parameterType="org.taru.producttracing.pojo.Batch">
+        update batch set batch_status=0 where batch_id=#{batchId};
+    </update>
 </mapper>
