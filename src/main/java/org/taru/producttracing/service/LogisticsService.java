@@ -13,6 +13,11 @@ import java.util.List;
 @Service
 public interface LogisticsService {
     /**
+     * 查询所有物流
+     */
+    public List<Logistics> queryAllLog();
+
+    /**
      * 徐大伟2019.8.25
      * 查询物流信息
      */
