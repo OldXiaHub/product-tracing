@@ -35,5 +35,8 @@ public interface FoodManageDao1 {
      * 查询批次产品
      */
     public List<Batch> query();
-
+    /**
+     * 删除批次
+     */
+    public void update(@Param("batchId") String batchId);
 }

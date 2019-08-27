@@ -25,14 +25,21 @@
     <!--<select id="queryRouter" resultMap="BaseResult">-->
         <!--select * from logistics where logistics_batch_barcode=#{logisticsBatchBarcode}-->
     <!--</select>-->
-
+    <!--查询所有物流新闻带分页-->
+    <select id="queryAllRouter" resultType="org.taru.producttracing.pojo.Logistics">
+        select * from logistics
+    </select>
+    <!--查询批次号物流信息-->
     <select id="queryRouter" resultType="org.taru.producttracing.pojo.Logistics">
-    select * from logistics where logistics_batch_barcode=#{logisticsBatchBarcode}
+        select * from logistics where logistics_batch_barcode=#{logisticsBatchBarcode}
     </select>
    <!--更新物流状态-->
     <update id="update" parameterType="org.taru.producttracing.pojo.Logistics">
         update logistics set logisitics_sign_status = 1 where logistics_id=#{logisticsId}
     </update>
-   
+    <!--根据物流Id查询信息-->
+    <select id="queryById" resultType="org.taru.producttracing.pojo.Logistics">
+        select * from logistics where logistics_id=#{logisticsId}
+    </select>
 
 </mapper>

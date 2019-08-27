@@ -11,6 +11,11 @@ import java.util.List;
 @Repository
 public interface LogisticsDao {
     /**
+     * 查询所有物流
+     */
+    public List<Logistics> queryAllRouter();
+
+    /**
      * 徐大伟2019.8.25
      * 查询物流信息
      */
@@ -20,4 +25,8 @@ public interface LogisticsDao {
      * 更新物流状态
      */
     public void update(@Param("logisticsId") String logisticsId);
+    /**
+     * 根据物流Id查询
+     */
+    public Logistics queryById(@Param("logisticsId") String logisticsId);
 }

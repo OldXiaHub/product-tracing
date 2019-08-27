@@ -3,14 +3,19 @@ package org.taru.producttracing.api;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.taru.producttracing.pojo.Admin;
 import org.taru.producttracing.pojo.Factory;
 import org.taru.producttracing.service.UserService;
+import org.taru.producttracing.util.SecurityUtl;
 import org.taru.producttracing.vo.JsonResult;
 
-import javax.swing.*;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -22,6 +27,9 @@ public class UserApi {
     @Autowired
     UserService userService;
 
+    @Autowired
+    RedisTemplate redisTemplate;
+
     /**
      * 后台登录
      *
@@ -32,11 +40,18 @@ public class UserApi {
      * @return
      */
     @RequestMapping("/api/adminlogin")
-    public JsonResult adminLogin(String adminName,String adminPassword){
+    public JsonResult adminLogin(String adminName, String adminPassword, HttpServletResponse response){
         JsonResult result=null;
         try{
             Admin admin=userService.login(adminName,adminPassword);
+            System.out.println(admin);
             if(admin != null){
+                String token_JsonId=SecurityUtl.getMd5String(adminName);
+                redisTemplate.opsForHash().put("loginUserKey",token_JsonId, admin.getAdminId());
+                Cookie cookie=new Cookie("token",token_JsonId);
+                cookie.setPath("/");
+                cookie.setMaxAge(60*60*60);
+                response.addCookie(cookie);
                 result =new JsonResult("200","登陆成功",admin);
             }else{
                 result =new JsonResult("404","登录失败","");
@@ -44,6 +59,27 @@ public class UserApi {
         }catch (Exception e){
             e.printStackTrace();
             result =new JsonResult("500","登录异常",e.getMessage());
+        }
+        return  result;
+    }
+
+    /**
+     * 退出登录
+     * 湛玉欣 2019.8.27
+     * @param session
+     * @return
+     */
+    @RequestMapping("/api/loginout")
+    @ResponseBody
+    public JsonResult loginOut(HttpSession session){
+        JsonResult result=null;
+        try{
+            session.invalidate();
+            redisTemplate.opsForHash().delete("loginUserKey");
+            result =new JsonResult("200","退出登录成功","");
+        }catch (Exception e){
+            e.printStackTrace();
+            result =new JsonResult("500","退出登录失败","");
         }
         return  result;
     }

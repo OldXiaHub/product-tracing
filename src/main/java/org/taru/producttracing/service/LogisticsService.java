@@ -13,6 +13,11 @@ import java.util.List;
 @Service
 public interface LogisticsService {
     /**
+     * 查询所有物流
+     */
+    public List<Logistics> queryAllLog();
+
+    /**
      * 徐大伟2019.8.25
      * 查询物流信息
      */
@@ -21,4 +26,8 @@ public interface LogisticsService {
      * 更新物流状态
      */
     public void updatestatus(String logisticsId);
+    /**
+     * 根据物流ID查询
+     */
+    public Logistics querymessage(String logisticsId);
 }

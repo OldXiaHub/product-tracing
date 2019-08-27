@@ -12,7 +12,6 @@ public class Batch {
   private String batchProductId;
   private String batchProductName;
   private String batchProductPhoto;
-  private String batchLicensePhoto;
   private String batchProductComment;
   private String batchProductCreateTime;
   private String batchProductQualityTime;
@@ -26,9 +25,17 @@ public class Batch {
   private String batchProductPrice;
   private String batchProductUnit;
   private String batchProductStandard;
+  private Factory factory;
 
+    public Factory getFactory() {
+        return factory;
+    }
 
-  public String getBatchId() {
+    public void setFactory(Factory factory) {
+        this.factory = factory;
+    }
+
+    public String getBatchId() {
     return batchId;
   }
 
@@ -109,13 +116,6 @@ public class Batch {
   }
 
 
-  public String getBatchLicensePhoto() {
-    return batchLicensePhoto;
-  }
-
-  public void setBatchLicensePhoto(String batchLicensePhoto) {
-    this.batchLicensePhoto = batchLicensePhoto;
-  }
 
 
   public String getBatchProductComment() {
