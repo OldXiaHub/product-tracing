@@ -26,4 +26,8 @@ public interface FoodManageService1 {
      * 查询批次产品
      */
     public List<Batch> querybatchproduct();
+    /**
+     * 删除批次
+     */
+    public void deletebatch(String batchId);
 }
