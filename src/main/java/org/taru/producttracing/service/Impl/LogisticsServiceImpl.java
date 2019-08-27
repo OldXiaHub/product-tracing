@@ -62,15 +62,10 @@ public class LogisticsServiceImpl implements LogisticsService {
      */
     @Override
     public void insertmessage(Logistics logistics) {
-        Date date = new Date();
-        SimpleDateFormat ss = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        String s=logistics.getLogisticsTime();
-        s=ss.format(date);
-        logistics.setLogisticsTime(s);
         String logisticsId = IdUtil.getDateId();
+        System.out.println("11111111111111111111111111");
+        System.out.println(logisticsId);
         logistics.setLogisticsId(logisticsId);
-        int i=0;
-        logistics.setLogisiticsSignStatus(i);
         logisticsDao.insert(logistics);
     }
 }
