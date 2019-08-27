@@ -18,7 +18,7 @@ public interface LogisticsDao {
     /**
      * 插入物流信息
      */
-    public void insert(@Param("logistics") Logistics logistics);
+    public void insert(Logistics logistics);
     /**
      * 徐大伟2019.8.25
      * 查询物流信息
