@@ -39,7 +39,6 @@
         <result property="batchEndAddress" column="batch_end_address" jdbcType="VARCHAR"></result>
         <result property="batchEndjingduGeo" column="batch_endjingdu_geo" jdbcType="VARCHAR"></result>
         <result property="batchEndweiduGeo" column="batch_endweidu_geo" jdbcType="VARCHAR"></result>
-
         <association property="factory" javaType="org.taru.producttracing.pojo.Factory">
             <id column="factory_id" property="factoryId"></id>
             <result column="factory_name" property="factoryName"></result>
