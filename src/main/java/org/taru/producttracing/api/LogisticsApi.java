@@ -10,6 +10,7 @@ import org.taru.producttracing.pojo.Batch;
 import org.taru.producttracing.pojo.Complain;
 import org.taru.producttracing.pojo.Logistics;
 import org.taru.producttracing.service.LogisticsService;
+import org.taru.producttracing.util.StringUtil;
 import org.taru.producttracing.vo.JsonResult;
 
 import java.util.HashMap;
@@ -95,6 +96,7 @@ public class LogisticsApi {
     @RequestMapping("/api/insertlogistics")
     public JsonResult insertligistic(Logistics logistics){
         JsonResult result=null;
+        System.out.println(StringUtil.valueof(logistics));
         try{
             logisticsService.insertmessage(logistics);
             result=new JsonResult("200","插入成功","");
