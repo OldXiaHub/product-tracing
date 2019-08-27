@@ -1,5 +1,6 @@
 package org.taru.producttracing.service;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 import org.taru.producttracing.pojo.Complain;
 import org.taru.producttracing.pojo.Logistics;
@@ -35,4 +36,6 @@ public interface LogisticsService {
      * 插入物流信息
      */
     public void insertmessage(Logistics logistics);
+//    根据物流订单号模糊搜索
+    public List<Logistics> fuzzy(@Param("batchBarcode") String batchBarcode);
 }
