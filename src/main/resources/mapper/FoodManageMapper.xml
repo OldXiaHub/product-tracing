@@ -32,12 +32,12 @@
 
     <!--查询食品-->
     <select id="selectProduct" resultMap="ProductMap">
-        select * from product left join factory f on product_factory_id=factory_id where product_status=1
+        select * from product left join factory f on p.product_factory_id=f.factory_id where p.product_status=1
     </select>
 
     <!--根据ID查询食品-->
     <select id="selectProductByid" resultMap="ProductMap">
-            select * from product p left join factory f on product_factory_id=factory_id where product_status=1 and product_id=#{productId}
+            select * from product p left join factory f on p.product_factory_id=f.factory_id where p.product_status=1 and p.product_id=#{productId}
   </select>
 
     <!--食品作废-->
