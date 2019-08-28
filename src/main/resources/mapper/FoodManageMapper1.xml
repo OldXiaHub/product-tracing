@@ -56,7 +56,7 @@
     <!--根据批次ID查询批次-->
     <select id="queryBatchById" resultMap="queryByid">
         select *
-			from batch a WHERE batch_barcode=#{batchBarcode}
+			from batch a where batch_barcode=#{batchBarcode}
     </select>
     <!--添加批次二维码-->
     <select id="addQr" parameterType="org.taru.producttracing.pojo.Batch">
