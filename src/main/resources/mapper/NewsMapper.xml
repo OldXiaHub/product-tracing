@@ -39,4 +39,16 @@
     from  News where  news_status='1' order by  news_time  desc
     </select>
 
+    <!--发布新闻-->
+    <insert id="insertNews" parameterType="org.taru.producttracing.pojo.News">
+        insert into news(news_id,news_name,news_content,news_photo,news_time,news_status)
+        values (#{newsId},#{newsName},#{newsContent},#{newsPhoto},#{newsTime},1)
+    </insert>
+    <!--新闻模糊查询-->
+    <select id="queryNewsLike" resultMap="BaseResultMap">
+        <bind name="likeNews" value=" '%'+_parameter.newsName+'%' "/>
+        select
+        <include refid="BaseSqlColumn"></include>
+        from news where news_name like #{likeNews}
+    </select>
 </mapper>
