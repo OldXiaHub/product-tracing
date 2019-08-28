@@ -139,7 +139,7 @@
     <!--根据批次ID查询批次-->
     <select id="queryBatchById" resultMap="queryByid">
         select *
-			from batch a left join factory b on a.batch_factory_id=b.factory_id WHERE a.batch_barcode=#{batchBarcode}
+			from batch a left join factory b on a.batch_factory_id=b.factory_id where a.batch_barcode=#{batchBarcode}
     </select>
 
 </mapper>
