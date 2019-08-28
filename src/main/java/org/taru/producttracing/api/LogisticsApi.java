@@ -67,7 +67,7 @@ public class LogisticsApi {
     public JsonResult updateStatu(String logisticsId){
         JsonResult result=null;
         try{
-           logisticsService.updatestatus(logisticsId);
+            logisticsService.updatestatus(logisticsId);
             result=new JsonResult("200","修改成功","");
         }catch (Exception e){
             e.printStackTrace();
@@ -118,7 +118,7 @@ public class LogisticsApi {
             PageHelper.startPage(pageNum,pageSize);
             List<Logistics> logistics=logisticsService.fuzzy(logisticsBatchBarcode);
             PageInfo pageInfo=new PageInfo(logistics);
-            result=new JsonResult("200","搜索成功",logistics);
+            result=new JsonResult("200","搜索成功",pageInfo);
         }catch (Exception e){
             e.printStackTrace();
             result=new JsonResult("400","搜索失败","");
