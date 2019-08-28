@@ -35,5 +35,5 @@ public interface ComplainDao {
      * 徐大伟2019.8.24
      * 模糊查询
      */
-    public List<Complain> fuzzy(@Param("complainName") String complainName);
+    public List<Complain> fuzzy(@Param("complainContent") String complainContent);
 }
