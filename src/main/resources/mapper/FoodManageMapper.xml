@@ -48,6 +48,6 @@
     <!--模糊查询食品-->
     <select id="fuzzySearch" resultMap="ProductMap">
         <bind name="patternl" value="'%'+_parameter.roleName+'%'"/>
-        SELECT * FROM product WHERE product_name LIKE #{patternl};
+        select * from  product where product_name like #{patternl};
     </select>
 </mapper>
