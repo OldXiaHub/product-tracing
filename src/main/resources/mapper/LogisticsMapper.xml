@@ -58,6 +58,6 @@
 
     <select id="fuzzySearch" resultType="org.taru.producttracing.pojo.Logistics">
         <bind name="patternl" value=" '%' + logisticsBatchBarcode + '%' "/>
-        SELECT * FROM logistics a WHERE a.logistics_batch_barcode LIKE #{patternl}
+        select * from logistics a where a.logistics_batch_barcode like #{patternl}
     </select>
 </mapper>
