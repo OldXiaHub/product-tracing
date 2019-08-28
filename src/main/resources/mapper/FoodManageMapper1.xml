@@ -12,7 +12,7 @@
         batch_product_photo,batch_product_comment,batch_product_create_time,
         batch_product_quality_time,batch_factory_id,batch_start_address,batch_startjidu_geo,batch_startweidu_geo,
         batch_end_address,batch_endjingdu_geo,batch_endweidu_geo)
-        values(#{batchId},#{batchName},#{batchTime},#{1},#{batchBarcode},#{batchProductId},
+        values(#{batchId},#{batchName},#{batchTime},1,#{batchBarcode},#{batchProductId},
         #{batchProductName},#{batchProductPhoto},#{batchProductComment},#{batchProductCreateTime},
         #{batchProductQualityTime},#{batchFactoryId},#{batchStartAddress},#{batchStartjiduGeo},#{batchStartweiduGeo},
         #{batchEndAddress},#{batchEndjingduGeo},#{batchEndweiduGeo})
