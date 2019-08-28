@@ -27,5 +27,5 @@ public interface ComplainService {
      * 徐大伟2019.8.24
      * 模糊查询
      */
-    public List<Complain> fuzzycomplain(String complainName);
+    public List<Complain> fuzzycomplain(String complainContent);
 }
