@@ -14,16 +14,24 @@ public interface NewsService {
      * @param newsId
      * @return
      */
-    public int deleteNews(String newsId);
+     int deleteNews(String newsId);
     /**
      * 根据id查询新闻
      */
-    public News selectNewsById(String newsId);
+     News selectNewsById(String newsId);
     /**
      *
      *
      * 根据时间排序新闻
      */
-    public List<News> sortByTime();
+     List<News> sortByTime();
+    /*发布新闻*/
+     void insertNews(News news);
 
+    /**
+     * 新闻模糊查询
+     * @param newsName
+     * @return
+     */
+    List<News>  queryNewsLike(String newsName);
 }
