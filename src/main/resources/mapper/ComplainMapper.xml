@@ -42,7 +42,7 @@
     <select id="queryComplainById" resultMap="BaseResult">
         select * from complain a
         left join user b on a.complain_user_id=b.user_id
-        where complain_id=#{complainId}
+        where a.complain_id=#{complainId}
     </select>
 
 </mapper>
