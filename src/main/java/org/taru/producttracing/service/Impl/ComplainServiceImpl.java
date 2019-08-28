@@ -43,12 +43,12 @@ public class ComplainServiceImpl implements ComplainService {
 
     /**
      * 模糊查询
-     * @param complainName
+     * @param complainContent
      * @return
      */
     @Override
-    public List<Complain> fuzzycomplain(String complainName) {
-        return complainDao.fuzzy(complainName);
+    public List<Complain> fuzzycomplain(String complainContent) {
+        return complainDao.fuzzy(complainContent);
     }
 
 }
