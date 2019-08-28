@@ -82,10 +82,10 @@ public class ComplainApi {
      * 模糊查询投诉
      */
     @RequestMapping(value = "/api/adminlog/fuzzycomplain")
-    public JsonResult fuuzy(String complainName,Integer pageNum ,Integer pageSize){
+    public JsonResult fuuzy(String complainContent,Integer pageNum ,Integer pageSize){
         JsonResult result=null;
         PageHelper.startPage(pageNum,pageSize);
-        List<Complain> complain= complainService.fuzzycomplain(complainName);
+        List<Complain> complain= complainService.fuzzycomplain(complainContent);
         PageInfo pageInfo=new PageInfo(complain);
         try{
             if( complain.size()>0){
