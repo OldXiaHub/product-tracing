@@ -27,11 +27,9 @@ public class ComplainApi {
     @RequestMapping(value = "/api/adminlog/querycomplain")
     public JsonResult queryAll(Integer pageNum,Integer pageSize){
         JsonResult result=null;
-        PageHelper.startPage(pageNum,pageSize);
-        List<Complain> list= complainService.queryComplain();
-        PageInfo pageinfo=new PageInfo(list);
         try{
             PageHelper.startPage(pageNum,pageSize);
+            List<Complain> list= complainService.queryComplain();
             PageInfo pageInfo=new PageInfo(list);
             if(list.size()>0){
                 result=new JsonResult("200","查询成功",pageInfo);
@@ -50,8 +48,8 @@ public class ComplainApi {
     @RequestMapping(value = "/api/adminlog/accept")
     public JsonResult acceptCom(String complainId,long complainStatus){
         JsonResult result=null;
-        complainService.acceptComplain(complainId,complainStatus);
         try{
+            complainService.acceptComplain(complainId,complainStatus);
             result=new JsonResult("200","受理成功","");
         }catch (Exception ex){
             ex.printStackTrace();
@@ -65,8 +63,9 @@ public class ComplainApi {
     @RequestMapping(value = "/api/adminlog/querycomplainById")
     public JsonResult query(String complainId){
         JsonResult result=null;
-        Complain complain= complainService.queryComplain(complainId);
+
         try{
+            Complain complain= complainService.queryComplain(complainId);
             if( complain != null){
                 result=new JsonResult("200","查询成功",complain);
             }else {
@@ -84,10 +83,11 @@ public class ComplainApi {
     @RequestMapping(value = "/api/adminlog/fuzzycomplain")
     public JsonResult fuuzy(String complainContent,Integer pageNum ,Integer pageSize){
         JsonResult result=null;
-        PageHelper.startPage(pageNum,pageSize);
-        List<Complain> complain= complainService.fuzzycomplain(complainContent);
-        PageInfo pageInfo=new PageInfo(complain);
+
         try{
+            PageHelper.startPage(pageNum,pageSize);
+            List<Complain> complain= complainService.fuzzycomplain(complainContent);
+            PageInfo pageInfo=new PageInfo(complain);
             if( complain.size()>0){
                 result=new JsonResult("200","查询成功",pageInfo);
             }else {
