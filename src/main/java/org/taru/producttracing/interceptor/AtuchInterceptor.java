@@ -26,7 +26,7 @@ public class AtuchInterceptor implements HandlerInterceptor {
             for(Cookie cookie:cookies){
                 if("token".equals(cookie.getName())){
                     String token_jsessionId=cookie.getValue();
-                    redisTemplate.opsForHash().get("loginUserKey",token_jsessionId);
+                    redisTemplate.opsForHash().get("loginAdminUserKey",token_jsessionId);
                     if(object!=null){
                         return true;
                     }
