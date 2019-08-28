@@ -37,5 +37,5 @@ public interface LogisticsService {
      */
     public void insertmessage(Logistics logistics);
 //    根据物流订单号模糊搜索
-    public List<Logistics> fuzzy(@Param("batchBarcode") String batchBarcode);
+    public List<Logistics> fuzzy(@Param("logisticsBatchBarcode") String logisticsBatchBarcode);
 }
