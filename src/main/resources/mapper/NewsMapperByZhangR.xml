@@ -8,8 +8,8 @@
      * time：2019/08/20-20:40
      *发布新闻(插入一个新闻往数据库)-->
     <insert id="insertNews" parameterType="org.taru.producttracing.pojo.News">
-        INSERT INTO news ( news_id, news_name, news_content, news_photo, news_time, news_status )
-        VALUE
+        inserrt into news ( news_id, news_name, news_content, news_photo, news_time, news_status )
+        value
             ( #{newsId}, #{newsName}, #{newsContent}, #{newsPhoto}, #{newsTime}, #{newsStatus} )
     </insert>
 
@@ -17,7 +17,7 @@
      * time：2019/08/20-22:30
      *修改新闻(根据新闻id)-->
     <update id="reviseNews" parameterType="org.taru.producttracing.pojo.News">
-        UPDATE news
+        update news
         <set>
             <if test="newsName != null">news_name = #{newsName},</if>
             <if test="newsContent != null">news_content = #{newsContent},</if>
