@@ -21,7 +21,7 @@
 
         select
         <include refid="BaseSqlColumn"></include>
-        from  News where news_status='1'
+        from  news where news_status='1'
     </select>
     <!--删除新闻-->
     <update id="delNewsById">
@@ -30,13 +30,13 @@
     <select id="selectNewsById"    resultMap="BaseResultMap" >
         select
         <include refid="BaseSqlColumn"></include>
-        from  News where news_id =#{newsId}
+        from  news where news_id =#{newsId}
     </select>
     <!-- 排序新闻-->
     <select id="sortByTime" resultMap="BaseResultMap" >
     select
     <include refid="BaseSqlColumn"></include>
-    from  News where  news_status='1' order by  news_time  desc
+    from  news where  news_status='1' order by  news_time  desc
     </select>
 
     <!--发布新闻-->
