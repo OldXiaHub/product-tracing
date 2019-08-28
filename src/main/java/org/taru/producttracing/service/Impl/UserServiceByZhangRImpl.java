@@ -21,8 +21,7 @@ import java.util.List;
 public class UserServiceByZhangRImpl implements UserServiceByZhangR {
 @Autowired
 UserDaoByZhangR userDaoByZhangR;
-@Autowired
-FoodManageDao1 foodManageDao1;
+
     /**
      * autnor:zhangrui
      * time:2019/8/20-11:20
@@ -121,7 +120,7 @@ FoodManageDao1 foodManageDao1;
      * @return
      */
     @Override
-    public Batch queryBatch(String batchBarcode) {
-        return foodManageDao1.queryBatchById(batchBarcode);
+    public Batch  queryBatch(String batchBarcode) {
+        return userDaoByZhangR.queryBatchById(batchBarcode);
     }
 }
