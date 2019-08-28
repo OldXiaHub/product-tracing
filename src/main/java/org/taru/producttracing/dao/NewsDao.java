@@ -15,22 +15,29 @@ public interface NewsDao {
      * @param
      * @return
      */
-    public List<News> selectNews();
+     List<News> selectNews();
     /**
      * 删除新闻
      */
-    public int delNewsById(@Param("newsId") String newsId);
+     int delNewsById(@Param("newsId") String newsId);
     /**
      * 根据id查询新闻
      *
      */
-    public News selectNewsById(String newsId);
+     News selectNewsById(String newsId);
     /**
      *NewsDao
      *
      * 根据时间排序新闻
      */
-    public List<News> sortByTime();
-
+     List<News> sortByTime();
+    /*发布新闻*/
+     void insertNews(News news);
+    /**
+     * 新闻模糊查询
+     * @param newsName
+     * @return
+     */
+    List<News>  queryNewsLike(@Param("newsName") String newsName);
 }
 
