@@ -6,13 +6,13 @@
 
     <!--前台用户登录2019/8/20-11：54-->
     <select id="login" parameterType="HashMap" resultMap="UserMap">
-        SELECT
+        select
             *
-        FROM
-        USER
-        WHERE
+        from
+        user
+        where
             user_name = #{nickName}
-	    AND user_password = #{password}
+	    and user_password = #{password}
     </select>
     <resultMap id="UserMap" type="org.taru.producttracing.pojo.User">
         <id property="openId"           column="USER_ID" jdbcType="VARCHAR"></id>
@@ -30,8 +30,8 @@
      * time:2019/8/21-15:37
      */-->
     <update id="addUserInfo" parameterType="org.taru.producttracing.pojo.User">
-        INSERT INTO USER ( user_id, user_name, user_telphone, user_address, user_comment, user_status, user_url )
-        VALUES
+        insert into user ( user_id, user_name, user_telphone, user_address, user_comment, user_status, user_url )
+        values
             ( #{openId}, #{nickName}, #{userTelphone}, #{userAddress}, #{userComment}, #{userStatus}, #{avatarUrl} );
     </update>
 
@@ -41,8 +41,8 @@
      * time:2019/8/22-22:10
      */-->
     <insert id="userRegister" parameterType="String">
-        INSERT INTO USER ( user_id, user_name, user_address, user_status, user_url )
-        VALUES
+        insert into user ( user_id, user_name, user_address, user_status, user_url )
+        values
             ( #{openId}, #{nickName}, #{userAddress}, 1,#{avatarUrl});
     </insert>
     <!--/**
@@ -51,11 +51,11 @@
      * time：2019/08/21-21:20
      */-->
     <select id="getUserInfo" parameterType="String" resultMap="UserMap1">
-        SELECT
+        select
             *
-        FROM
-        USER
-        WHERE
+        from
+        user
+        where
             user_id = #{openId}
     </select>
     <resultMap id="UserMap1" type="org.taru.producttracing.pojo.User">
@@ -74,14 +74,14 @@
      * time：2019/08/22-9:20
      */-->
     <select id="userComplain" parameterType="String" resultMap="UserMap2">
-        SELECT
+        select
             b.*,
             a.user_id
-        FROM
+        from
             complain b
-            LEFT JOIN `user` a ON complain_user_id = a.user_id
-        WHERE
-            complain_user_id = #{openId}
+            left join `user` a on b.complain_user_id = a.user_id
+        where
+            b.complain_user_id = #{openId}
     </select>
     <resultMap id="UserMap2" type="org.taru.producttracing.pojo.Complain">
         <id     property="complainId"      column="complain_id"      jdbcType="VARCHAR"></id>
@@ -97,9 +97,9 @@
      * time:2019/8/22-21:10
      */-->
     <insert id="complain" parameterType="String">
-        INSERT INTO
+        insert into
         complain ( complain_id, complain_name, complain_content, complain_user_id, complain_status,complain_time, complain_user_telphone ,complain_batch_barcode)
-        VALUES
+        values
             (#{complainId}, #{complainName}, #{complainContent}, #{complainUserId}, 0 ,#{complainTime}, #{complainUserTelphone},#{complainBatchBarcode})
     </insert>
 
@@ -139,7 +139,7 @@
     <!--根据批次ID查询批次-->
     <select id="queryBatchById" resultMap="queryByid">
         select *
-			from batch a left join factory b on a.batch_factory_id=b.factory_id WHERE batch_barcode=#{batchBarcode}
+			from batch a left join factory b on a.batch_factory_id=b.factory_id WHERE a.batch_barcode=#{batchBarcode}
     </select>
 
 </mapper>
