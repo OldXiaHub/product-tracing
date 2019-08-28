@@ -63,7 +63,7 @@ public class FoodManageApi1 {
      * @return
      */
     @RequestMapping("/api/queryallbatch")
-    public JsonResult querybatch(Integer pageNum,Integer pageSize){
+    public JsonResult queryBatch(Integer pageNum,Integer pageSize){
         JsonResult jsonResult=null;
         try {
             PageHelper.startPage(pageNum,pageSize);
@@ -86,7 +86,7 @@ public class FoodManageApi1 {
      * @return
      */
     @RequestMapping("/api/querybatchproduct")
-    public JsonResult querybatchproduct(){
+    public JsonResult queryBatchProduct(){
         JsonResult jsonResult=null;
         try {
             List<Batch> batch=foodManageService1.querybatchproduct();
