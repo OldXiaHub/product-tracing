@@ -66,6 +66,11 @@ public class LogisticsServiceImpl implements LogisticsService {
         logisticsDao.insert(logistics);
     }
 
+    /**
+     * 物流条形模糊
+     * @param logisticsBatchBarcode
+     * @return
+     */
     @Override
     public List<Logistics> fuzzy(String logisticsBatchBarcode) {
         return logisticsDao.fuzzySearch(logisticsBatchBarcode);
