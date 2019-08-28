@@ -5,6 +5,10 @@ import org.springframework.stereotype.Service;
 import org.taru.producttracing.dao.NewsDao;
 import org.taru.producttracing.pojo.News;
 import org.taru.producttracing.service.NewsService;
+import org.taru.producttracing.util.IdUtil;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 @Service
 public class NewsServiceImpl implements NewsService {
@@ -43,4 +47,24 @@ public class NewsServiceImpl implements NewsService {
         return newsDao.sortByTime();
     }
 
+    /*发布新闻*/
+    @Override
+    public void insertNews(News news){
+        String newId= IdUtil.getLongTimeId();
+        news.setNewsId(newId);
+        Date date = new Date();
+        SimpleDateFormat ss = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String time=ss.format(date);
+        news.setNewsTime(time);
+        newsDao.insertNews(news);
+    }
+
+    /**
+     * 新闻模糊查询
+     * @param newsName
+     * @return
+     */
+    public List<News> queryNewsLike(String newsName){
+        return newsDao.queryNewsLike(newsName);
+    }
 }
